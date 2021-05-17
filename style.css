@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 
-body, .home_info p {
+body{
     margin: 0;
+    background-color: #F8F8F8;
 }
 
 button {
@@ -10,7 +11,6 @@ button {
 
 .home {
     height: 100vh;
-    background-color: #F8F8F8;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -39,6 +39,7 @@ button {
 .home_info p {
     font-size: 28px;
     color: #F8F8F8;
+    margin: 0;
     margin-bottom: 1.5em;
 }
 
@@ -87,4 +88,116 @@ button {
     padding: 0;
     justify-content: center;
     font-size: 30px;
+}
+
+.movies_nav {
+    display: grid;
+    align-content: center;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: 1fr;
+    width: 1280px;
+    height: 148px;
+    background: #F8F8F8;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.home_link, .mis_peliculas_link, .movies_nav img {
+    grid-row: 1 / -1;
+    align-self: center;
+}
+
+.home_link, .mis_peliculas_link {
+    margin-bottom: 0.5em;
+}
+
+.movies_nav img {
+    margin-bottom: 1.5em;
+    margin-left: 4em;
+}
+
+.home_link {
+    margin-right: 14em;
+}
+
+.mis_peliculas_link {
+    margin-right: 3em;
+}
+
+.home_link, .mis_peliculas_link {
+    grid-column: 2 / -1;
+    justify-self: right;
+    height: 34px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #246877;
+    text-decoration: none;
+}
+
+.add_movie_container {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.buscador {
+    display: grid;
+    grid-template-rows: 1fr;
+    margin-top: 10em;
+    justify-self: center;
+}
+
+.search_input {
+    align-self: flex-end;
+    font-size: 50px;
+    background-color: #F8F8F8;
+    border: 0;
+    outline: none;
+    caret-color: #246877;
+    color: #246877;
+}
+
+::placeholder, .search_input, .helper p {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.3em;
+}
+
+.helper p {
+    width: 589px;
+    text-align: center;
+}
+
+.helper {
+    display: grid;
+    justify-content: center;
+}
+
+::placeholder {
+    color: #E5E5E5;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+.lupa, .search_input {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+}
+
+.lupa {
+    justify-self: right;
+    align-self: center;
+    margin-right: 1em;
+    padding-bottom: 0.3em;
 }
