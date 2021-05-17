@@ -96,7 +96,7 @@ button {
     grid-template-columns: max-content 1fr;
     grid-template-rows: 1fr;
     width: 1280px;
-    height: 148px;
+    height: 100px;
     background: #F8F8F8;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
     border-radius: 0px 0px 10px 10px;
@@ -107,12 +107,7 @@ button {
     align-self: center;
 }
 
-.home_link, .mis_peliculas_link {
-    margin-bottom: 0.5em;
-}
-
 .movies_nav img {
-    margin-bottom: 1.5em;
     margin-left: 4em;
 }
 
@@ -175,11 +170,22 @@ button {
 .helper p {
     width: 589px;
     text-align: center;
+    color: #246877;
+    margin: 0;
+    padding: 0;
 }
 
 .helper {
     display: grid;
-    justify-content: center;
+    grid-template-rows: 1.2fr 1fr;
+}
+
+.arrow_search, .helper p {
+    justify-self: center;
+}
+
+.arrow_search {
+    margin-top: 4em;
 }
 
 ::placeholder {
@@ -201,3 +207,26 @@ input:focus::placeholder {
     margin-right: 1em;
     padding-bottom: 0.3em;
 }
+
+@keyframes move_arrow {
+    0% { margin-top: 3em; }
+    50% { margin-top: 2em; }
+    100% { margin-top: 3em;}
+}
+
+.arrow_search {
+    animation-name: move_arrow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.opacity_transition {
+    transition-property: opacity;
+    transition-duration: .5s;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+
