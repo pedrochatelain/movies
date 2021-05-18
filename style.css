@@ -95,8 +95,8 @@ button {
     align-content: center;
     grid-template-columns: max-content 1fr;
     grid-template-rows: 1fr;
-    width: 1280px;
-    height: 100px;
+    width: 100%;
+    height: 15vh;
     background: #F8F8F8;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
     border-radius: 0px 0px 10px 10px;
@@ -108,6 +108,7 @@ button {
 }
 
 .movies_nav img {
+    width: 24vh;
     margin-left: 4em;
 }
 
@@ -126,7 +127,7 @@ button {
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 2vw;
     line-height: 34px;
     display: flex;
     align-items: center;
@@ -225,7 +226,55 @@ input:focus::placeholder {
     transition-duration: .5s;
 }
 
-.hidden {
+.opacity_transition_card {
+    transition-property: opacity;
+    transition-duration: .3s;
+}
+
+.change_background_color {
+    animation-name: change_background;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-delay: .3s;
+}
+
+@keyframes change_background {
+    from { background-color: #F8F8F8;}
+    to { background-color: #7FC379;}
+}
+
+.movie_success_message {
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    align-self: center;
+    justify-self: center;
+}
+
+.movie_success_message img {
+    width: 12vw;
+    justify-self: center;
+    height: 12vh;
+    margin-top: 10%;
+}
+
+.movie_success_message p {
+    margin: 0;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.8vw;
+    text-align: center;
+    letter-spacing: 0.05em;
+    width: 20vw;
+    color: #F8F8F8;
+    justify-self: center;
+    height: fit-content;
+}
+
+.opacity_0 {
     opacity: 0;
 }
 
@@ -255,6 +304,7 @@ input:focus::placeholder {
 .container_info_card {
     display: grid;
     width: 100%;
+    border-radius: 0 10px 10px 0;
 }
 
 .info_card {

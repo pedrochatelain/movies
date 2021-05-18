@@ -10,8 +10,8 @@
 <body  class="body_en_card">
     <div class="card">
         <img src="img/los_increibles.jfif" class="card_image" alt="los increibles">
-        <div class="container_info_card">
-            <div class="info_card">
+        <div class="container_info_card js-info-card-container">
+            <div class="info_card js-info-card">
                 <div>
                     <p class="titulo" >Título original</p>
                     <p class="titulo_value">The incredibles</p>
@@ -25,8 +25,13 @@
                     <p class="fecha_value">December 2, 2004 (Argentina)</p>
                 </div>
             </div>
-            <button type="submit" class="button_add_movie">Agregar película</button>
+            <button type="submit" class="button_add_movie js-button-add-movie">Agregar película</button>
+            <div class="movie_success_message js-movie-success-message opacity_0">
+                <p>Agregada a Mis peliculas</p>
+                <img src="img/check_icon.svg" alt="check_icon">
+            </div>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
