@@ -9,6 +9,10 @@ function init() {
     const container_puntuar = document.querySelector('.js-container-puntuar')
     const button_calificar = document.querySelector('.js-button_calificar')
     const icon_delete_card = document.querySelector('.js-icon-delete-card')
+    const arrow_left = document.querySelector('.js-arrow-left')
+    const stars = document.querySelectorAll('.js-star')
+    const puntaje = document.querySelector('.js-puntaje')
+    const button_cancelar = document.querySelector('.js-button-cancelar')
 
     if (search_input) {
         search_input.addEventListener('focus', function() {
@@ -44,9 +48,11 @@ function init() {
     if (button_calificar) {
         button_calificar.addEventListener('click', function() {
             // 1. Hide buttons and text
+
             info_card.classList.add('opacity_0', 'opacity_transition_card')
             button_calificar.classList.add('opacity_0', 'opacity_transition_card')
             icon_delete_card.classList.add('opacity_0', 'opacity_transition_card')
+            
             // 2. Set display:none to elements
             setTimeout(function() {
                 info_card.classList.add('js-display-none')
@@ -56,6 +62,57 @@ function init() {
             // 3. Show container
             container_puntuar.classList.add('js-show-container-puntuar')
         })
+    }
+
+    if (arrow_left) {
+        arrow_left.addEventListener('click', hide_rating)
+        button_cancelar.addEventListener('click', hide_rating)
+    }
+
+    function hide_rating() {
+        container_puntuar.classList.add('js-translate-left')
+        container_puntuar.classList.remove('js-show-container-puntuar')
+        info_card.classList.remove('js-display-none')
+        info_card.classList.remove('opacity_0')
+        button_calificar.classList.remove('js-display-none')
+        button_calificar.classList.remove('opacity_0')
+        icon_delete_card.classList.remove('js-display-none')
+        icon_delete_card.classList.remove('opacity_0')
+        setTimeout(() => {
+            puntaje.innerHTML = 1
+            stars[0].src = 'img/star_yellow.svg'
+            for (let i = 1; i < stars.length; i++) {
+                stars[i].src = 'img/star_empty.svg'
+            }
+        }, 300);
+    }
+
+    if (stars) {
+        stars.forEach(star => star.addEventListener('click', cambiarPuntaje))
+    }
+
+    
+    function countPreviousSiblings(element) {
+        let count = 0
+        while (element.previousElementSibling) {
+            count++
+            element = element.previousElementSibling
+        }
+        return count
+    }
+
+    function cambiarPuntaje(event) {
+        let cant_previous_siblings = countPreviousSiblings(event.target)
+        // Change image of previous stars
+        for (let i = 0; i <= cant_previous_siblings; i++) {
+            stars[i].src = 'img/star_yellow.svg'
+        }
+        // Change image of following stars
+        for (let i = cant_previous_siblings + 1; i < stars.length; i++) {
+            stars[i].src = 'img/star_empty.svg'
+        }
+        // Change number that indicates rating
+        puntaje.innerHTML = cant_previous_siblings + 1
     }
 
     
