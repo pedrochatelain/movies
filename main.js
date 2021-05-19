@@ -6,6 +6,9 @@ function init() {
     const info_card = document.querySelector('.js-info-card')
     const container_info_card = document.querySelector('.js-info-card-container')
     const message_success_card = document.querySelector('.js-movie-success-message')
+    const container_puntuar = document.querySelector('.js-container-puntuar')
+    const button_calificar = document.querySelector('.js-button_calificar')
+    const icon_delete_card = document.querySelector('.js-icon-delete-card')
 
     if (search_input) {
         search_input.addEventListener('focus', function() {
@@ -35,6 +38,23 @@ function init() {
             setTimeout(function() {
                 message_success_card.classList.remove('opacity_0')
             }, 500)
+        })
+    }
+
+    if (button_calificar) {
+        button_calificar.addEventListener('click', function() {
+            // 1. Hide buttons and text
+            info_card.classList.add('opacity_0', 'opacity_transition_card')
+            button_calificar.classList.add('opacity_0', 'opacity_transition_card')
+            icon_delete_card.classList.add('opacity_0', 'opacity_transition_card')
+            // 2. Set display:none to elements
+            setTimeout(function() {
+                info_card.classList.add('js-display-none')
+                button_calificar.classList.add('js-display-none')
+                icon_delete_card.classList.add('js-display-none')
+            }, 300)
+            // 3. Show container
+            container_puntuar.classList.add('js-show-container-puntuar')
         })
     }
 
