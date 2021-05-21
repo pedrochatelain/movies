@@ -27,11 +27,11 @@
                 <div class="calificacion_and_value js-mi-calificacion js-display-none">
                     <p class="fecha">Mi calificación</p>
                     <div class="my_stars">
-                        <img class="js-my-stars" alt="star">
-                        <img class="js-my-stars" alt="star">
-                        <img class="js-my-stars" alt="star">
-                        <img class="js-my-stars" alt="star">
-                        <img class="js-my-stars" alt="star">
+                        <img class="js-star-my-rating" alt="star">
+                        <img class="js-star-my-rating" alt="star">
+                        <img class="js-star-my-rating" alt="star">
+                        <img class="js-star-my-rating" alt="star">
+                        <img class="js-star-my-rating" alt="star">
                     </div>
                 </div>
             </div>
@@ -39,19 +39,19 @@
                 <img src="img/edit_icon.svg" class="js-display-none icon_edit js-icon-edit-card" alt="edit_icon">
                 <img src="img/trash_can.svg" class="icon_delete_card js-icon-delete-card" alt="delete icon">
             </div>
-            <button type="button" class="js-button_calificar button_calificar">Calificar</button>
+            <button type="button" class="js-button-calificar button_calificar">Calificar</button>
         </div>
-        <div class="container_puntuar js-container-puntuar">
-            <img src="img/arrow_left.svg" class="arrow_left js-arrow-left" alt="arrow left">
+        <div class="container_puntuar js-container-calificar">
+            <img src="img/arrow_left.svg" class="arrow_left js-arrow-calificar" alt="arrow left">
             <h1>¿Qué te pareció la película?</h1>
             <div class="stars">
-                <img src="img/star_yellow.svg" class="js-star" alt="star">
-                <img src="img/star_empty.svg" class="js-star" alt="star">
-                <img src="img/star_empty.svg" class="js-star" alt="star">
-                <img src="img/star_empty.svg" class="js-star" alt="star">
-                <img src="img/star_empty.svg" class="js-star" alt="star">
+                <img src="img/star_yellow.svg" class="js-star-calificar" alt="star">
+                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
+                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
+                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
+                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
             </div>
-            <p class="rating"><span class="js-puntaje">1</span> / 5</p>
+            <p class="rating"><span class="js-cant-yellow-stars">1</span> / 5</p>
             <div class="action_buttons">
                 <button type="button" class="button_cancelar js-button-cancelar">Cancelar</button>
                 <button type="submit" class="button_enviar js-enviar-calificacion">Enviar</button>
@@ -59,14 +59,14 @@
         </div>
         <div class="container_borrar js-container-borrar">
             <div class="info_borrar js-info-borrar">
-                <img src="img/arrow_left.svg" class="arrow_left js-arrow-left-delete" alt="arrow left">
+                <img src="img/arrow_left.svg" class="arrow_left js-arrow-delete" alt="arrow left">
                 <h1>¿Deseas borrar la película de tu lista?</h1>
                 <div class="action_buttons">
                     <button type="button" class="button_cancelar js-button-cancel-delete">Cancelar</button>
                     <button type="submit" class="button_borrar js-button-borrar">Borrar</button>
                 </div>
             </div>
-            <div class="msg_deleted js-msg-deleted js-opacity_0">
+            <div class="msg_deleted js-msg-deleted js-opacity-0">
                 <p>Película borrada exitosamente</p>
             </div>
         </div>
