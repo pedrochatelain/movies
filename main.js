@@ -40,10 +40,6 @@ function init() {
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })
-    
-        input_search_movie.addEventListener('focusout', function() {
-            helper_search_movie.classList.remove('js-opacity-0')
-        })
 
         button_add_movie.addEventListener('click', function() {
             info_card.classList.add('js-opacity-0', 'js-opacity-transition')

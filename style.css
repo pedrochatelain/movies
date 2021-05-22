@@ -20,24 +20,23 @@ button {
 
 .home_info {
     background-color: #246877;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    grid-template-rows: max-content 1fr;
+    box-shadow: .3vw 0 1vw rgba(36,104,119, .4);
+    grid-template-columns: 1fr;
+    align-content: center;
 }
 
 .text_info_home {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
     width: fit-content;
     grid-template-rows: repeat(3, min-content);
     height: fit-content;
-    margin-top: 6.5em;
-    margin-left: 5.5em;
-}
-
- .icon_website_home {
+    margin-top: 18vw;
     justify-self: center;
 }
 
 .home_info p {
-    font-size: 28px;
+    font-size: 1.9vw;
     color: #F8F8F8;
     margin: 0;
     margin-bottom: 1.5em;
@@ -53,7 +52,6 @@ button {
 .button_mis_peliculas, .button_agregar_pelicula, .home_info p {
     font-family: Ubuntu;
     font-weight: 500;
-    line-height: 32px;
     display: flex;
     align-items: center;
     letter-spacing: 0.05em;
@@ -65,7 +63,10 @@ button {
 }
 
 .icon_website_home {
-    margin-top: 6em;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 30vw;
 }
 
 .button_mis_peliculas {
@@ -81,14 +82,14 @@ button {
 
 .button_mis_peliculas, .button_agregar_pelicula {
     text-decoration: none;
-    width: 350px;
-    height: 101px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+    width: 22vw;
+    height: 6.5vw;
+    box-shadow: .3vw .3vw .5vw rgba(167, 167, 167, 0.25);
+    border-radius: .8vw;
     border: none;
     padding: 0;
     justify-content: center;
-    font-size: 30px;
+    font-size: 1.9vw;
 }
 
 .movies_nav {
@@ -99,8 +100,7 @@ button {
     width: 100%;
     height: 15vh;
     background: #F8F8F8;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0 .1vw .3vw rgba(167, 167, 167, 0.25);
 }
 
 .home_link, .mis_peliculas_link, .movies_nav img {
@@ -110,7 +110,7 @@ button {
 
 .movies_nav img {
     width: 24vh;
-    margin-left: 4em;
+    margin-left: 4vw;
 }
 
 .home_link {
@@ -118,18 +118,16 @@ button {
 }
 
 .mis_peliculas_link {
-    margin-right: 3em;
+    margin-right: 4vw;
 }
 
 .home_link, .mis_peliculas_link {
     grid-column: 2 / -1;
     justify-self: right;
-    height: 34px;
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
     font-size: 2vw;
-    line-height: 34px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -140,19 +138,18 @@ button {
 
 .add_movie_container {
     display: grid;
-    grid-template-rows: 1fr;
 }
 
 .buscador {
     display: grid;
+    width: 50%;
     grid-template-rows: 1fr;
-    margin-top: 10em;
+    margin-top: 22vh;
     justify-self: center;
 }
 
 .search_input {
     align-self: flex-end;
-    font-size: 50px;
     background-color: #F8F8F8;
     border: 0;
     outline: none;
@@ -164,13 +161,13 @@ button {
     font-family: Ubuntu;
     font-style: normal;
     font-weight: 500;
-    font-size: 44px;
+    font-size: 2.5vw;
     letter-spacing: 0.05em;
     padding-bottom: 0.3em;
 }
 
 .helper p {
-    width: 589px;
+    width: 30vw;
     text-align: center;
     color: #246877;
     margin: 0;
@@ -187,7 +184,10 @@ button {
 }
 
 .arrow_search {
-    margin-top: 4em;
+    animation-name: move_arrow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    width: 2.8vw;
 }
 
 ::placeholder {
@@ -203,7 +203,13 @@ input:focus::placeholder {
     grid-column: 1 / -1;
 }
 
+.search_line {
+    height: 1vw;
+    width: 100%;
+}
+
 .lupa {
+    width: 2.5vw;
     justify-self: right;
     align-self: center;
     margin-right: 1em;
@@ -211,15 +217,9 @@ input:focus::placeholder {
 }
 
 @keyframes move_arrow {
-    0% { margin-top: 3em; }
-    50% { margin-top: 2em; }
-    100% { margin-top: 3em;}
-}
-
-.arrow_search {
-    animation-name: move_arrow;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+    0% { margin-top: 2vh; }
+    50% { margin-top: 4vh; }
+    100% { margin-top: 2vh;}
 }
 
 .js-opacity-transition {
@@ -287,10 +287,11 @@ input:focus::placeholder {
     grid-template-columns: min-content 1fr;
     width: 60vw;
     height: 50vh;
-    box-shadow: 3px 0px 4px 1px rgba(177, 177, 177, 0.25);
-    border-radius: 10px;
+    box-shadow: .2vw .2vw .5vw .2vw rgba(167, 167, 167, 0.25);
+    border-radius: 1vw;
     overflow: hidden;
-
+    justify-self: center;
+    margin-bottom: 4vw;
 }
 
 .body_en_card {
@@ -303,8 +304,7 @@ input:focus::placeholder {
 .card_image {
     width: 20vw;
     height: 50vh;
-    border-radius: 10px 0px 0px 10px;
-    box-shadow: 0px 0px 4px 2px rgba(177, 177, 177, 0.25);
+    border-radius: .5vw 0 0 .5vw;
     z-index: 1;
 }
 
@@ -312,7 +312,7 @@ input:focus::placeholder {
     display: grid;
     grid-column: 2 / -1;
     grid-row: 1 / -1;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 .5vh .5vw 0;
     grid-template-rows: 1fr 2fr;
 }
 
@@ -410,7 +410,6 @@ input:focus::placeholder {
     grid-row: 1 / -1;
     grid-column: 2 / -1;
     transform: translateX(-100%);
-    box-shadow: 3px 0px 4px 1px rgba(177, 177, 177, 0.25);
     background-color: #F8F8F8;
 }
 
@@ -438,15 +437,7 @@ input:focus::placeholder {
 }
 
 .js-background-red {
-    /* animation:
-    name duration timing-function delay iteration-count direction fill-mode; */
-    
     animation: show_container .5s forwards, background_red .5s .3s forwards;
-/*     
-    animation-name: background_red;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-    animation-delay: .3s; */
 }
 
 .js-show-container {
@@ -461,8 +452,8 @@ input:focus::placeholder {
 }
 
 .button_cancelar, .button_enviar, .button_add_movie, .button_calificar, .button_borrar {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: .1vw .1vw .1vw .1vw rgba(167, 167, 167, 0.25);
+    border-radius: .5vw;
     font-family: Ubuntu;
     font-style: normal;
     font-weight: 500;
