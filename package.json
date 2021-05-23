@@ -1,0 +1,24 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "App for searching and rating movies",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrochatelain/movies.git"
+  },
+  "author": {
+    "name": "Pedro Chatelain",
+    "email": "pedrochatelain@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/pedrochatelain/movies/issues"
+  },
+  "homepage": "https://github.com/pedrochatelain/movies#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
