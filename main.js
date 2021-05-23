@@ -85,8 +85,10 @@ function init() {
         container_borrar[index].classList.add('js-background-red')
         message_deleted[index].classList.add('js-opacity-transition')
         setTimeout( () => message_deleted[index].classList.remove('js-opacity-0'), 500)
-        setTimeout( () => card.classList.add('js-opacity-0', 'js-opacity-transition'), 1300);
-        setTimeout( () => card.remove(), 1800);
+        setTimeout( function() {
+            card.classList.add('js-opacity-0', 'js-opacity-transition')
+            card.classList.add('js-thin-container')
+        }, 1300)
     }
 
     function hide_container(container, index) {
