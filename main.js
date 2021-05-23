@@ -2,38 +2,37 @@ function init() {
 
     const input_search_movie = document.querySelector('.js-search-input')
     const helper_search_movie = document.querySelector('.js-helper-search-movie')
-    const button_add_movie = document.querySelector('.js-button-add-movie')
-    const info_card = document.querySelector('.js-info-card')
-    const container_info_card = document.querySelector('.js-info-card-container')
-    const message_success_card = document.querySelector('.js-movie-success-message')
-    const container_calificar = document.querySelector('.js-container-calificar')
-    const button_calificar = document.querySelector('.js-button-calificar')
-    const icon_delete_card = document.querySelector('.js-icon-delete-card')
-    const icon_arrow_calificar = document.querySelector('.js-arrow-calificar')
+    const button_add_movie = document.querySelectorAll('.js-button-add-movie')
+    const info_card = document.querySelectorAll('.js-info-card')
+    const container_info_card = document.querySelectorAll('.js-info-card-container')
+    const message_success_card = document.querySelectorAll('.js-movie-success-message')
+    const container_calificar = document.querySelectorAll('.js-container-calificar')
+    const button_calificar = document.querySelectorAll('.js-button-calificar')
+    const icon_delete_card = document.querySelectorAll('.js-icon-delete-card')
+    const icon_arrow_calificar = document.querySelectorAll('.js-arrow-calificar')
+    const button_cancelar_calificar = document.querySelectorAll('.js-button-cancelar')
+    const container_borrar = document.querySelectorAll('.js-container-borrar')
+    const button_borrar = document.querySelectorAll('.js-button-borrar')
+    const info_borrar = document.querySelectorAll('.js-info-borrar')
+    const message_deleted = document.querySelectorAll('.js-msg-deleted')
+    const button_cancelar_borrado = document.querySelectorAll('.js-button-cancel-delete')
+    const icon_arrow_delete = document.querySelectorAll('.js-arrow-delete')
+    const button_enviar_calificacion = document.querySelectorAll('.js-enviar-calificacion')
+    const mi_calificacion = document.querySelectorAll('.js-mi-calificacion')
+    const icon_edit_card = document.querySelectorAll('.js-icon-edit-card')
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
-    const button_cancelar_calificar = document.querySelector('.js-button-cancelar')
-    const container_borrar = document.querySelector('.js-container-borrar')
-    const button_borrar = document.querySelector('.js-button-borrar')
-    const info_borrar = document.querySelector('.js-info-borrar')
-    const message_deleted = document.querySelector('.js-msg-deleted')
-    const button_cancelar_borrado = document.querySelector('.js-button-cancel-delete')
-    const icon_arrow_delete = document.querySelector('.js-arrow-delete')
-    const button_enviar_calificacion = document.querySelector('.js-enviar-calificacion')
-    const mi_calificacion = document.querySelector('.js-mi-calificacion')
-    const stars_my_rating = document.querySelectorAll('.js-star-my-rating')
-    const icon_edit_card = document.querySelector('.js-icon-edit-card')
 
     if (window.location.pathname === '/card_mis_peliculas.html') {
-        button_calificar.addEventListener('click', () => show_container(container_calificar))
-        button_cancelar_calificar.addEventListener('click', () => hide_container(container_calificar))
-        button_cancelar_borrado.addEventListener('click', () => hide_container(container_borrar))
-        button_borrar.addEventListener('click', removeCard)
-        button_enviar_calificacion.addEventListener('click', show_calificacion)
-        icon_edit_card.addEventListener('click', () => show_container(container_calificar))
-        icon_arrow_calificar.addEventListener('click', () => hide_container(container_calificar))
-        icon_arrow_delete.addEventListener('click', () => hide_container(container_borrar))
-        icon_delete_card.addEventListener('click', () => show_container(container_borrar))
-        stars_container_calificar.forEach(star => star.addEventListener('click', cambiarPuntaje))
+        button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
+        button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
+        button_borrar.forEach( (button, index) => { button.addEventListener('click', (event) => removeCard(event, index) )})
+        button_enviar_calificacion.forEach( (button, index) => { button.addEventListener('click', (event) => show_calificacion(event, index) )})
+        icon_arrow_delete.forEach( (icon, index) => { icon.addEventListener('click', () => hide_container(container_borrar[index], index) )})
+        icon_delete_card.forEach( (icon, index) => { icon.addEventListener('click', () => show_container(container_borrar[index], index) )})
+        icon_arrow_calificar.forEach( (icon, index) => { icon.addEventListener('click', () => hide_container(container_calificar[index], index) )})
+        icon_edit_card.forEach( (icon, index) => { icon.addEventListener('click', () => show_container(container_calificar[index], index) )})
+        button_calificar.forEach( (button, index) => { button.addEventListener('click', () => show_container(container_calificar[index], index) )})
+        stars_container_calificar.forEach( (star, index) => { star.addEventListener('click', (event) => cambiarPuntaje(event, index) )})
     }
 
     if (window.location.pathname === '/agregar_pelicula.html') {
@@ -56,51 +55,53 @@ function init() {
         })
     }
 
-    function show_container(container) {
-        icon_delete_card.classList.add('js-opacity-0', 'js-opacity-transition')
-        icon_edit_card.classList.add('js-opacity-0', 'js-opacity-transition')
+    function show_container(container, index) {
+        icon_delete_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
+        icon_edit_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
         container.classList.add('js-show-container')
-        info_card.classList.add('js-opacity-0', 'js-opacity-transition')
-        button_calificar.classList.add('js-opacity-0', 'js-opacity-transition')
+        info_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
+        button_calificar[index].classList.add('js-opacity-0', 'js-opacity-transition')
     }
 
-    function show_calificacion(event) {
+    function show_calificacion(event, index) { // creo que hay que pasar como argumento la card
         const puntaje = event.target.parentNode.previousElementSibling.querySelector("span").innerHTML
-        mi_calificacion.classList.remove('js-display-none')
-        button_calificar.classList.add('js-display-none')
+        const stars = event.target.parentNode.parentNode.parentNode.querySelectorAll('.js-star-my-rating')
+        console.log(stars)
+        mi_calificacion[index].classList.remove('js-display-none')
+        button_calificar[index].classList.add('js-display-none')
         for (let i = 0; i < puntaje; i++) {
-            stars_my_rating[i].src = 'img/star_yellow.svg'
+            stars[i].src = 'img/star_yellow.svg'
         }
-        for (let j = puntaje; j < stars_my_rating.length; j++) {
-            stars_my_rating[j].src = 'img/star_empty.svg'
+        for (let j = puntaje; j < stars.length; j++) {
+            stars[j].src = 'img/star_empty.svg'
         }
-        hide_container(container_calificar)
+        hide_container(container_calificar[index], index)
     }
 
-    function removeCard(event) {
+    function removeCard(event, index) {
         const card = event.path[4]
-        container_borrar.classList.remove('js-show-container')
-        info_borrar.classList.add('js-opacity-0', 'js-opacity-transition')
-        container_borrar.classList.add('js-background-red')
-        message_deleted.classList.add('js-opacity-transition')
-        setTimeout( () => message_deleted.classList.remove('js-opacity-0'), 500)
+        container_borrar[index].classList.remove('js-show-container')
+        info_borrar[index].classList.add('js-opacity-0', 'js-opacity-transition')
+        container_borrar[index].classList.add('js-background-red')
+        message_deleted[index].classList.add('js-opacity-transition')
+        setTimeout( () => message_deleted[index].classList.remove('js-opacity-0'), 500)
         setTimeout( () => card.classList.add('js-opacity-0', 'js-opacity-transition'), 1300);
         setTimeout( () => card.remove(), 1800);
     }
 
-    function hide_container(container) {
+    function hide_container(container, index) {
         container.classList.add('js-translate-left')
         container.classList.remove('js-show-container')
-        info_card.classList.remove('js-display-none')
-        info_card.classList.remove('js-opacity-0')
-        icon_delete_card.classList.remove('js-opacity-0')
-        if ( ! mi_calificacion.classList.contains('js-display-none') ) {
-            icon_edit_card.classList.remove('js-display-none')
-            icon_edit_card.classList.remove('js-opacity-0')
-            button_calificar.classList.add('js-display-none')
+        info_card[index].classList.remove('js-display-none')
+        info_card[index].classList.remove('js-opacity-0')
+        icon_delete_card[index].classList.remove('js-opacity-0')
+        if ( ! mi_calificacion[index].classList.contains('js-display-none') ) {
+            icon_edit_card[index].classList.remove('js-display-none')
+            icon_edit_card[index].classList.remove('js-opacity-0')
+            button_calificar[index].classList.add('js-display-none')
         } else {
-            button_calificar.classList.remove('js-display-none')
-            button_calificar.classList.remove('js-opacity-0')
+            button_calificar[index].classList.remove('js-display-none')
+            button_calificar[index].classList.remove('js-opacity-0')
         }
     }
 
@@ -113,21 +114,20 @@ function init() {
         return count
     }
 
-    function cambiarPuntaje(event) {
-        let cant_previous_siblings = countPreviousSiblings(event.target)
+    function cambiarPuntaje(event, index) {
+        const cant_previous_siblings = countPreviousSiblings(event.target)
         // Change image of previous stars
-        for (let i = 0; i <= cant_previous_siblings; i++) {
+        for (let i = index; i > index - cant_previous_siblings; i--) {
             stars_container_calificar[i].src = 'img/star_yellow.svg'
         }
+        const firstEmptyStar = index + 1;
+        const lastStar = index - cant_previous_siblings + 4;
         // Change image of following stars
-        for (let i = cant_previous_siblings + 1; i < stars_container_calificar.length; i++) {
+        for (let i = firstEmptyStar; i <= lastStar; i++) {
             stars_container_calificar[i].src = 'img/star_empty.svg'
         }
-        setCurrentRating(cant_previous_siblings + 1)
-    }
-
-    function setCurrentRating(cant) {
-        document.querySelector('.js-cant-yellow-stars').innerHTML = cant
+        // Change the number that indicates current rating
+        event.path[2].querySelector('.js-cant-yellow-stars').innerHTML = cant_previous_siblings + 1
     }
 
 }
