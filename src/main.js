@@ -22,7 +22,7 @@ function init() {
     const icon_edit_card = document.querySelectorAll('.js-icon-edit-card')
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
 
-    if (window.location.pathname === '/card_mis_peliculas.html') {
+    if (window.location.pathname === '/src/card_mis_peliculas.html') {
         button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
         button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
         button_borrar.forEach( (button, index) => { button.addEventListener('click', (event) => removeCard(event, index) )})
@@ -35,24 +35,30 @@ function init() {
         stars_container_calificar.forEach( (star, index) => { star.addEventListener('click', (event) => cambiarPuntaje(event, index) )})
     }
 
-    if (window.location.pathname === '/agregar_pelicula.html') {
+    if (window.location.pathname === '/src/agregar_pelicula.html') {
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })
 
-        button_add_movie.addEventListener('click', function() {
-            info_card.classList.add('js-opacity-0', 'js-opacity-transition')
-            button_add_movie.classList.add('js-opacity-0', 'js-opacity-transition')
-            container_info_card.classList.add('change_background_color')
-            setTimeout(function() {
-                info_card.classList.add('js-display-none')
-                button_add_movie.classList.add('js-display-none')
-            }, 400)
-            message_success_card.classList.add('js-opacity-transition')
-            setTimeout(function() {
-                message_success_card.classList.remove('js-opacity-0')
-            }, 500)
-        })
+        stars_container_calificar.forEach( (star, index) => { 
+            star.addEventListener('click', (event) => cambiarPuntaje(event, index)
+        )})
+
+        button_add_movie.forEach( (button, index) => {
+            button.addEventListener('click', function() {
+                info_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
+                button.classList.add('js-opacity-0', 'js-opacity-transition')
+                container_info_card[index].classList.add('change_background_color')
+                setTimeout(function() {
+                    info_card[index].classList.add('js-display-none')
+                    button.classList.add('js-display-none')
+                }, 400)
+                message_success_card[index].classList.add('js-opacity-transition')
+                setTimeout(function() {
+                    message_success_card[index].classList.remove('js-opacity-0')
+                }, 500)
+            })
+        });
     }
 
     function show_container(container, index) {
