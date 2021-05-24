@@ -364,8 +364,88 @@ input:focus::placeholder {
 
 .js-thin-container {
     animation-name: thin_container;
-    animation-duration: .8s;
+    animation-duration: .6s;
     animation-fill-mode: forwards;
+}
+
+.mis_peliculas_container {
+    display: grid;
+    align-items: center;
+}
+
+.mis_peliculas_cards {
+    display: grid;
+    justify-items: center;
+    margin-top: 8vw;
+}
+
+.no_movies {
+    display: grid;
+    height: 85vh;
+    width: 90vw;
+    justify-self: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.image_empty_cinema {
+    width: 32vw;
+    height: 32vw;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+    grid-column: 1 / 2;
+    /* mix-blend-mode: luminosity; */
+    opacity: 0.8;
+}
+
+.image_empty_cinema, .button_buscar_peliculas, .message_no_cards {
+    grid-row: 1 / -1;
+}
+
+.button_buscar_peliculas {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    justify-content: center;
+    height: 5vw;
+    width: 18vw;
+    background: #246877;
+    border-radius: .7vw;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.65vw;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #F8F8F8;
+    outline: none;
+    text-decoration: none;
+    border: none;
+}
+
+.no_movies_msg_and_button {
+    display: grid;
+    height: 22vw;
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
+}
+
+.message_no_cards {
+    margin: 0;
+    width: 29vw;
+    font-size: 3.5vw;
+    height: fit-content;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 300;
+    /* letter-spacing: -.1vw; */
+    color: #246877;
+}
+
+.button_buscar_peliculas, .message_no_cards {
+    grid-column: 2 / -1;
 }
 
 @keyframes thin_container {

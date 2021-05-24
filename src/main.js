@@ -21,8 +21,9 @@ function init() {
     const mi_calificacion = document.querySelectorAll('.js-mi-calificacion')
     const icon_edit_card = document.querySelectorAll('.js-icon-edit-card')
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
+    const no_movies_msg = document.querySelector('.js-no-movies')
 
-    if (window.location.pathname === '/src/card_mis_peliculas.html') {
+    if (window.location.pathname === '/src/mis_peliculas.html') {
         button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
         button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
         button_borrar.forEach( (button, index) => { button.addEventListener('click', (event) => removeCard(event, index) )})
@@ -95,6 +96,17 @@ function init() {
             card.classList.add('js-opacity-0', 'js-opacity-transition')
             card.classList.add('js-thin-container')
         }, 1300)
+        setTimeout(() => {
+            card.remove()
+            console.log(document.querySelectorAll('.js-card'))
+            // if there are no cards left...
+            if ( document.querySelectorAll('.js-card').length == 0 ) {
+                no_movies_msg.classList.remove('js-display-none')
+                setTimeout(() => {
+                    no_movies_msg.classList.remove('js-opacity-0')
+                }, 1000);
+            }
+        }, 1900);
     }
 
     function hide_container(container, index) {
