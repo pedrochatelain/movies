@@ -23,7 +23,7 @@ function init() {
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
     const no_movies_msg = document.querySelector('.js-no-movies')
 
-    if (window.location.pathname === '/src/mis_peliculas.html') {
+    if (window.location.pathname === '/my_movies') {
         button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
         button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
         button_borrar.forEach( (button, index) => { button.addEventListener('click', (event) => removeCard(event, index) )})
@@ -36,7 +36,7 @@ function init() {
         stars_container_calificar.forEach( (star, index) => { star.addEventListener('click', (event) => cambiarPuntaje(event, index) )})
     }
 
-    if (window.location.pathname === '/src/agregar_pelicula.html') {
+    if (window.location.pathname === '/add_movies') {
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })
@@ -73,7 +73,6 @@ function init() {
     function show_calificacion(event, index) { // creo que hay que pasar como argumento la card
         const puntaje = event.target.parentNode.previousElementSibling.querySelector("span").innerHTML
         const stars = event.target.parentNode.parentNode.parentNode.querySelectorAll('.js-star-my-rating')
-        console.log(stars)
         mi_calificacion[index].classList.remove('js-display-none')
         button_calificar[index].classList.add('js-display-none')
         for (let i = 0; i < puntaje; i++) {
@@ -98,7 +97,6 @@ function init() {
         }, 1300)
         setTimeout(() => {
             card.remove()
-            console.log(document.querySelectorAll('.js-card'))
             // if there are no cards left...
             if ( document.querySelectorAll('.js-card').length == 0 ) {
                 no_movies_msg.classList.remove('js-display-none')
