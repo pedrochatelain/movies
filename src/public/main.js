@@ -23,6 +23,11 @@ function init() {
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
     const no_movies_msg = document.querySelector('.js-no-movies')
 
+    function searchMovie(event) {
+        const movieName = event.target.value
+        fetch(`api/movies/${movieName}`)
+    }
+
     if (window.location.pathname === '/my_movies') {
         button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
         button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
@@ -40,6 +45,8 @@ function init() {
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })
+
+        input_search_movie.addEventListener('keyup', searchMovie)
 
         stars_container_calificar.forEach( (star, index) => { 
             star.addEventListener('click', (event) => cambiarPuntaje(event, index)
