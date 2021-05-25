@@ -22,6 +22,8 @@ function init() {
     const icon_edit_card = document.querySelectorAll('.js-icon-edit-card')
     const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
     const no_movies_msg = document.querySelector('.js-no-movies')
+    const dot_my_movies = document.querySelector('.js-dot-my-movies')
+    const dot_add_movies = document.querySelector('.js-dot-add-movie')
 
     function searchMovie(event) {
         const movieName = event.target.value
@@ -29,6 +31,7 @@ function init() {
     }
 
     if (window.location.pathname === '/my_movies') {
+        dot_my_movies.classList.remove('js-display-none')
         button_cancelar_calificar.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index) )})
         button_cancelar_borrado.forEach( (button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index) )})
         button_borrar.forEach( (button, index) => { button.addEventListener('click', (event) => removeCard(event, index) )})
@@ -42,6 +45,9 @@ function init() {
     }
 
     if (window.location.pathname === '/add_movies') {
+
+        dot_add_movies.classList.remove('js-display-none')
+
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })

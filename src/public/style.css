@@ -62,6 +62,15 @@ button {
     margin-right: 1em ;
 }
 
+.icon_movie_nav {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 4vw;
+    align-self: center;
+}
+
 .icon_website_home {
     grid-row: 1 / -1;
     grid-column: 1 / -1;
@@ -103,17 +112,16 @@ button {
     box-shadow: 0 .1vw .3vw rgba(167, 167, 167, 0.25);
 }
 
-.home_link, .mis_peliculas_link, .movies_nav img {
+.add_movie_link, .mis_peliculas_link, .movies_nav img {
     grid-row: 1 / -1;
     align-self: center;
 }
 
-.movies_nav img {
+.icon_movie_nav img {
     width: 24vh;
-    margin-left: 4vw;
 }
 
-.home_link {
+.add_movie_link {
     margin-right: 14em;
 }
 
@@ -121,14 +129,29 @@ button {
     margin-right: 4vw;
 }
 
-.home_link, .mis_peliculas_link {
+.dot_add_movie, .dot_my_movies {
+    justify-self: center;
+    margin-top: 4.5vw;
+    grid-row: 2 / -1;
+    grid-column: 1 / -1;
+    width: .7vw;
+    height: .7vw;
+}
+
+.add_movie_link p, .mis_peliculas_link p {
+    margin: 0;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+.add_movie_link, .mis_peliculas_link {
     grid-column: 2 / -1;
     justify-self: right;
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 2vw;
-    display: flex;
+    font-size: 1.7vw;
+    display: grid;
     align-items: center;
     text-align: center;
     letter-spacing: 0.05em;
