@@ -8,19 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="movies_nav">
-        <a class="icon_movie_nav" href="/" alt="icon nav">
-            <img src="img/icon_nav.svg" alt="icon nav">
-        </a>
-        <a class="add_movie_link" href="/add_movies">
-            <p>Agregar películas</p>
-            <img src="img/dot_nav.svg" class="dot_add_movie js-dot-add-movie js-display-none" alt="dot that indicates current page">
-        </a>
-        <a class="mis_peliculas_link" href="/my_movies">
-            <p>Mis películas</p>
-            <img src="img/dot_nav.svg" class="dot_my_movies js-dot-my-movies js-display-none" alt="dot that indicates current page">
-        </a>
-    </nav>
+    
+    <%- include('partials/nav.ejs') %>
+
     <div class="mis_peliculas_container">
         <div class="no_movies js-display-none js-no-movies js-opacity-0 js-opacity-transition">
             <img src="img/empty_cinema.jpg" class="image_empty_cinema" alt="empty cinema">
