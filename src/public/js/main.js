@@ -25,13 +25,7 @@ function init() {
     const dot_my_movies = document.querySelector('.js-dot-my-movies')
     const dot_add_movies = document.querySelector('.js-dot-add-movie')
     const lupa = document.querySelector('.js-lupa')
-    
-    function reloadScript() {
-        document.querySelector('script').remove()
-        const myScript = document.createElement("script");
-        myScript.setAttribute("src", "js/main.js");
-        document.body.appendChild(myScript);        
-    }
+    const button_search = document.querySelector('.js-button-search')
 
     if (window.location.pathname === '/my_movies') {
         dot_my_movies.classList.remove('js-display-none')
@@ -53,7 +47,13 @@ function init() {
 
         input_search_movie.addEventListener('focus', function() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
+            button_search.classList.remove('js-display-none')
+            lupa.classList.add('js-opacity-transition', 'js-opacity-0')
+            setTimeout(() => button_search.classList.remove('js-opacity-0'), 400);
+            // input_search_movie.classList.add('js-width-75')
         })
+
+        button_search.addEventListener('click', () => getMovies(input_search_movie))
 
         // lupa.addEventListener('click', async () => {
         //     await getMovies(input_search_movie)
@@ -65,10 +65,9 @@ function init() {
         //     reloadScript()
         // })
 
-        input_search_movie.addEventListener('keypress', async function (e) {
+        input_search_movie.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                await getMovies(input_search_movie)
-                reloadScript()
+                getMovies(input_search_movie)
             }
         });
 

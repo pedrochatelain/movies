@@ -84,6 +84,48 @@ button {
     margin-bottom: 3em;
 }
 
+.button_search {
+    align-self: center;
+    display: grid;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    justify-self: right;
+    padding: 0;
+    width: 11vw;
+    height: 4vw;
+    outline: none;
+    border: none;
+    background: #246877;
+    border-radius: .6vw;
+    z-index: 1;
+    margin-bottom: 1vw;
+}
+
+.button_search p {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    font-size: 1.6vw;
+    margin: 0;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 300;
+    align-self: center;
+    text-align: center;
+    color: #F8F8F8;
+    width: fit-content;
+    margin-left: 1.8vw;
+    margin-bottom: .2vw;
+}
+
+.lupa_button_search {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    width: 1.5vw;
+    align-self: center;
+    justify-self: right;
+    margin-right: 1.8vw;
+}
+
 .button_agregar_pelicula {
     background: #246877;
     color: #F8F8F8;
@@ -170,19 +212,34 @@ button {
 
 .buscador {
     display: grid;
-    width: 50%;
+    height: 10vw;
+    width: 60%;
     grid-template-rows: 1fr;
     margin-top: 22vh;
     justify-self: center;
 }
 
 .search_input {
-    align-self: flex-end;
+    align-self: center;
     background-color: #F8F8F8;
     border: 0;
     outline: none;
     caret-color: #246877;
     color: #246877;
+    padding-bottom: 1vw;
+    border-bottom: .2vw solid #246877;
+    width: 100%;
+}
+
+.js-width-75 {
+    animation-name: width_75;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes width_75 {
+    from { width: 100% ; }
+    to { width: 75% ; }
 }
 
 ::placeholder, .search_input, .helper p {
@@ -191,7 +248,6 @@ button {
     font-weight: 500;
     font-size: 2.5vw;
     letter-spacing: 0.05em;
-    padding-bottom: 0.3em;
 }
 
 .helper p {
@@ -231,17 +287,12 @@ input:focus::placeholder {
     grid-column: 1 / -1;
 }
 
-.search_line {
-    height: 1vw;
-    width: 100%;
-}
-
 .lupa {
     width: 2.5vw;
     justify-self: right;
     align-self: center;
     margin-right: 1em;
-    padding-bottom: 0.3em;
+    padding-bottom: 1vw;
 }
 
 @keyframes move_arrow {

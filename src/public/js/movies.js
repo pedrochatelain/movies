@@ -40,5 +40,9 @@ async function getMovies(input_search_movie) {
         directors : directors
     })
     document.querySelector('.js-cards-add-movies').innerHTML = cards
+    document.querySelector('script').remove()
+    const myScript = document.createElement("script");
+    myScript.setAttribute("src", "js/main.js");
+    document.body.appendChild(myScript);        
 
 }
