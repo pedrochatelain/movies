@@ -1,0 +1,33 @@
+<% for (let i = 0; i < movies.length; i++) { %>
+
+
+<div class="card">
+    <% if (movies[i].poster_path) { %>
+        <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card_image" alt="movie image">
+    <% } else { %>
+        <img src="img/no_image.png" class="card_image" alt="los increibles">
+    <% } %>
+    <div class="container_info_card js-info-card-container">
+        <div class="info_card js-info-card">
+            <div class="titulo_and_value">
+                <p class="titulo" >Título original</p>
+                <p class="titulo_value"> <%= movies[i].original_title %></p>
+            </div>
+            <div class="director_and_value">
+                <p class="director">Director</p>
+                <p class="director_value"><%= directors[i] %></p>
+            </div>
+            <div class="fecha_and_value">
+                <p class="fecha">Fecha de lanzamiento</p>
+                <p class="fecha_value"><%= movies[i].release_date %></p>
+            </div>
+        </div>
+        <button type="submit" class="button_add_movie js-button-add-movie">Agregar película</button>
+        <div class="movie_success_message js-movie-success-message js-opacity-0">
+            <p>Agregada a Mis peliculas</p>
+            <img src="img/check_icon.svg" alt="check_icon">
+        </div>
+    </div>
+</div>
+
+<% } %>

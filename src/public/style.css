@@ -36,7 +36,7 @@ button {
 }
 
 .home_info p {
-    font-size: 1.9vw;
+    font-size: 1.5vw;
     color: #F8F8F8;
     margin: 0;
     margin-bottom: 1.5em;
@@ -90,12 +90,12 @@ button {
 }
 
 .button_mis_peliculas, .button_agregar_pelicula {
+    border: none;
     text-decoration: none;
     width: 22vw;
     height: 6.5vw;
     box-shadow: .3vw .3vw .5vw rgba(167, 167, 167, 0.25);
     border-radius: .8vw;
-    border: none;
     padding: 0;
     justify-content: center;
     font-size: 1.9vw;
@@ -127,6 +127,11 @@ button {
 
 .mis_peliculas_link {
     margin-right: 4vw;
+}
+
+.cards_add_movies {
+    display: grid;
+    justify-content: center;
 }
 
 .dot_add_movie, .dot_my_movies {

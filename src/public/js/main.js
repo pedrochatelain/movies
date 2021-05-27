@@ -24,10 +24,13 @@ function init() {
     const no_movies_msg = document.querySelector('.js-no-movies')
     const dot_my_movies = document.querySelector('.js-dot-my-movies')
     const dot_add_movies = document.querySelector('.js-dot-add-movie')
-
-    function searchMovie(event) {
-        const movieName = event.target.value
-        fetch(`api/movies/${movieName}`)
+    const lupa = document.querySelector('.js-lupa')
+    
+    function reloadScript() {
+        document.querySelector('script').remove()
+        const myScript = document.createElement("script");
+        myScript.setAttribute("src", "js/main.js");
+        document.body.appendChild(myScript);        
     }
 
     if (window.location.pathname === '/my_movies') {
@@ -52,7 +55,22 @@ function init() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
         })
 
-        input_search_movie.addEventListener('keyup', searchMovie)
+        // lupa.addEventListener('click', async () => {
+        //     await getMovies(input_search_movie)
+        //     reloadScript()    
+        // })
+
+        // input_search_movie.addEventListener('keyup', async() => {
+        //     await getMovies(input_search_movie)
+        //     reloadScript()
+        // })
+
+        input_search_movie.addEventListener('keypress', async function (e) {
+            if (e.key === 'Enter') {
+                await getMovies(input_search_movie)
+                reloadScript()
+            }
+        });
 
         stars_container_calificar.forEach( (star, index) => { 
             star.addEventListener('click', (event) => cambiarPuntaje(event, index)
@@ -83,7 +101,7 @@ function init() {
         button_calificar[index].classList.add('js-opacity-0', 'js-opacity-transition')
     }
 
-    function show_calificacion(event, index) { // creo que hay que pasar como argumento la card
+    function show_calificacion(event, index) {
         const puntaje = event.target.parentNode.previousElementSibling.querySelector("span").innerHTML
         const stars = event.target.parentNode.parentNode.parentNode.querySelectorAll('.js-star-my-rating')
         mi_calificacion[index].classList.remove('js-display-none')
