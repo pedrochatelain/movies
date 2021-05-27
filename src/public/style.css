@@ -231,17 +231,6 @@ button {
     width: 100%;
 }
 
-.js-width-75 {
-    animation-name: width_75;
-    animation-duration: .4s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes width_75 {
-    from { width: 100% ; }
-    to { width: 75% ; }
-}
-
 ::placeholder, .search_input, .helper p {
     font-family: Ubuntu;
     font-style: normal;
@@ -359,6 +348,10 @@ input:focus::placeholder {
 
 .js-display-none {
     display: none !important;
+}
+
+.card:nth-child(1) {
+    margin-top: 7vw;
 }
 
 .card {
@@ -706,4 +699,49 @@ input:focus::placeholder {
 
 .action_buttons {
     justify-self: center;
+}
+
+/* loader circle */
+.lds-dual-ring {
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    align-self: center;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    margin-left: 2vw;
+    margin-top: .2vw;
+    border-radius: 50%;
+    border: .4vw solid #246877;
+    border-color: #246877 transparent #246877 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+/* end of loader circle*/
+
+.loader {
+    display: flex;
+    justify-self: center;
+}
+
+.loader p {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 3vw;
+    line-height: 55px;
+    color: #246877;
+    margin: 0%;
 }

@@ -26,6 +26,7 @@ function init() {
     const dot_add_movies = document.querySelector('.js-dot-add-movie')
     const lupa = document.querySelector('.js-lupa')
     const button_search = document.querySelector('.js-button-search')
+    const loader = document.querySelector('.js-loader')
 
     if (window.location.pathname === '/my_movies') {
         dot_my_movies.classList.remove('js-display-none')
@@ -49,25 +50,23 @@ function init() {
             helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
             button_search.classList.remove('js-display-none')
             lupa.classList.add('js-opacity-transition', 'js-opacity-0')
-            setTimeout(() => button_search.classList.remove('js-opacity-0'), 400);
-            // input_search_movie.classList.add('js-width-75')
+            setTimeout(() => button_search.classList.remove('js-opacity-0'), 400)
+            setTimeout(() => helper_search_movie.classList.add('js-display-none'), 500)
         })
 
-        button_search.addEventListener('click', () => getMovies(input_search_movie))
+        button_search.addEventListener('click', async function() {
+            loader.classList.remove('js-display-none')    
+            await getMovies(input_search_movie)
+            reloadScript()
+            loader.classList.add('js-display-none')
+        })
 
-        // lupa.addEventListener('click', async () => {
-        //     await getMovies(input_search_movie)
-        //     reloadScript()    
-        // })
-
-        // input_search_movie.addEventListener('keyup', async() => {
-        //     await getMovies(input_search_movie)
-        //     reloadScript()
-        // })
-
-        input_search_movie.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                getMovies(input_search_movie)
+        input_search_movie.addEventListener('keypress', async function (event) {
+            if (event.key === 'Enter') {
+                loader.classList.remove('js-display-none')
+                await getMovies(input_search_movie)
+                reloadScript()
+                loader.classList.add('js-display-none')
             }
         });
 
@@ -90,6 +89,13 @@ function init() {
                 }, 500)
             })
         });
+    }
+
+    function reloadScript() {
+        document.querySelector('script').remove()
+        const myScript = document.createElement("script");
+        myScript.setAttribute("src", "js/main.js");
+        document.body.appendChild(myScript);            
     }
 
     function show_container(container, index) {

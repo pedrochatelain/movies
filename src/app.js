@@ -13,4 +13,4 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(require('./routes.js'))
 
-app.use('/api', require('./api/routes'))
+// app.use('/api', require('./api/routes'))

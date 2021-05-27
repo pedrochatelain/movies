@@ -6,12 +6,15 @@ async function getDirectors(movies) {
         const id_movie = movie.id
         const response_cast = await fetch(`https://api.themoviedb.org/3/movie/${id_movie}/credits?api_key=${config.api_key}&language=en-US`)
         const cast = await response_cast.json()
-        cast.crew.forEach(member => {
-            if (member.job === 'Director' && ! directorAdded) {
+        let j = 0
+        while ( ! directorAdded && j < cast.crew.length ) {
+            let member = cast.crew[j]
+            if (member.job === 'Director') {
                 directors.push(member.name)
                 directorAdded = true
             }
-        })
+            j++
+        }
         if ( ! directorAdded ) {
             directors.push('UNKNOWN')
         }
@@ -40,9 +43,4 @@ async function getMovies(input_search_movie) {
         directors : directors
     })
     document.querySelector('.js-cards-add-movies').innerHTML = cards
-    document.querySelector('script').remove()
-    const myScript = document.createElement("script");
-    myScript.setAttribute("src", "js/main.js");
-    document.body.appendChild(myScript);        
-
 }
