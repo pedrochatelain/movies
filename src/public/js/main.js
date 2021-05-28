@@ -27,6 +27,7 @@ function init() {
     const lupa = document.querySelector('.js-lupa')
     const button_search = document.querySelector('.js-button-search')
     const loader = document.querySelector('.js-loader')
+    const no_results_msg = document.querySelector('.js-no-results-msg')
 
     if (window.location.pathname === '/my_movies') {
         dot_my_movies.classList.remove('js-display-none')
@@ -54,20 +55,14 @@ function init() {
             setTimeout(() => helper_search_movie.classList.add('js-display-none'), 500)
         })
 
-        button_search.addEventListener('click', async function() {
-            loader.classList.remove('js-display-none')    
-            await getMovies(input_search_movie)
-            reloadScript()
-            loader.classList.add('js-display-none')
+        button_search.addEventListener('click', function() {
+            if ( ! isInputEmpty() )
+                search()
         })
 
-        input_search_movie.addEventListener('keypress', async function (event) {
-            if (event.key === 'Enter') {
-                loader.classList.remove('js-display-none')
-                await getMovies(input_search_movie)
-                reloadScript()
-                loader.classList.add('js-display-none')
-            }
+        input_search_movie.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter' && ! isInputEmpty())
+                search()
         });
 
         stars_container_calificar.forEach( (star, index) => { 
@@ -89,6 +84,25 @@ function init() {
                 }, 500)
             })
         });
+    }
+
+    function isInputEmpty() {
+        return ! input_search_movie.value.trim().length;
+    }
+
+    async function search() {
+        no_results_msg.classList.add('js-display-none')
+        loader.classList.remove('js-display-none')    
+        const movies = await getMovies(input_search_movie)
+        if (movies.length == 0) {
+            no_results_msg.classList.remove('js-display-none')
+            loader.classList.add('js-display-none')    
+            document.querySelector('.js-cards-add-movies').innerHTML = '';
+        } else {
+            await showMovies(movies)
+            reloadScript()
+            loader.classList.add('js-display-none')
+        }
     }
 
     function reloadScript() {
