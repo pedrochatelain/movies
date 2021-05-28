@@ -93,11 +93,11 @@ function init() {
     async function search() {
         no_results_msg.classList.add('js-display-none')
         loader.classList.remove('js-display-none')    
-        const movies = await getMovies(input_search_movie)
+        document.querySelector('.js-cards-add-movies').innerHTML = '';
+        const movies = await getMovies(input_search_movie.value)
         if (movies.length == 0) {
             no_results_msg.classList.remove('js-display-none')
             loader.classList.add('js-display-none')    
-            document.querySelector('.js-cards-add-movies').innerHTML = '';
         } else {
             await showMovies(movies)
             reloadScript()

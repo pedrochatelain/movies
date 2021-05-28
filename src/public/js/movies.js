@@ -19,7 +19,6 @@ async function getDirectors(movies) {
             directors.push('UNKNOWN')
         }
     }
-    console.log(directors)
     return directors
 }
 
@@ -27,13 +26,15 @@ function stringToQuery(string) {
     return string.replace(/ /g, '+')
 }
 
-async function getMovies(input_search_movie) {
-    const query = stringToQuery(input_search_movie.value)
+async function getMovies(name_movie) {
+    const query = stringToQuery(name_movie)
     const api_key = config.api_key
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}&language=es`
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`
     const movies_response = await fetch(url)
-    const movies = await movies_response.json()
-    return movies.results
+    const movies_object = await movies_response.json()
+    const movies = movies_object.results
+    orderByPopularity(movies)
+    return movies
 }
 
 async function showMovies(movies) {
@@ -45,4 +46,19 @@ async function showMovies(movies) {
         directors : directors
     })
     document.querySelector('.js-cards-add-movies').innerHTML = cards
+}
+
+function orderByPopularity(movies) {
+    movies.sort(function(a, b) {
+        let popularity_a = a.popularity
+        let popularity_b = b.popularity
+        if (popularity_a < popularity_b) {
+            return 1;
+        }
+        if (popularity_a > popularity_b) {
+            return -1;
+        }
+        // popularity must be equal
+        return 0;  
+    })
 }

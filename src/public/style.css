@@ -410,8 +410,10 @@ input:focus::placeholder {
 }
 
 .info_card {
+    z-index: 1;
     display: grid;
     margin-left: 10%;
+    margin-right: 10%;
     height: fit-content;
     margin-top: 6vh;
     grid-row: 1 / -1;
