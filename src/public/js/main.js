@@ -45,6 +45,31 @@ function init() {
 
     if (window.location.pathname === '/add_movies') {
 
+        button_add_movie.forEach(button => {
+          button.addEventListener('click', function(event) {
+            // to prevent multiple clicks
+            if (event.detail == 1) {
+              // get movie data
+              const name = button.parentNode.querySelector('.js-titulo').innerHTML
+              const director = button.parentNode.querySelector('.js-director').innerHTML
+              const releaseDate = button.parentNode.querySelector('.js-fecha').innerHTML
+
+              const data = {
+                'name': name,
+                'director': director,
+                'releaseDate': releaseDate
+              }
+
+              fetch('/my_movies', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+              })
+            }
+          })
+        })
+
         dot_add_movies.classList.remove('js-display-none')
 
         input_search_movie.addEventListener('focus', function() {

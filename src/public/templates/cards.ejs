@@ -11,15 +11,15 @@
         <div class="info_card js-info-card">
             <div class="titulo_and_value">
                 <p class="titulo" >Título original</p>
-                <p class="titulo_value"> <%= movies[i].original_title %></p>
+                <p class="titulo_value js-titulo"><%= movies[i].original_title %></p>
             </div>
             <div class="director_and_value">
                 <p class="director">Director</p>
-                <p class="director_value"><%= directors[i] %></p>
+                <p class="director_value js-director"><%= directors[i] %></p>
             </div>
             <div class="fecha_and_value">
                 <p class="fecha">Fecha de lanzamiento</p>
-                <p class="fecha_value"><%= movies[i].release_date %></p>
+                <p class="fecha_value js-fecha"><%= movies[i].release_date %></p>
             </div>
         </div>
         <button type="submit" class="button_add_movie js-button-add-movie">Agregar película</button>
