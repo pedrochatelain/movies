@@ -38,8 +38,11 @@ function init() {
     button_cancelar_borrado.forEach((button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index)) })
     // button_borrar.forEach((button, index) => { button.addEventListener('click', (event) => removeCard(event, index)) })
     buttonsDelete.forEach(button => {
-      button.addEventListener('click', removeCard)
-      button.addEventListener('click', deleteMovie)
+      button.addEventListener('click', (event) => removeCard(event.path[4]))
+      button.addEventListener('click', (event) => {
+        const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML;
+        deleteMovie(id_movie);
+      })
     });
     button_enviar_calificacion.forEach((button, index) => { button.addEventListener('click', (event) => show_calificacion(event, index)) })
     icon_arrow_delete.forEach((icon, index) => { icon.addEventListener('click', () => hide_container(container_borrar[index], index)) })
@@ -165,8 +168,7 @@ function init() {
     hide_container(container_calificar[index], index)
   }
 
-  async function removeCard(event) {
-    const card = event.path[4];
+  async function removeCard(card) {
     showMessageDelete(card)
     await hideCard(card)
     card.addEventListener('animationend', () => {
@@ -206,8 +208,7 @@ function init() {
     setTimeout(() => no_movies_msg.classList.remove('js-opacity-0'), delay);
   }
 
-  function deleteMovie(event) {
-    const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML;
+  function deleteMovie(id_movie) {
     fetch('/my_movies', {
       method: 'DELETE',
       mode: 'cors',
