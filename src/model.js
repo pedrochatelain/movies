@@ -8,19 +8,24 @@ const pool = new Pool({
   port: process.env.PORT_DATABASE,
 })
 
-function addMovie(req, res) {
+function addMovie(movie) {
   try {
-    const name = req.body.name
-    const director = req.body.director
-    const date = req.body.releaseDate
     pool.query(
-      'INSERT INTO moviesv2(name, director, watched, date) VALUES($1, $2, $3, $4)',
-      [name, director, false, date]
+     `INSERT INTO moviesv2(name, director, date, rating, image)
+      VALUES($1, $2, $3, $4, $5)`,
+      [movie.name, movie.director, movie.date, movie.rating, movie.image]
     );
-    res.end()
   } catch (error) {
     console.log(error)
   }
 }
 
-module.exports = {addMovie}
+async function getMovies() {
+  const query = await pool.query(
+   `SELECT name, director, TO_CHAR(date, 'DD-MM-YYYY') AS date, rating, image
+    FROM moviesv2`
+  )
+  return query.rows
+}
+
+module.exports = {addMovie, getMovies}

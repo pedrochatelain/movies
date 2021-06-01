@@ -1,64 +1,64 @@
 async function getDirectors(movies) {
-    const directors = []
-    for (let i = 0; i < movies.length; i++) {
-        let directorAdded = false
-        const movie = movies[i]
-        const id_movie = movie.id
-        const response_cast = await fetch(`https://api.themoviedb.org/3/movie/${id_movie}/credits?api_key=${config.api_key}&language=en-US`)
-        const cast = await response_cast.json()
-        let j = 0
-        while ( ! directorAdded && j < cast.crew.length ) {
-            let member = cast.crew[j]
-            if (member.job === 'Director') {
-                directors.push(member.name)
-                directorAdded = true
-            }
-            j++
-        }
-        if ( ! directorAdded ) {
-            directors.push('UNKNOWN')
-        }
+  const directors = []
+  for (let i = 0; i < movies.length; i++) {
+    let directorAdded = false
+    const movie = movies[i]
+    const id_movie = movie.id
+    const response_cast = await fetch(`https://api.themoviedb.org/3/movie/${id_movie}/credits?api_key=${config.api_key}&language=en-US`)
+    const cast = await response_cast.json()
+    let j = 0
+    while (!directorAdded && j < cast.crew.length) {
+      let member = cast.crew[j]
+      if (member.job === 'Director') {
+        directors.push(member.name)
+        directorAdded = true
+      }
+      j++
     }
-    return directors
+    if (!directorAdded) {
+      directors.push('UNKNOWN')
+    }
+  }
+  return directors
 }
 
 function stringToQuery(string) {
-    return string.replace(/ /g, '+')
+  return string.replace(/ /g, '+')
 }
 
 async function getMovies(name_movie) {
-    const query = stringToQuery(name_movie)
-    const api_key = config.api_key
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`
-    const movies_response = await fetch(url)
-    const movies_object = await movies_response.json()
-    const movies = movies_object.results
-    orderByPopularity(movies)
-    return movies
+  const query = stringToQuery(name_movie)
+  const api_key = config.api_key
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`
+  const movies_response = await fetch(url)
+  const movies_object = await movies_response.json()
+  const movies = movies_object.results
+  orderByPopularity(movies)
+  return movies
 }
 
 async function showMovies(movies) {
-    const directors = await getDirectors(movies)
-    const response = await fetch('templates/cards.ejs') 
-    const cards_template = await response.text()
-    const cards = ejs.render(cards_template, {
-        movies : movies,
-        directors : directors
-    })
-    document.querySelector('.js-cards-add-movies').innerHTML = cards
+  const directors = await getDirectors(movies)
+  const response = await fetch('templates/cards.ejs')
+  const cards_template = await response.text()
+  const cards = ejs.render(cards_template, {
+    movies: movies,
+    directors: directors
+  })
+  document.querySelector('.js-cards-add-movies').innerHTML = cards
 }
 
 function orderByPopularity(movies) {
-    movies.sort(function(a, b) {
-        let popularity_a = a.popularity
-        let popularity_b = b.popularity
-        if (popularity_a < popularity_b) {
-            return 1;
-        }
-        if (popularity_a > popularity_b) {
-            return -1;
-        }
-        // popularity must be equal
-        return 0;  
-    })
+  movies.sort(function (a, b) {
+    let popularity_a = a.popularity
+    let popularity_b = b.popularity
+    if (popularity_a < popularity_b) {
+      return 1;
+    }
+    if (popularity_a > popularity_b) {
+      return -1;
+    }
+    // popularity must be equal
+    return 0;
+  })
 }

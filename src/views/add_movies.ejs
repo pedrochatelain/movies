@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar película</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar película</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="add_movie_container">
-        
-        <%- include('partials/nav.ejs') %>
+  <div class="add_movie_container">
 
-        <div class="buscador">
-            <input type="text" class="search_input js-search-input" placeholder="ej: Los increibles">
-            <img src="img/lupa.svg" class="lupa js-lupa" alt="lupa">
-            <button class="button_search js-button-search js-opacity-transition js-display-none js-opacity-0">
-                <p>Buscar</p>
-                <img src="img/lupa_blanca.svg" class="lupa_button_search" alt="lupa">
-            </button>
-        </div>
-        <div class="loader js-display-none js-loader">
-            <p>Buscando</p>
-            <div class="loader_icon lds-dual-ring"></div>
-        </div>
-        <div class="no_results js-no-results-msg js-display-none">
-            <img src="img/no_movie_icon.svg" class="no_movie_icon" alt="">
-            <p>Ups... no encontramos películas con ese nombre. Intenta con otro título</p>
-        </div>
-        <div class="helper js-helper-search-movie">
-            <img src="img/arrow_search.svg" class="arrow_search" alt="arrow search">
-            <p>Clickea el buscador para empezar a escribir</p>
-        </div>
-        <div class="js-cards-add-movies cards_add_movies">
-            
-        </div>
+    <%- include('partials/nav.ejs') %>
 
-    </div>
-    <script src="js/config.js"></script>
-    <script src="js/movies.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/ejs.min.js"></script>
+      <div class="buscador">
+        <input type="text" class="search_input js-search-input" placeholder="ej: Los increibles">
+        <img src="img/lupa.svg" class="lupa js-lupa" alt="lupa">
+        <button class="button_search js-button-search js-opacity-transition js-display-none js-opacity-0">
+          <p>Buscar</p>
+          <img src="img/lupa_blanca.svg" class="lupa_button_search" alt="lupa">
+        </button>
+      </div>
+      <div class="loader js-display-none js-loader">
+        <p>Buscando</p>
+        <div class="loader_icon lds-dual-ring"></div>
+      </div>
+      <div class="no_results js-no-results-msg js-display-none">
+        <img src="img/no_movie_icon.svg" class="no_movie_icon" alt="">
+        <p>Ups... no encontramos películas con ese nombre. Intenta con otro título</p>
+      </div>
+      <div class="helper js-helper-search-movie">
+        <img src="img/arrow_search.svg" class="arrow_search" alt="arrow search">
+        <p>Clickea el buscador para empezar a escribir</p>
+      </div>
+      <div class="js-cards-add-movies cards_add_movies">
+
+      </div>
+
+  </div>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/movies.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ejs.min.js"></script>
 </body>
+
 </html>
