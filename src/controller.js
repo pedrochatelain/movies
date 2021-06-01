@@ -17,4 +17,10 @@ function addMovie(req, res) {
   res.end()
 }
 
-module.exports = {showMyMovies, addMovie}
+function deleteMovie(req, res) {
+  const id_movie = req.body.id
+  model.deleteMovie(id_movie)
+  res.end()
+}
+
+module.exports = {showMyMovies, addMovie, deleteMovie}

@@ -6,10 +6,10 @@ router.get('/', (req, res) => res.render('home.ejs'))
 
 router.get('/add_movies', (req, res) => res.render('add_movies.ejs'))
 
-// router.get('/my_movies', (req, res) => res.render('my_movies.ejs'))
-
 router.get('/my_movies', controller.showMyMovies)
 
 router.post('/my_movies', controller.addMovie)
+
+router.delete('/my_movies', controller.deleteMovie)
 
 module.exports = router

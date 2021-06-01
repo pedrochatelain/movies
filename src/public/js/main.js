@@ -202,13 +202,18 @@ function init() {
   }
 
   function showNoMoviesMessage(delay) {
-    no_movies_msg.classList.remove('js-display-none')
+    no_movies_msg.classList.remove('js-display-none');
     setTimeout(() => no_movies_msg.classList.remove('js-opacity-0'), delay);
   }
 
   function deleteMovie(event) {
-    const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML
-    fetch('/')
+    const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML;
+    fetch('/my_movies', {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({id: id_movie})
+    });
   }
 
   function hide_container(container, index) {

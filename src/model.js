@@ -28,4 +28,12 @@ async function getMovies() {
   return query.rows
 }
 
-module.exports = {addMovie, getMovies}
+function deleteMovie(id) {
+  try {
+    pool.query('DELETE FROM moviesv2 WHERE id = $1', [id])
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+module.exports = {addMovie, getMovies, deleteMovie}
