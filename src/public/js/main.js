@@ -12,7 +12,7 @@ function init() {
   const icon_arrow_calificar = document.querySelectorAll('.js-arrow-calificar')
   const button_cancelar_calificar = document.querySelectorAll('.js-button-cancelar')
   const container_borrar = document.querySelectorAll('.js-container-borrar')
-  const button_borrar = document.querySelectorAll('.js-button-borrar')
+  const buttonsDelete = document.querySelectorAll('.js-button-borrar')
   const info_borrar = document.querySelectorAll('.js-info-borrar')
   const message_deleted = document.querySelectorAll('.js-msg-deleted')
   const button_cancelar_borrado = document.querySelectorAll('.js-button-cancel-delete')
@@ -36,7 +36,11 @@ function init() {
     dot_my_movies.classList.remove('js-display-none')
     button_cancelar_calificar.forEach((button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index)) })
     button_cancelar_borrado.forEach((button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index)) })
-    button_borrar.forEach((button, index) => { button.addEventListener('click', (event) => removeCard(event, index)) })
+    // button_borrar.forEach((button, index) => { button.addEventListener('click', (event) => removeCard(event, index)) })
+    buttonsDelete.forEach(button => {
+      button.addEventListener('click', removeCard)
+      button.addEventListener('click', deleteMovie)
+    });
     button_enviar_calificacion.forEach((button, index) => { button.addEventListener('click', (event) => show_calificacion(event, index)) })
     icon_arrow_delete.forEach((icon, index) => { icon.addEventListener('click', () => hide_container(container_borrar[index], index)) })
     icon_delete_card.forEach((icon, index) => { icon.addEventListener('click', () => show_container(container_borrar[index], index)) })
@@ -161,31 +165,50 @@ function init() {
     hide_container(container_calificar[index], index)
   }
 
-  function removeCard(event, index) {
-    const card = event.path[4]
-    container_borrar[index].classList.remove('js-show-container')
-    info_borrar[index].classList.add('js-opacity-0', 'js-opacity-transition')
-    container_borrar[index].classList.add('js-background-red')
-    message_deleted[index].classList.add('js-opacity-transition')
-    setTimeout(() => message_deleted[index].classList.remove('js-opacity-0'), 500)
-    setTimeout(function () {
-      card.classList.add('js-opacity-0', 'js-opacity-transition')
-      card.classList.add('js-thin-container')
-    }, 1300)
-    setTimeout(() => {
+  async function removeCard(event) {
+    const card = event.path[4];
+    showMessageDelete(card)
+    await hideCard(card)
+    card.addEventListener('animationend', () => {
       card.remove()
-      // if there are no cards left...
-      if (document.querySelectorAll('.js-card').length == 0) {
-        showNoMoviesMessage(1000)
-      }
-    }, 1900);
+      checkCards()
+    })
+  }
+
+  function checkCards() {
+    if (document.querySelectorAll('.js-card').length == 0) {
+      showNoMoviesMessage(500)
+    }
+  }
+
+  function showMessageDelete(card) {
+    const containerBorrar = card.querySelector('.js-container-borrar');
+    const infoBorrar = card.querySelector('.js-info-borrar');
+    const messageDelete = card.querySelector('.js-msg-deleted');
+
+    containerBorrar.classList.remove('js-show-container')
+    infoBorrar.classList.add('js-opacity-0', 'js-opacity-transition')
+    containerBorrar.classList.add('js-background-red')
+    messageDelete.classList.add('js-opacity-transition')
+    setTimeout(() => messageDelete.classList.remove('js-opacity-0'), 500)
+  }
+
+  function hideCard(card) {
+    return new Promise(res => setTimeout(() => {
+      card.classList.add('js-opacity-0', 'js-opacity-transition'),
+      card.classList.add('js-thin-container')
+      res('animation set')
+    }, 1300));
   }
 
   function showNoMoviesMessage(delay) {
     no_movies_msg.classList.remove('js-display-none')
-    setTimeout(() => {
-      no_movies_msg.classList.remove('js-opacity-0')
-    }, delay);
+    setTimeout(() => no_movies_msg.classList.remove('js-opacity-0'), delay);
+  }
+
+  function deleteMovie(event) {
+    const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML
+    fetch('/')
   }
 
   function hide_container(container, index) {

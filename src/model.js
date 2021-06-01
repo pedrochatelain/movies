@@ -22,7 +22,7 @@ function addMovie(movie) {
 
 async function getMovies() {
   const query = await pool.query(
-   `SELECT name, director, TO_CHAR(date, 'DD-MM-YYYY') AS date, rating, image
+   `SELECT id, name, director, TO_CHAR(date, 'DD-MM-YYYY') AS date, rating, image
     FROM moviesv2`
   )
   return query.rows

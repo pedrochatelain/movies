@@ -2,7 +2,6 @@ const model = require('./model.js')
 
 async function showMyMovies(req, res) {
   const movies = await model.getMovies()
-  console.log(movies)
   res.render('my_movies.ejs', {movies: movies})
 }
 

@@ -305,6 +305,10 @@ input:focus::placeholder {
     margin: 0;
 }
 
+.msg_deleted {
+  z-index: -1;
+}
+
 .movie_success_message, .msg_deleted {
     display: grid;
     grid-column: 1 / -1;
@@ -410,7 +414,6 @@ input:focus::placeholder {
 }
 
 .info_card {
-    z-index: 1;
     display: grid;
     margin-left: 10%;
     margin-right: 10%;
