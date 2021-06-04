@@ -20,10 +20,26 @@ function addMovie(movie) {
   }
 }
 
+function setRating(rating, id) {
+  try {
+    pool.query('UPDATE moviesv2 SET rating = $1 WHERE id = $2', [rating, id]);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// async function q() {
+//   const q = await pool.query('SELECT * FROM moviesv2')
+//   console.log(q.rows)
+// }
+
+// q()
+
 async function getMovies() {
   const query = await pool.query(
    `SELECT id, name, director, TO_CHAR(date, 'DD-MM-YYYY') AS date, rating, image
-    FROM moviesv2`
+    FROM moviesv2
+    ORDER BY id ASC`
   )
   return query.rows
 }
@@ -36,4 +52,4 @@ function deleteMovie(id) {
   }
 }
 
-module.exports = {addMovie, getMovies, deleteMovie}
+module.exports = {addMovie, getMovies, deleteMovie, setRating}

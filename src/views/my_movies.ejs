@@ -23,10 +23,9 @@
       </div>
       <div class="mis_peliculas_cards">
         <% for (let i=0; i < movies.length; i++) { %>
-
           <div class="card js-card">
             <img src="<%= movies[i].image %>" class="card_image" alt="los increibles">
-            <div class="container_info_card js-info-card-container">
+            <div class="container_info_card js-info-container">
               <div class="info_card js-info-card">
                 <div class="js-movie-id js-display-none"><%= movies[i].id %></div>
                 <div class="titulo_and_value">
@@ -47,40 +46,63 @@
                     <%= movies[i].date %>
                   </p>
                 </div>
-                <div class="calificacion_and_value js-mi-calificacion js-display-none">
-                  <p class="fecha">Mi calificación</p>
-                  <div class="my_stars">
-                    <img class="js-star-my-rating" alt="star">
-                    <img class="js-star-my-rating" alt="star">
-                    <img class="js-star-my-rating" alt="star">
-                    <img class="js-star-my-rating" alt="star">
-                    <img class="js-star-my-rating" alt="star">
+                <% if (movies[i].rating) { %>
+                  <% const rating =  movies[i].rating  %>
+                  <div class="calificacion_and_value js-rating-div">
+                    <p class="fecha">Mi calificación</p>
+                    <div class="my_stars">
+                      <% for (let i=0; i < rating; i++) { %>
+                        <img class="js-star-my-rating" alt="star" src="img/star_yellow.svg">
+                      <% } %>
+                      <% for (let i=rating; i < 5; i++) { %>
+                        <img class="js-star-my-rating" alt="star" src="img/star_empty.svg">
+                      <% } %>
+                    </div>
                   </div>
-                </div>
+                <% } else { %>
+                  <div class="calificacion_and_value js-rating-div js-display-none">
+                    <p class="fecha">Mi calificación</p>
+                    <div class="my_stars">
+                      <img class="js-star-my-rating" alt="star">
+                      <img class="js-star-my-rating" alt="star">
+                      <img class="js-star-my-rating" alt="star">
+                      <img class="js-star-my-rating" alt="star">
+                      <img class="js-star-my-rating" alt="star">
+                    </div>
+                  </div>
+                <% } %>
               </div>
               <div class="action_icons">
-                <img src="img/edit_icon.svg" class="js-display-none icon_edit js-icon-edit-card" alt="edit_icon">
-                <img src="img/trash_can.svg" class="icon_delete_card js-icon-delete-card" alt="delete icon">
+                <% if (movies[i].rating) { %>
+                  <img src="img/edit_icon.svg" class="icon_edit js-icon-edit-rating" alt="edit_icon">
+                <% } else { %>
+                  <img src="img/edit_icon.svg" class="js-display-none icon_edit js-icon-edit-rating" alt="edit_icon">
+                <% } %>
+                <img src="img/trash_can.svg" class="icon_delete_card js-icon-delete" alt="delete icon">
               </div>
-              <button type="button" class="js-button-calificar button_calificar">Calificar</button>
+              <% if (movies[i].rating) { %>
+                <button type="button" class="js-button-rate button_calificar js-display-none">Calificar</button>
+              <% } else { %>
+                <button type="button" class="js-button-rate button_calificar">Calificar</button>
+              <% } %>
             </div>
-            <div class="container_puntuar js-container-calificar">
+            <div class="container_puntuar js-rating-container">
               <img src="img/arrow_left.svg" class="arrow_left js-arrow-calificar" alt="arrow left">
               <h1>¿Qué te pareció la película?</h1>
               <div class="stars">
-                <img src="img/star_yellow.svg" class="js-star-calificar" alt="star">
-                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
-                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
-                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
-                <img src="img/star_empty.svg" class="js-star-calificar" alt="star">
+                <img src="img/star_yellow.svg" class="js-star" alt="star">
+                <img src="img/star_empty.svg" class="js-star" alt="star">
+                <img src="img/star_empty.svg" class="js-star" alt="star">
+                <img src="img/star_empty.svg" class="js-star" alt="star">
+                <img src="img/star_empty.svg" class="js-star" alt="star">
               </div>
-              <p class="rating"><span class="js-cant-yellow-stars">1</span> / 5</p>
+              <p class="rating"><span class="js-rating">1</span> / 5</p>
               <div class="action_buttons">
                 <button type="button" class="button_cancelar js-button-cancelar">Cancelar</button>
                 <button type="submit" class="button_enviar js-enviar-calificacion">Enviar</button>
               </div>
             </div>
-            <div class="container_borrar js-container-borrar">
+            <div class="container_borrar js-container-delete">
               <div class="info_borrar js-info-borrar">
                 <img src="img/arrow_left.svg" class="arrow_left js-arrow-delete" alt="arrow left">
                 <h1>¿Deseas borrar la película de tu lista?</h1>
@@ -94,9 +116,7 @@
               </div>
             </div>
           </div>
-
-          <% } %>
-
+        <% } %>
       </div>
       <script src="js/main.js"></script>
     </div>

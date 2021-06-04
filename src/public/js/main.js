@@ -1,141 +1,223 @@
 function init() {
 
-  const input_search_movie = document.querySelector('.js-search-input')
-  const helper_search_movie = document.querySelector('.js-helper-search-movie')
-  const button_add_movie = document.querySelectorAll('.js-button-add-movie')
-  const info_card = document.querySelectorAll('.js-info-card')
-  const container_info_card = document.querySelectorAll('.js-info-card-container')
-  const message_success_card = document.querySelectorAll('.js-movie-success-message')
-  const container_calificar = document.querySelectorAll('.js-container-calificar')
-  const button_calificar = document.querySelectorAll('.js-button-calificar')
-  const icon_delete_card = document.querySelectorAll('.js-icon-delete-card')
-  const icon_arrow_calificar = document.querySelectorAll('.js-arrow-calificar')
-  const button_cancelar_calificar = document.querySelectorAll('.js-button-cancelar')
-  const container_borrar = document.querySelectorAll('.js-container-borrar')
+  const inputSearch = document.querySelector('.js-search-input')
+  const helperSearchMovie = document.querySelector('.js-helper-search-movie')
+  const buttonsAddMovie = document.querySelectorAll('.js-button-add-movie')
+  const iconsDelete = document.querySelectorAll('.js-icon-delete')
+  const iconsArrowsRate = document.querySelectorAll('.js-arrow-calificar')
+  const buttonsCancelRate = document.querySelectorAll('.js-button-cancelar')
   const buttonsDelete = document.querySelectorAll('.js-button-borrar')
-  const info_borrar = document.querySelectorAll('.js-info-borrar')
-  const message_deleted = document.querySelectorAll('.js-msg-deleted')
-  const button_cancelar_borrado = document.querySelectorAll('.js-button-cancel-delete')
-  const icon_arrow_delete = document.querySelectorAll('.js-arrow-delete')
-  const button_enviar_calificacion = document.querySelectorAll('.js-enviar-calificacion')
-  const mi_calificacion = document.querySelectorAll('.js-mi-calificacion')
-  const icon_edit_card = document.querySelectorAll('.js-icon-edit-card')
-  const stars_container_calificar = document.querySelectorAll('.js-star-calificar')
+  const buttonsCancelDelete = document.querySelectorAll('.js-button-cancel-delete')
+  const iconsArrowDelete = document.querySelectorAll('.js-arrow-delete')
+  const buttonsSendRating = document.querySelectorAll('.js-enviar-calificacion');
+  const iconsEditRating = document.querySelectorAll('.js-icon-edit-rating')
   const no_movies_msg = document.querySelector('.js-no-movies')
-  const dot_my_movies = document.querySelector('.js-dot-my-movies')
+  const dotMyMovies = document.querySelector('.js-dot-my-movies')
   const dot_add_movies = document.querySelector('.js-dot-add-movie')
   const lupa = document.querySelector('.js-lupa')
-  const button_search = document.querySelector('.js-button-search')
+  const buttonSearch = document.querySelector('.js-button-search')
   const loader = document.querySelector('.js-loader')
   const no_results_msg = document.querySelector('.js-no-results-msg')
+  const buttonsRate = document.querySelectorAll('.js-button-rate')
 
   if (window.location.pathname === '/my_movies') {
-    if (document.querySelectorAll('.js-card').length == 0) {
-      showNoMoviesMessage(0)
-    }
-    dot_my_movies.classList.remove('js-display-none')
-    button_cancelar_calificar.forEach((button, index) => { button.addEventListener('click', () => hide_container(container_calificar[index], index)) })
-    button_cancelar_borrado.forEach((button, index) => { button.addEventListener('click', () => hide_container(container_borrar[index], index)) })
-    // button_borrar.forEach((button, index) => { button.addEventListener('click', (event) => removeCard(event, index)) })
-    buttonsDelete.forEach(button => {
-      button.addEventListener('click', (event) => removeCard(event.path[4]))
-      button.addEventListener('click', (event) => {
-        const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML;
-        deleteMovie(id_movie);
-      })
+   
+    checkCards();
+
+    dotMyMovies.classList.remove('js-display-none');
+    
+    buttonsCancelDelete.forEach(button => button.addEventListener('click', event => {
+      const containerDelete = event.path[4].querySelector('.js-container-delete');
+      hideContainer(containerDelete);
+    }));
+    
+    iconsArrowDelete.forEach(icon => icon.addEventListener('click', event => {
+      const containerDelete = event.path[3].querySelector('.js-container-delete');
+      hideContainer(containerDelete);
+    }));
+    
+    buttonsDelete.forEach(button => button.addEventListener('click', event => {
+      const id_movie = event.path[4].querySelector('.js-movie-id').innerHTML;
+      removeCard(event.path[4]);
+      deleteMovie(id_movie);
+    }));
+
+    buttonsSendRating.forEach(button => button.addEventListener('click', event => {
+      const card = event.path[3];
+      const id_movie = card.querySelector('.js-movie-id').innerHTML;
+      const rating = card.querySelector('.js-rating').innerHTML;
+      showRating(card, rating);
+      sendRating(rating, id_movie);
+    }));
+
+    iconsDelete.forEach(icon => icon.addEventListener('click', event => {
+      const containerDelete = event.path[3].querySelector('.js-container-delete');
+      showContainer(containerDelete);
+    }));
+    
+    buttonsCancelRate.forEach(button => button.addEventListener('click', event => {
+      const containerCalificar = event.path[2];
+      hideContainer(containerCalificar);
+    }));
+
+    iconsArrowsRate.forEach(icon => icon.addEventListener('click', event => {
+      const containerCalificar = event.path[2].querySelector('.js-rating-container');
+      hideContainer(containerCalificar);
+    }));
+    
+    iconsEditRating.forEach(icon => icon.addEventListener('click', event => {
+      const containerCalificar = event.path[3].querySelector('.js-rating-container');
+      const stars = document.querySelectorAll('.js-star');
+      showContainer(containerCalificar);
+      stars.forEach(star => star.addEventListener('click', changeRating))
+    }));
+    
+    buttonsRate.forEach(button => button.addEventListener('click', event => {
+      const ratingContainer = event.path[2].querySelector('.js-rating-container');
+      const stars = document.querySelectorAll('.js-star');
+      showContainer(ratingContainer);
+      stars.forEach(star => star.addEventListener('click', changeRating))
+    }));
+  
+  }
+
+  function sendRating(rating, id_movie) {
+    fetch('/my_movies', {
+      method: 'PATCH',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({'id': id_movie, 'rating': rating})
     });
-    button_enviar_calificacion.forEach((button, index) => { button.addEventListener('click', (event) => show_calificacion(event, index)) })
-    icon_arrow_delete.forEach((icon, index) => { icon.addEventListener('click', () => hide_container(container_borrar[index], index)) })
-    icon_delete_card.forEach((icon, index) => { icon.addEventListener('click', () => show_container(container_borrar[index], index)) })
-    icon_arrow_calificar.forEach((icon, index) => { icon.addEventListener('click', () => hide_container(container_calificar[index], index)) })
-    icon_edit_card.forEach((icon, index) => { icon.addEventListener('click', () => show_container(container_calificar[index], index)) })
-    button_calificar.forEach((button, index) => { button.addEventListener('click', () => show_container(container_calificar[index], index)) })
-    stars_container_calificar.forEach((star, index) => { star.addEventListener('click', (event) => cambiarPuntaje(event, index)) })
+  }
+
+  function showRating(card, rating) {
+    const myRating = card.querySelector('.js-rating-div');
+    const ratingContainer = card.querySelector('.js-rating-container');
+    myRating.classList.remove('js-display-none');
+    setStars(card, rating);
+    hideContainer(ratingContainer);
+  }
+
+  function setStars(card, rating) {
+    const stars = card.querySelectorAll('.js-star-my-rating');
+    for (let i = 0; i < rating; i++) {
+      stars[i].src = 'img/star_yellow.svg'
+    }
+    for (let j = rating; j < stars.length; j++) {
+      stars[j].src = 'img/star_empty.svg'
+    }
+  }
+
+  function hideContainer(container) {
+    const infoContainer = container.parentNode.querySelector('.js-info-container');
+    const iconDelete = container.parentNode.querySelector('.js-icon-delete');
+    const iconEdit = 
+    container.parentNode.querySelector('.js-icon-edit-rating');
+    const buttonRate =
+    container.parentNode.querySelector('.js-button-rate');
+    const myRating = container.parentNode.querySelector('.js-rating-div');
+
+    container.classList.add('js-translate-left')
+    container.classList.remove('js-show-container')
+    infoContainer.classList.remove('js-display-none')
+    infoContainer.classList.remove('js-opacity-0')
+    iconDelete.classList.remove('js-opacity-0')
+    if (! myRating.classList.contains('js-display-none') ) {
+      iconEdit.classList.remove('js-display-none')
+      iconEdit.classList.remove('js-opacity-0')
+      buttonRate.classList.add('js-display-none')
+    } else {
+      buttonRate.classList.remove('js-display-none')
+      buttonRate.classList.remove('js-opacity-0')
+    }
   }
 
   if (window.location.pathname === '/add_movies') {
 
-    button_add_movie.forEach(button => {
-      button.addEventListener('click', function (event) {
-        // to prevent multiple clicks
-        if (event.detail == 1) {
-          // movie data
-          const data = {
-            'name': button.parentNode.querySelector('.js-titulo').innerHTML,
-            'director': button.parentNode.querySelector('.js-director').innerHTML,
-            'date': button.parentNode.querySelector('.js-fecha').innerHTML,
-            'rating': null,
-            'image': button.parentNode.parentNode.querySelector('.js-card-image').src
-          }
-
-          fetch('/my_movies', {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          })
-        }
-      })
-    })
-
     dot_add_movies.classList.remove('js-display-none')
 
-    input_search_movie.addEventListener('focus', function () {
-      helper_search_movie.classList.add('js-opacity-transition', 'js-opacity-0')
-      button_search.classList.remove('js-display-none')
-      lupa.classList.add('js-opacity-transition', 'js-opacity-0')
-      setTimeout(() => button_search.classList.remove('js-opacity-0'), 400)
-      setTimeout(() => helper_search_movie.classList.add('js-display-none'), 500)
+    inputSearch.addEventListener('focus', () => {
+      lupa.classList.add('js-display-none');
+      helperSearchMovie.classList.add('js-opacity-transition', 'js-opacity-0');
+      buttonSearch.classList.remove('js-display-none');
+      helperSearchMovie.addEventListener('transitionstart', () => {
+        buttonSearch.classList.remove('js-opacity-0');
+      })
+      helperSearchMovie.addEventListener('transitionend', () => {
+        helperSearchMovie.classList.add('js-display-none');
+      })
     })
 
-    button_search.addEventListener('click', function () {
-      if (!isInputEmpty())
-        search()
-    })
+    buttonSearch.addEventListener('click', search)
 
-    input_search_movie.addEventListener('keypress', function (event) {
-      if (event.key === 'Enter' && !isInputEmpty())
-        search()
+    inputSearch.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') search();
     });
 
-    stars_container_calificar.forEach((star, index) => {
-      star.addEventListener('click', (event) => cambiarPuntaje(event, index)
-      )
-    })
+    buttonsAddMovie.forEach(button => button.addEventListener('click', event => {
+      if (event.detail == 1) { // to prevent multiple clicks
+        const movie = getMovie(event);
+        sendMovie(movie);
+        showMessageMovieAdded(event);
+      }
+    }));
 
-    button_add_movie.forEach((button, index) => {
-      button.addEventListener('click', function () {
-        info_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
-        button.classList.add('js-opacity-0', 'js-opacity-transition')
-        container_info_card[index].classList.add('change_background_color')
-        setTimeout(function () {
-          info_card[index].classList.add('js-display-none')
-          button.classList.add('js-display-none')
-        }, 400)
-        message_success_card[index].classList.add('js-opacity-transition')
-        setTimeout(function () {
-          message_success_card[index].classList.remove('js-opacity-0')
-        }, 500)
-      })
+  }
+
+  function sendMovie(movie) {
+    fetch('/my_movies', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(movie)
+    });
+  }
+
+  function getMovie(event) {
+    return {
+      'name': event.path[1].querySelector('.js-titulo').innerHTML.trim(),
+      'director': event.path[1].querySelector('.js-director').innerHTML.trim(),
+      'date': event.path[1].querySelector('.js-fecha').innerHTML.trim(),
+      'rating': null,
+      'image': event.path[1].parentNode.querySelector('.js-card-image').src
+    };
+  }
+
+  function showMessageMovieAdded(event) {
+    const info = event.path[1].querySelector('.js-info-card');
+    const button = event.target;
+    const containerInfo = event.path[2].querySelector('.js-info-card-container');
+    const msgMovieAdded = event.path[2].querySelector('.js-msg-movie-added');
+
+    info.classList.add('js-opacity-0', 'js-opacity-transition');
+    button.classList.add('js-opacity-0', 'js-opacity-transition');
+    containerInfo.classList.add('change_background_color');
+    containerInfo.addEventListener('animationend', () => {
+      button.classList.add('js-display-none');
+      info.classList.add('js-display-none');
+      msgMovieAdded.classList.add('js-opacity-transition');
+      msgMovieAdded.classList.remove('js-opacity-0');
     });
   }
 
   function isInputEmpty() {
-    return !input_search_movie.value.trim().length;
+    return ! inputSearch.value.trim().length;
   }
 
   async function search() {
-    no_results_msg.classList.add('js-display-none')
-    loader.classList.remove('js-display-none')
-    document.querySelector('.js-cards-add-movies').innerHTML = '';
-    const movies = await getMovies(input_search_movie.value)
-    if (movies.length == 0) {
-      no_results_msg.classList.remove('js-display-none')
-      loader.classList.add('js-display-none')
-    } else {
-      await showMovies(movies)
-      reloadScript()
-      loader.classList.add('js-display-none')
+    if (!isInputEmpty()) {
+      no_results_msg.classList.add('js-display-none')
+      loader.classList.remove('js-display-none')
+      document.querySelector('.js-cards-add-movies').innerHTML = '';
+      const movies = await getMovies(inputSearch.value)
+      if (movies.length == 0) {
+        no_results_msg.classList.remove('js-display-none')
+        loader.classList.add('js-display-none')
+      } else {
+        await showMovies(movies)
+        reloadScript()
+        loader.classList.add('js-display-none')
+      }
     }
   }
 
@@ -146,45 +228,36 @@ function init() {
     document.body.appendChild(myScript);
   }
 
-  function show_container(container, index) {
-    icon_delete_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
-    icon_edit_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
-    container.classList.add('js-show-container')
-    info_card[index].classList.add('js-opacity-0', 'js-opacity-transition')
-    button_calificar[index].classList.add('js-opacity-0', 'js-opacity-transition')
-  }
+  function showContainer(container) {
+    const iconDeleteCard = container.parentNode.querySelector('.js-icon-delete');
+    const iconEditRating = container.parentNode.querySelector('.js-icon-edit-rating');
+    const info = container.parentNode.querySelector('.js-info-container');
+    const buttonRate = container.parentNode.querySelector('.js-button-rate');
 
-  function show_calificacion(event, index) {
-    const puntaje = event.target.parentNode.previousElementSibling.querySelector("span").innerHTML
-    const stars = event.target.parentNode.parentNode.parentNode.querySelectorAll('.js-star-my-rating')
-    mi_calificacion[index].classList.remove('js-display-none')
-    button_calificar[index].classList.add('js-display-none')
-    for (let i = 0; i < puntaje; i++) {
-      stars[i].src = 'img/star_yellow.svg'
-    }
-    for (let j = puntaje; j < stars.length; j++) {
-      stars[j].src = 'img/star_empty.svg'
-    }
-    hide_container(container_calificar[index], index)
+    iconDeleteCard.classList.add('js-opacity-0', 'js-opacity-transition')
+    iconEditRating.classList.add('js-opacity-0', 'js-opacity-transition')
+    container.classList.add('js-show-container')
+    info.classList.add('js-opacity-0', 'js-opacity-transition')
+    buttonRate.classList.add('js-opacity-0', 'js-opacity-transition')
   }
 
   async function removeCard(card) {
-    showMessageDelete(card)
-    await hideCard(card)
+    showMessageDelete(card);
+    await hideCard(card);
     card.addEventListener('animationend', () => {
-      card.remove()
-      checkCards()
-    })
+      card.remove();
+      checkCards();
+    });
   }
 
   function checkCards() {
     if (document.querySelectorAll('.js-card').length == 0) {
-      showNoMoviesMessage(500)
+      showNoMoviesMessage(300)
     }
   }
 
   function showMessageDelete(card) {
-    const containerBorrar = card.querySelector('.js-container-borrar');
+    const containerBorrar = card.querySelector('.js-container-delete');
     const infoBorrar = card.querySelector('.js-info-borrar');
     const messageDelete = card.querySelector('.js-msg-deleted');
 
@@ -212,50 +285,32 @@ function init() {
     fetch('/my_movies', {
       method: 'DELETE',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {'Content-Type': 'application/json' },
       body: JSON.stringify({id: id_movie})
     });
   }
 
-  function hide_container(container, index) {
-    container.classList.add('js-translate-left')
-    container.classList.remove('js-show-container')
-    info_card[index].classList.remove('js-display-none')
-    info_card[index].classList.remove('js-opacity-0')
-    icon_delete_card[index].classList.remove('js-opacity-0')
-    if (!mi_calificacion[index].classList.contains('js-display-none')) {
-      icon_edit_card[index].classList.remove('js-display-none')
-      icon_edit_card[index].classList.remove('js-opacity-0')
-      button_calificar[index].classList.add('js-display-none')
-    } else {
-      button_calificar[index].classList.remove('js-display-none')
-      button_calificar[index].classList.remove('js-opacity-0')
+  function changeRating(event) {
+    const stars = event.path[3].querySelectorAll('.js-star');
+    const rating = getRating(event.target);
+    const maxScore = 5;
+    for(let i = 0; i < rating; i++) {
+      stars[i].src = 'img/star_yellow.svg'
     }
-  }
-
-  function countPreviousSiblings(element) {
-    let count = 0
-    while (element.previousElementSibling) {
-      count++
-      element = element.previousElementSibling
-    }
-    return count
-  }
-
-  function cambiarPuntaje(event, index) {
-    const cant_previous_siblings = countPreviousSiblings(event.target)
-    // Change image of previous stars
-    for (let i = index; i > index - cant_previous_siblings; i--) {
-      stars_container_calificar[i].src = 'img/star_yellow.svg'
-    }
-    const firstEmptyStar = index + 1;
-    const lastStar = index - cant_previous_siblings + 4;
-    // Change image of following stars
-    for (let i = firstEmptyStar; i <= lastStar; i++) {
-      stars_container_calificar[i].src = 'img/star_empty.svg'
+    for (let i = rating; i < maxScore; i++) {
+      stars[i].src = 'img/star_empty.svg'
     }
     // Change the number that indicates current rating
-    event.path[2].querySelector('.js-cant-yellow-stars').innerHTML = cant_previous_siblings + 1
+    event.path[2].querySelector('.js-rating').innerHTML = rating;
+  }
+
+  function getRating(clickedStar) {
+    let count = 0
+    while (clickedStar.previousElementSibling) {
+      count++
+      clickedStar = clickedStar.previousElementSibling
+    }
+    return count + 1
   }
 
 }

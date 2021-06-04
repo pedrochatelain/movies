@@ -1,308 +1,313 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
-
-body{
-    margin: 0;
-    background-color: #F8F8F8;
+body {
+  margin: 0;
+  background-color: #F8F8F8;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .home {
-    height: 100vh;
-    grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
 }
 
 .home, .home_info, .text_info_home {
-    display: grid;
+  display: grid;
 }
 
 .home_info {
-    background-color: #246877;
-    box-shadow: .3vw 0 1vw rgba(36,104,119, .4);
-    grid-template-columns: 1fr;
-    align-content: center;
+  background-color: #246877;
+  box-shadow: .3vw 0 1vw rgba(36, 104, 119, .4);
+  grid-template-columns: 1fr;
+  align-content: center;
 }
 
 .text_info_home {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    width: fit-content;
-    grid-template-rows: repeat(3, min-content);
-    height: fit-content;
-    margin-top: 18vw;
-    justify-self: center;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  width: fit-content;
+  grid-template-rows: repeat(3, min-content);
+  height: fit-content;
+  margin-top: 18vw;
+  justify-self: center;
 }
 
 .home_info p {
-    font-size: 1.5vw;
-    color: #F8F8F8;
-    margin: 0;
-    margin-bottom: 1.5em;
+  font-size: 1.5vw;
+  color: #F8F8F8;
+  margin: 0;
+  margin-bottom: 1.5em;
 }
 
 .buttons_home {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-rows: repeat(2, max-content);
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-rows: repeat(2, max-content);
 }
 
 .button_mis_peliculas, .button_agregar_pelicula, .home_info p {
-    font-family: Ubuntu;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.05em;
+  font-family: Ubuntu;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
 }
 
 .home_info span {
-    display: grid;
-    margin-right: 1em ;
+  display: grid;
+  margin-right: 1em;
 }
 
 .icon_movie_nav {
-    grid-column: 1 / 2;
-    grid-row: 1 / -1;
-    width: fit-content;
-    height: fit-content;
-    margin-left: 4vw;
-    align-self: center;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 4vw;
+  align-self: center;
 }
 
 .icon_website_home {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: 30vw;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 30vw;
 }
 
 .button_mis_peliculas {
-    background: #F8F8F8;
-    color: #246877;
-    margin-bottom: 3em;
+  background: #F8F8F8;
+  color: #246877;
+  margin-bottom: 3em;
 }
 
 .button_search {
-    align-self: center;
-    display: grid;
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    justify-self: right;
-    padding: 0;
-    width: 11vw;
-    height: 4vw;
-    outline: none;
-    border: none;
-    background: #246877;
-    border-radius: .6vw;
-    z-index: 1;
-    margin-bottom: 1vw;
+  align-self: center;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  justify-self: right;
+  padding: 0;
+  width: 11vw;
+  height: 4vw;
+  outline: none;
+  border: none;
+  background: #246877;
+  border-radius: .6vw;
+  z-index: 1;
+  margin-bottom: 1vw;
 }
 
 .button_search p {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    font-size: 1.6vw;
-    margin: 0;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 300;
-    align-self: center;
-    text-align: center;
-    color: #F8F8F8;
-    width: fit-content;
-    margin-left: 1.8vw;
-    margin-bottom: .2vw;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  font-size: 1.6vw;
+  margin: 0;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 300;
+  align-self: center;
+  text-align: center;
+  color: #F8F8F8;
+  width: fit-content;
+  margin-left: 1.8vw;
+  margin-bottom: .2vw;
 }
 
 .lupa_button_search {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    width: 1.5vw;
-    align-self: center;
-    justify-self: right;
-    margin-right: 1.8vw;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  width: 1.5vw;
+  align-self: center;
+  justify-self: right;
+  margin-right: 1.8vw;
 }
 
 .button_agregar_pelicula {
-    background: #246877;
-    color: #F8F8F8;
+  background: #246877;
+  color: #F8F8F8;
 }
 
 .button_mis_peliculas, .button_agregar_pelicula {
-    border: none;
-    text-decoration: none;
-    width: 22vw;
-    height: 6.5vw;
-    box-shadow: .3vw .3vw .5vw rgba(167, 167, 167, 0.25);
-    border-radius: .8vw;
-    padding: 0;
-    justify-content: center;
-    font-size: 1.9vw;
+  border: none;
+  text-decoration: none;
+  width: 22vw;
+  height: 6.5vw;
+  box-shadow: .3vw .3vw .5vw rgba(167, 167, 167, 0.25);
+  border-radius: .8vw;
+  padding: 0;
+  justify-content: center;
+  font-size: 1.9vw;
 }
 
 .movies_nav {
-    display: grid;
-    align-content: center;
-    grid-template-columns: max-content 1fr;
-    grid-template-rows: 1fr;
-    width: 100%;
-    height: 15vh;
-    background: #F8F8F8;
-    box-shadow: 0 .1vw .3vw rgba(167, 167, 167, 0.25);
+  display: grid;
+  align-content: center;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 15vh;
+  background: #F8F8F8;
+  box-shadow: 0 .1vw .3vw rgba(167, 167, 167, 0.25);
 }
 
 .add_movie_link, .mis_peliculas_link, .movies_nav img {
-    grid-row: 1 / -1;
-    align-self: center;
+  grid-row: 1 / -1;
+  align-self: center;
 }
 
 .icon_movie_nav img {
-    width: 24vh;
+  width: 24vh;
 }
 
 .add_movie_link {
-    margin-right: 14em;
+  margin-right: 14em;
 }
 
 .mis_peliculas_link {
-    margin-right: 4vw;
+  margin-right: 4vw;
 }
 
 .cards_add_movies {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .dot_add_movie, .dot_my_movies {
-    justify-self: center;
-    margin-top: 4.5vw;
-    grid-row: 2 / -1;
-    grid-column: 1 / -1;
-    width: .7vw;
-    height: .7vw;
+  justify-self: center;
+  margin-top: 4.5vw;
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+  width: .7vw;
+  height: .7vw;
 }
 
 .add_movie_link p, .mis_peliculas_link p {
-    margin: 0;
-    grid-column: 1 / -1;
-    grid-row: 1 / 2;
+  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
 }
 
 .add_movie_link, .mis_peliculas_link {
-    grid-column: 2 / -1;
-    justify-self: right;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.7vw;
-    display: grid;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #246877;
-    text-decoration: none;
+  grid-column: 2 / -1;
+  justify-self: right;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.7vw;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #246877;
+  text-decoration: none;
 }
 
 .add_movie_container {
-    display: grid;
+  display: grid;
 }
 
 .buscador {
-    display: grid;
-    height: 10vw;
-    width: 60%;
-    grid-template-rows: 1fr;
-    margin-top: 22vh;
-    justify-self: center;
+  display: grid;
+  height: 10vw;
+  width: 60%;
+  grid-template-rows: 1fr;
+  margin-top: 22vh;
+  justify-self: center;
 }
 
 .search_input {
-    align-self: center;
-    background-color: #F8F8F8;
-    border: 0;
-    outline: none;
-    caret-color: #246877;
-    color: #246877;
-    padding-bottom: 1vw;
-    border-bottom: .2vw solid #246877;
-    width: 100%;
+  align-self: center;
+  background-color: #F8F8F8;
+  border: 0;
+  outline: none;
+  caret-color: #246877;
+  color: #246877;
+  padding-bottom: 1vw;
+  border-bottom: .2vw solid #246877;
+  width: 100%;
 }
 
 ::placeholder, .search_input, .helper p {
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.5vw;
-    letter-spacing: 0.05em;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.5vw;
+  letter-spacing: 0.05em;
 }
 
 .helper p {
-    width: 30vw;
-    text-align: center;
-    color: #246877;
-    margin: 0;
-    padding: 0;
+  width: 30vw;
+  text-align: center;
+  color: #246877;
+  margin: 0;
+  padding: 0;
 }
 
 .helper {
-    display: grid;
-    grid-template-rows: 1.2fr 1fr;
+  display: grid;
+  grid-template-rows: 1.2fr 1fr;
 }
 
 .arrow_search, .helper p {
-    justify-self: center;
+  justify-self: center;
 }
 
 .arrow_search {
-    animation-name: move_arrow;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    width: 2.8vw;
+  animation-name: move_arrow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  width: 2.8vw;
 }
 
 ::placeholder {
-    color: #E5E5E5;
+  color: #E5E5E5;
 }
 
 input:focus::placeholder {
-    color: transparent;
+  color: transparent;
 }
 
 .lupa, .search_input {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .lupa {
-    width: 2.5vw;
-    justify-self: right;
-    align-self: center;
-    margin-right: 1em;
-    padding-bottom: 1vw;
+  width: 2.5vw;
+  justify-self: right;
+  align-self: center;
+  margin-right: 1em;
+  padding-bottom: 1vw;
 }
 
 @keyframes move_arrow {
-    0% { margin-top: 2vh; }
-    50% { margin-top: 4vh; }
-    100% { margin-top: 2vh;}
+  0% {
+    margin-top: 2vh;
+  }
+  50% {
+    margin-top: 4vh;
+  }
+  100% {
+    margin-top: 2vh;
+  }
 }
 
 .js-opacity-transition {
-    transition-property: opacity;
-    transition-duration: .4s;
+  transition-property: opacity;
+  transition-duration: .4s;
 }
 
 .my_stars {
-    margin: 0;
-    margin-right: 12vw;
+  margin: 0;
+  width: fit-content;
 }
 
 .my_stars img {
-    width: 3.5vw;
-    margin: 0;
+  width: 3.5vw;
+  margin: 0;
 }
 
 .msg_deleted {
@@ -310,471 +315,495 @@ input:focus::placeholder {
 }
 
 .movie_success_message, .msg_deleted {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    width: fit-content;
-    height: fit-content;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    align-self: center;
-    justify-self: center;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: fit-content;
+  height: fit-content;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  align-self: center;
+  justify-self: center;
 }
 
 .movie_success_message img {
-    width: 12vw;
-    justify-self: center;
-    height: 12vh;
-    margin-top: 10%;
+  width: 12vw;
+  justify-self: center;
+  height: 12vh;
+  margin-top: 10%;
 }
 
 .movie_success_message p, .msg_deleted p {
-    margin: 0;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.8vw;
-    text-align: center;
-    letter-spacing: 0.05em;
-    width: 20vw;
-    color: #F8F8F8;
-    justify-self: center;
-    height: fit-content;
+  margin: 0;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.8vw;
+  text-align: center;
+  letter-spacing: 0.05em;
+  width: 20vw;
+  color: #F8F8F8;
+  justify-self: center;
+  height: fit-content;
 }
 
 .msg_deleted p {
-    width: 30vw;
+  width: 30vw;
 }
 
 .js-opacity-0 {
-    opacity: 0;
+  opacity: 0;
 }
 
 .js-display-none {
-    display: none !important;
-}
-
-.card:nth-child(1) {
-    margin-top: 7vw;
+  display: none !important;
 }
 
 .no_results {
-    margin-top: 3vw;
-    display: grid;
-    grid-template-columns: 1fr;
-    width: fit-content;
-    justify-self: center;
+  margin-top: 3vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: fit-content;
+  justify-self: center;
 }
 
 .no_movie_icon {
-    grid-row: 1 / -1;
-    align-self: center;
-    width: 5vw;
-    margin-right: 3vw;
+  grid-row: 1 / -1;
+  align-self: center;
+  width: 5vw;
+  margin-right: 3vw;
 }
 
 .no_results p {
-    margin-left: 22vw;
-    grid-row: 1 / -1;
-    width: 35vw;
-    margin: 0;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 2.5vw;
-
-    color: rgba(36, 104, 119, 0.9);
+  margin-left: 22vw;
+  grid-row: 1 / -1;
+  width: 35vw;
+  margin: 0;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 2.5vw;
+  color: rgba(36, 104, 119, 0.9);
 }
 
 .card {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    width: 60vw;
-    height: 50vh;
-    box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
-    border-radius: 1vw;
-    overflow: hidden;
-    justify-self: center;
-    margin-bottom: 4vw;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  width: 60vw;
+  height: 50vh;
+  box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
+  border-radius: 1vw;
+  overflow: hidden;
+  justify-self: center;
+  margin-bottom: 4vw;
 }
 
 .card_image {
-    width: 20vw;
-    height: 50vh;
-    border-radius: .5vw 0 0 .5vw;
-    z-index: 1;
+  width: 20vw;
+  height: 50vh;
+  border-radius: .5vw 0 0 .5vw;
+  z-index: 1;
 }
 
 .container_info_card {
-    display: grid;
-    grid-column: 2 / -1;
-    grid-row: 1 / -1;
-    border-radius: 0 .5vh .5vw 0;
-    grid-template-rows: 1fr 2fr;
+  display: grid;
+  grid-column: 2 / -1;
+  grid-row: 1 / -1;
+  border-radius: 0 .5vh .5vw 0;
+  grid-template-rows: 1fr 2fr;
 }
 
 .info_card {
-    display: grid;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: fit-content;
-    margin-top: 6vh;
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
+  display: grid;
+  margin-left: 10%;
+  margin-right: 25%;
+  height: fit-content;
+  margin-top: 6vh;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .button_calificar, .button_add_movie {
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
-    align-self: flex-end;
-    margin-bottom: 2.5vw;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  align-self: flex-end;
+  margin-bottom: 2.5vw;
 }
 
 .titulo, .director, .fecha {
-    font-weight: 300;
-    margin: 0;
-    font-size: 1.2vw;
+  font-weight: 300;
+  margin: 0;
+  font-size: 1.2vw;
 }
 
 .titulo_value, .director_value, .fecha_value {
-    font-weight: 500;
-    margin: 0;
-    font-size: 1.8vw;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.8vw;
 }
 
 .titulo_and_value, .director_and_value, .fecha_and_value, .calificacion_and_value {
-    align-self: center;
-    font-family: Ubuntu;
-    font-style: normal;
-    letter-spacing: 0.05em;
-    color: #246877;
+  align-self: center;
+  font-family: Ubuntu;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  color: #246877;
 }
 
 .titulo_and_value, .director_and_value, .fecha_and_value {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .calificacion_and_value {
-    margin: 0;
+  margin: 0;
 }
 
 .button_add_movie {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .icon_delete_card, .arrow_left, .icon_edit {
-    cursor: pointer;
-    width: 1.5vw;
+  cursor: pointer;
+  width: 1.5vw;
 }
 
 .js-thin-container {
-    animation-name: thin_container;
-    animation-duration: .6s;
-    animation-fill-mode: forwards;
+  animation-name: thin_container;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
 }
 
 .mis_peliculas_container {
-    display: grid;
-    align-items: center;
+  display: grid;
+  align-items: center;
 }
 
 .mis_peliculas_cards {
-    display: grid;
-    justify-items: center;
-    margin-top: 8vw;
+  display: grid;
+  justify-items: center;
+  margin-top: 8vw;
 }
 
 .no_movies {
-    display: grid;
-    height: 85vh;
-    width: 90vw;
-    justify-self: center;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  height: 85vh;
+  width: 90vw;
+  justify-self: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .image_empty_cinema {
-    width: 32vw;
-    height: 32vw;
-    border-radius: 50%;
-    align-self: center;
-    justify-self: center;
-    grid-column: 1 / 2;
-    /* mix-blend-mode: luminosity; */
-    opacity: 0.8;
+  width: 32vw;
+  height: 32vw;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+  grid-column: 1 / 2;
+  /* mix-blend-mode: luminosity; */
+  opacity: 0.8;
 }
 
 .image_empty_cinema, .button_buscar_peliculas, .message_no_cards {
-    grid-row: 1 / -1;
+  grid-row: 1 / -1;
 }
 
 .button_buscar_peliculas {
-    display: flex;
-    align-items: center;
-    align-self: flex-end;
-    justify-content: center;
-    height: 5vw;
-    width: 18vw;
-    background: #246877;
-    border-radius: .7vw;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.65vw;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #F8F8F8;
-    outline: none;
-    text-decoration: none;
-    border: none;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: center;
+  height: 5vw;
+  width: 18vw;
+  background: #246877;
+  border-radius: .7vw;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.65vw;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #F8F8F8;
+  outline: none;
+  text-decoration: none;
+  border: none;
 }
 
 .no_movies_msg_and_button {
-    display: grid;
-    height: 22vw;
-    width: fit-content;
-    align-self: center;
-    justify-self: center;
+  display: grid;
+  height: 22vw;
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
 }
 
 .message_no_cards {
-    margin: 0;
-    width: 29vw;
-    font-size: 3.5vw;
-    height: fit-content;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 300;
-    /* letter-spacing: -.1vw; */
-    color: #246877;
+  margin: 0;
+  width: 29vw;
+  font-size: 3.5vw;
+  height: fit-content;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 300;
+  /* letter-spacing: -.1vw; */
+  color: #246877;
 }
 
 .button_buscar_peliculas, .message_no_cards {
-    grid-column: 2 / -1;
+  grid-column: 2 / -1;
 }
 
 @keyframes thin_container {
-    from { height: 50vh; margin-bottom: 4vw; }
-    to { height: 0; margin-bottom: 0; }
+  from {
+    height: 50vh;
+    margin-bottom: 4vw;
+  }
+  to {
+    height: 0;
+    margin-bottom: 0;
+  }
 }
 
 .icon_delete_card, .arrow_left {
-    margin-top: 3vh;
-    margin-right: 1.5vw;
+  margin-top: 3vh;
+  margin-right: 1.5vw;
 }
 
 .icon_delete_card {
-    grid-column: 2 / -1;
+  grid-column: 2 / -1;
 }
 
 .icon_edit {
-    margin-right: 2vw;
-    margin-top: 3.1vh;
+  margin-right: 2vw;
+  margin-top: 3.1vh;
 }
 
 .js-translate-left {
-    animation-name: translate_left;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
+  animation-name: translate_left;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes translate_left {
-    from { transform: translateX(0);}
-    to {transform: translateX(-100%);}
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 .arrow_left {
-    justify-self: right;
+  justify-self: right;
 }
 
 .action_icons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 3vw;
-    justify-self: right;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3vw;
+  justify-self: right;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
 }
 
 .container_puntuar {
-    grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
 }
 
 .container_borrar, .container_puntuar {
-    display: grid;
-    grid-row: 1 / -1;
-    grid-column: 2 / -1;
-    transform: translateX(-100%);
-    background-color: #F8F8F8;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-column: 2 / -1;
+  transform: translateX(-100%);
+  background-color: #F8F8F8;
 }
 
 .info_borrar {
-    display: grid;
-    grid-row: 1 / -1;
-    grid-column: 1 / -1;
+  display: grid;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .change_background_color {
-    animation-name: change_background;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-    animation-delay: .3s;
+  animation-name: change_background;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-delay: .3s;
 }
 
 @keyframes change_background {
-    from { background-color: #F8F8F8;}
-    to { background-color: #7FC379;}
+  from {
+    background-color: #F8F8F8;
+  }
+  to {
+    background-color: #7FC379;
+  }
 }
 
 @keyframes background_red {
-    from { background-color: #F8F8F8;}
-    to { background-color: #F02323;}
+  from {
+    background-color: #F8F8F8;
+  }
+  to {
+    background-color: #F02323;
+  }
 }
 
 .js-background-red {
-    animation: show_container .5s forwards, background_red .5s .3s forwards;
+  animation: show_container .5s forwards, background_red .5s .3s forwards;
 }
 
 .js-show-container {
-    animation-name: show_container;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
+  animation-name: show_container;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes show_container {
-    from { transform: translateX(-100%);}
-    to { transform: translateX(0);}
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .button_cancelar, .button_enviar, .button_add_movie, .button_calificar, .button_borrar {
-    box-shadow: .1vw .1vw .1vw .1vw rgba(167, 167, 167, 0.25);
-    border-radius: .5vw;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.4vw;
-    text-align: center;
-    letter-spacing: 0.05em;
-    outline: none;
-    border: none;
-    height: 3.5vw;
-    padding-right: 3%;
-    padding-left: 3%;
+  box-shadow: .1vw .1vw .1vw .1vw rgba(167, 167, 167, 0.25);
+  border-radius: .5vw;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4vw;
+  text-align: center;
+  letter-spacing: 0.05em;
+  outline: none;
+  border: none;
+  height: 3.5vw;
+  padding-right: 3%;
+  padding-left: 3%;
 }
 
 .button_cancelar, .button_enviar, .button_calificar, .button_borrar {
-    width: 10vw;
+  width: 10vw;
 }
 
 .button_add_movie, .button_calificar {
-    margin-left: 10%;
+  margin-left: 10%;
 }
 
 .button_cancelar {
-    background: #F8F8F8;
-    color: #246877;
-    margin-right: 4vw;
+  background: #F8F8F8;
+  color: #246877;
+  margin-right: 4vw;
 }
 
 .button_borrar {
-    background: #F02323;
-    color: #F8F8F8;
+  background: #F02323;
+  color: #F8F8F8;
 }
 
 .button_enviar, .button_calificar, .button_add_movie {
-    background: #246877;
-    color: #F8F8F8;
+  background: #246877;
+  color: #F8F8F8;
 }
 
 .info_card_con_puntaje {
-    align-self: center;
-    margin-top: 0;
+  align-self: center;
+  margin-top: 0;
 }
 
 .button_add_movie {
-    width: 16vw;
+  width: 16vw;
 }
 
 .stars {
-    height: fit-content;
-    justify-self: center;
+  height: fit-content;
+  justify-self: center;
+}
+
+.card_add_movies:nth-child(1) {
+  margin-top: 8vw;
 }
 
 .stars img {
-    width: 4vw;
-    cursor: pointer;
+  width: 4vw;
+  cursor: pointer;
 }
 
 .container_puntuar h1, .container_borrar h1, .container_puntuar p {
-    font-family: Ubuntu;
-    font-style: normal;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #246877;
-    margin: 0;
-    height: fit-content;
+  font-family: Ubuntu;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #246877;
+  margin: 0;
+  height: fit-content;
 }
 
 .container_borrar h1 {
-    justify-self: center;
-    width: 80%;
+  justify-self: center;
+  width: 80%;
 }
 
 .container_puntuar h1, .container_borrar h1 {
-    font-weight: 500;
-    font-size: 2.2vw;
+  font-weight: 500;
+  font-size: 2.2vw;
 }
 
 .container_puntuar p {
-    font-weight: 300;
-    font-size: 1.5vw;
+  font-weight: 300;
+  font-size: 1.5vw;
 }
 
 .action_buttons {
-    justify-self: center;
+  justify-self: center;
 }
 
 /* loader circle */
+
 .lds-dual-ring {
-    display: inline-block;
-    width: 3vw;
-    height: 3vw;
-    align-self: center;
+  display: inline-block;
+  width: 3vw;
+  height: 3vw;
+  align-self: center;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 2vw;
+  height: 2vw;
+  margin-left: 2vw;
+  margin-top: .2vw;
+  border-radius: 50%;
+  border: .4vw solid #246877;
+  border-color: #246877 transparent #246877 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
   }
-  .lds-dual-ring:after {
-    content: " ";
-    display: block;
-    width: 2vw;
-    height: 2vw;
-    margin-left: 2vw;
-    margin-top: .2vw;
-    border-radius: 50%;
-    border: .4vw solid #246877;
-    border-color: #246877 transparent #246877 transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  @keyframes lds-dual-ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
+
 /* end of loader circle*/
 
 .loader {
-    display: flex;
-    justify-self: center;
+  display: flex;
+  justify-self: center;
 }
 
 .loader p {
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 3vw;
-    line-height: 55px;
-    color: #246877;
-    margin: 0%;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3vw;
+  line-height: 55px;
+  color: #246877;
+  margin: 0%;
 }

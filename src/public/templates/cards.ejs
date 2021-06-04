@@ -1,7 +1,7 @@
 <% for (let i=0; i < movies.length; i++) { %>
 
 
-  <div class="card">
+  <div class="card card_add_movies">
     <% if (movies[i].poster_path) { %>
       <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card_image js-card-image" alt="movie image">
       <% } else { %>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <button type="submit" class="button_add_movie js-button-add-movie">Agregar película</button>
-            <div class="movie_success_message js-movie-success-message js-opacity-0">
+            <div class="movie_success_message js-msg-movie-added js-opacity-0">
               <p>Agregada a Mis peliculas</p>
               <img src="img/check_icon.svg" alt="check_icon">
             </div>

@@ -12,4 +12,6 @@ router.post('/my_movies', controller.addMovie)
 
 router.delete('/my_movies', controller.deleteMovie)
 
+router.patch('/my_movies', controller.setRating)
+
 module.exports = router

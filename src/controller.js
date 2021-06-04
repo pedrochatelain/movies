@@ -23,4 +23,9 @@ function deleteMovie(req, res) {
   res.end()
 }
 
-module.exports = {showMyMovies, addMovie, deleteMovie}
+function setRating(req, res) {
+  model.setRating(req.body.rating, req.body.id);
+  res.end();
+}
+
+module.exports = {showMyMovies, addMovie, deleteMovie, setRating}
