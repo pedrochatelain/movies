@@ -155,11 +155,10 @@ function init() {
     });
 
     buttonsAddMovie.forEach(button => button.addEventListener('click', event => {
-      if (event.detail == 1) { // to prevent multiple clicks
-        const movie = getMovie(event);
-        sendMovie(movie);
-        showMessageMovieAdded(event);
-      }
+      button.disabled = true // to prevent multiple clicks
+      const movie = getMovie(event);
+      sendMovie(movie);
+      showMessageMovieAdded(event);
     }));
 
   }
