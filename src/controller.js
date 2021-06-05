@@ -5,12 +5,19 @@ async function showMyMovies(req, res) {
   res.render('my_movies.ejs', {movies: movies})
 }
 
+function isValidDate(date) {
+  return date !== 'UNKNOWN';
+}
+
 function addMovie(req, res) {
-  const date = req.body.date;
+  let date = req.body.date;
+  if (! isValidDate(date)) {
+    date = null;
+  }
   const movie = {
     'name': req.body.name.trim(),
     'director': req.body.director.trim(),
-    'date': req.body.date,
+    'date': date,
     'rating': req.body.rating,
     'image': req.body.image
   }

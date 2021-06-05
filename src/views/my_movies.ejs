@@ -42,9 +42,15 @@
                 </div>
                 <div class="fecha_and_value">
                   <p class="fecha">Fecha de lanzamiento</p>
-                  <p class="fecha_value">
-                    <%= movies[i].date %>
-                  </p>
+                  <% if (! movies[i].release_date === null) { %>
+                    <p class="fecha_value">
+                      <%= movies[i].date %>
+                    </p>
+                  <% } else { %>
+                    <p class="fecha_value">
+                      UNKNOWN
+                    </p>
+                  <% } %>
                 </div>
                 <% if (movies[i].rating) { %>
                   <% const rating =  movies[i].rating  %>
