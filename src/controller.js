@@ -6,6 +6,7 @@ async function showMyMovies(req, res) {
 }
 
 function addMovie(req, res) {
+  const date = req.body.date;
   const movie = {
     'name': req.body.name.trim(),
     'director': req.body.director.trim(),
