@@ -4,7 +4,8 @@ async function getDirectors(movies) {
     let directorAdded = false
     const movie = movies[i]
     const id_movie = movie.id
-    const response_cast = await fetch(`https://api.themoviedb.org/3/movie/${id_movie}/credits?api_key=${config.api_key}&language=en-US`)
+    const key = await getKeyApi();
+    const response_cast = await fetch(`https://api.themoviedb.org/3/movie/${id_movie}/credits?api_key=${key}&language=en-US`)
     const cast = await response_cast.json()
     let j = 0
     while (!directorAdded && j < cast.crew.length) {
@@ -34,13 +35,19 @@ function stringToQuery(string) {
 
 async function getMovies(name_movie) {
   const query = stringToQuery(name_movie)
-  const api_key = config.api_key
+  const api_key = await getKeyApi();
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${query}`
   const movies_response = await fetch(url)
   const movies_object = await movies_response.json()
   const movies = movies_object.results
   orderByPopularity(movies)
   return movies
+}
+
+async function getKeyApi() {
+  const key_response = await fetch('/key_api');
+  const key = await key_response.text();
+  return key;
 }
 
 async function showMovies(movies) {

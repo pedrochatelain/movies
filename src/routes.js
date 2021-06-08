@@ -14,4 +14,6 @@ router.delete('/my_movies', controller.deleteMovie)
 
 router.patch('/my_movies', controller.setRating)
 
+router.get('/key_api', (req, res) => res.send(process.env.API_KEY));
+
 module.exports = router
