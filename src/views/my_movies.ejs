@@ -42,7 +42,7 @@
                 </div>
                 <div class="fecha_and_value">
                   <p class="fecha">Fecha de lanzamiento</p>
-                  <% if (! movies[i].release_date === null) { %>
+                  <% if (movies[i].date !== null) { %>
                     <p class="fecha_value">
                       <%= movies[i].date %>
                     </p>
