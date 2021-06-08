@@ -390,7 +390,7 @@ input:focus::placeholder {
   display: grid;
   grid-template-columns: min-content 1fr;
   width: 60vw;
-  height: 50vh;
+  height: 20vw;
   box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
   border-radius: 1vw;
   overflow: hidden;
@@ -399,8 +399,8 @@ input:focus::placeholder {
 }
 
 .card_image {
-  width: 20vw;
-  height: 50vh;
+  width: 18vw;
+  height: 20vw;
   border-radius: .5vw 0 0 .5vw;
   z-index: 1;
 }

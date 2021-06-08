@@ -18,14 +18,13 @@
               <div class="director_and_value">
                 <p class="director">Director</p>
                 <p class="director_value js-director">
-                  <%= directors[i] %>
                 </p>
               </div>
               <div class="fecha_and_value">
                 <p class="fecha">Fecha de lanzamiento</p>
                 <% if (movies[i].release_date) { %>
                   <p class="fecha_value js-fecha">
-                    <%= formatDate(movies[i].release_date) %>
+                    <%= movies[i].release_date %>
                   </p>
                 <% } else { %>            
                   <p class="fecha_value js-fecha">

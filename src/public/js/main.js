@@ -220,6 +220,33 @@ function init() {
     }
   }
 
+  async function getMovies(nameMovie) {
+    const movies_response = await fetch(`/movies_api/${nameMovie}`);
+    const movies = await movies_response.json();
+    return movies;
+  }
+
+  async function showMovies(movies) {
+    // const directors = await getDirectors(movies)
+    console.log(movies)
+    const response = await fetch('templates/cards.ejs')
+    const cards_template = await response.text()
+    const cards = ejs.render(cards_template, {
+      movies: movies
+      // directors: directors
+    })
+    document.querySelector('.js-cards-add-movies').innerHTML = cards
+  }
+
+  async function getDirectors(movies) {
+    fetch('movies_api/directors', {
+      method: 'GET',
+      mode: 'cors',
+      headers: {'Content-Type': 'application/json' },
+      body: JSON.stringify({movies: movies})
+    });
+  }
+
   function reloadScript() {
     document.querySelector('script').remove()
     const myScript = document.createElement("script");
