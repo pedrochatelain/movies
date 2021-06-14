@@ -300,14 +300,8 @@ input:focus::placeholder {
   transition-duration: .4s;
 }
 
-.my_stars {
-  margin: 0;
-  width: fit-content;
-}
-
 .my_stars img {
-  width: 3.5vw;
-  margin: 0;
+  width: 3vw;
 }
 
 .msg_deleted {
@@ -390,7 +384,7 @@ input:focus::placeholder {
   display: grid;
   grid-template-columns: min-content 1fr;
   width: 60vw;
-  height: 20vw;
+  height: 22vw;
   box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
   border-radius: 1vw;
   overflow: hidden;
@@ -400,7 +394,7 @@ input:focus::placeholder {
 
 .card_image {
   width: 18vw;
-  height: 20vw;
+  height: 22vw;
   border-radius: .5vw 0 0 .5vw;
   z-index: 1;
 }
@@ -433,13 +427,13 @@ input:focus::placeholder {
 .titulo, .director, .fecha {
   font-weight: 300;
   margin: 0;
-  font-size: 1.2vw;
+  font-size: 1.1vw;
 }
 
 .titulo_value, .director_value, .fecha_value {
   font-weight: 500;
   margin: 0;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
 }
 
 .titulo_and_value, .director_and_value, .fecha_and_value, .calificacion_and_value {
@@ -464,7 +458,7 @@ input:focus::placeholder {
 
 .icon_delete_card, .arrow_left, .icon_edit {
   cursor: pointer;
-  width: 1.5vw;
+  width: 1.3vw;
 }
 
 .js-thin-container {
@@ -607,7 +601,7 @@ input:focus::placeholder {
 }
 
 .container_puntuar {
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, min-content);
 }
 
 .container_borrar, .container_puntuar {
@@ -674,18 +668,16 @@ input:focus::placeholder {
   font-family: Ubuntu;
   font-style: normal;
   font-weight: 500;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
   text-align: center;
   letter-spacing: 0.05em;
   outline: none;
   border: none;
-  height: 3.5vw;
-  padding-right: 3%;
-  padding-left: 3%;
+  height: 3.3vw;
 }
 
 .button_cancelar, .button_enviar, .button_calificar, .button_borrar {
-  width: 10vw;
+  width: 8vw;
 }
 
 .button_add_movie, .button_calificar {
@@ -720,6 +712,7 @@ input:focus::placeholder {
 .stars {
   height: fit-content;
   justify-self: center;
+  margin-top: 1.5vw;
 }
 
 .card_add_movies:nth-child(1) {
@@ -727,7 +720,7 @@ input:focus::placeholder {
 }
 
 .stars img {
-  width: 4vw;
+  width: 3.6vw;
   cursor: pointer;
 }
 
@@ -748,12 +741,18 @@ input:focus::placeholder {
 
 .container_puntuar h1, .container_borrar h1 {
   font-weight: 500;
-  font-size: 2.2vw;
+  font-size: 1.9vw;
+}
+
+.container_puntuar h1 {
+  margin-top: 1vw;
 }
 
 .container_puntuar p {
   font-weight: 300;
   font-size: 1.5vw;
+  margin-bottom: 2vw;
+  margin-top: 1vw;
 }
 
 .action_buttons {
@@ -806,4 +805,247 @@ input:focus::placeholder {
   line-height: 55px;
   color: #246877;
   margin: 0%;
+}
+
+/* ADD MOVIE CARD */
+.card-add-movie {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
+
+.card-add-movie__front,
+.card-add-movie__info {
+  grid-row: 1 / -1;
+}
+
+.card-add-movie__info-icon,
+.button-add-movie {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.card-add-movie__info-icon:hover {
+  transform: scale(1.1);
+}
+
+.card-add-movie__img {
+  filter: drop-shadow(0.5em 0.5em 0.4em rgb(189, 189, 189));
+}
+
+.card-add-movie__img,
+.card-add-movie__info {
+  width: 28vw;
+  height: 35vw;
+  border-radius: 2%;
+}
+
+.card-add-movie__info-icon,
+.card-add-movie__img,
+.card-add-movie__info {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+.card-add-movie__info-icon {
+  z-index: 1;
+  justify-self: right;
+  margin-right: 1vw;
+  margin-top: 1vw;
+}
+
+.card-add-movie__info,
+.card-add-movie__front {
+  grid-column: 1 / -1;
+}
+
+.card-add-movie__info {
+  display: grid;
+  z-index: 1;
+  background-color: #e9e9e9;
+  transform: translateX(100%);
+  margin-left: 2vw;
+}
+
+.card-add-movie__front {
+  display: grid;
+  margin-right: 2vw;
+}
+
+.button-add-movie {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  background: #246877;
+  border: none;
+  padding: 1vw;
+  border-radius: 0.5vw;
+  margin-top: 1.5vw;
+  filter: drop-shadow(0.5em 0.5em 0.4em rgb(189, 189, 189));
+  outline: none;
+  margin-bottom: 2vw;
+  margin-bottom: 8vw;
+}
+
+.button-add-movie:hover {
+  transform: scale(1.1);
+}
+
+.js-no-hover:hover {
+  transform: none;
+  cursor: default;
+}
+
+.button-add-movie__text {
+  margin: 0;
+  font-weight: lighter;
+  font-family: Ubuntu;
+  font-size: 1.5vw;
+  color: #f8f8f8;
+}
+
+.button-add-movie__icon {
+  margin-left: 1vw;
+  width: 1.2vw;
+}
+
+.card-add-movie__titulo,
+.card-add-movie__titulo-value,
+.card-add-movie__fecha,
+.card-add-movie__fecha-value,
+.card-add-movie__director,
+.card-add-movie__director-value {
+  font-family: Ubuntu;
+  color: #246877;
+  margin: 0;
+  margin-left: 2.5vw;
+}
+
+.card-add-movie__titulo {
+  margin-top: 5vw;
+}
+
+.card-add-movie__fecha,
+.card-add-movie__director {
+  margin-top: 3vw;
+}
+
+.card-add-movie__fecha,
+.card-add-movie__director,
+.card-add-movie__titulo {
+  font-weight: lighter;
+  font-size: 1.5vw;
+  margin-bottom: 0.3vw;
+}
+
+.card-add-movie__titulo-value,
+.card-add-movie__fecha-value,
+.card-add-movie__director-value {
+  font-size: 1.8vw;
+  font-weight: bold;
+  width: 70%;
+}
+
+.card-add-movie__x-icon {
+  justify-self: right;
+  margin-top: 1.5vw;
+  margin-right: 1.5vw;
+  float: right;
+  width: 1.3vw;
+  cursor: pointer;
+}
+
+.msg-add {
+  margin-top: 1vw;
+  display: grid;
+  justify-items: center;
+  margin-bottom: 8vw;
+}
+
+.msg-add__text {
+  font-size: 1.6vw;
+  font-family: Ubuntu;
+  color: #246877;
+  margin: 0;
+  margin-bottom: .3vw;
+}
+
+.msg-add__icon {
+  width: 3vw;
+}
+/* animations and transitions of add movie card */
+
+.js-show-info {
+  animation-name: show-info;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+}
+
+.js-hide-info {
+  animation-name: hide-info;
+  animation-duration: .3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-info {
+  from {
+    transform: translateX(100%);
+    margin-left: 2vw;
+  }
+  to {
+    transform: translateX(0);
+    margin-left: 0;
+  }
+}
+
+@keyframes hide-info {
+  from {
+    transform: translateX(0);
+    margin-left: 0;
+  }
+  to {
+    transform: translateX(100%);
+    margin-left: 2vw;
+  }
+}
+
+/* loader */
+
+.loader:after, .loader-info:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  animation: loader 1.2s linear infinite;
+}
+
+.loader:after {
+  margin-left: 1vw;
+  width: 1vw;
+  height: 1vw;
+  border: .15vw solid #f8f8f8;
+  border-color: #f8f8f8 transparent #f8f8f8 transparent;
+}
+
+.loader-info {
+  align-self: center;
+  justify-self: center;
+}
+
+.loader-info:after {
+  width: 6vw;
+  height: 6vw;
+  border: .5vw solid #246877;
+  border-color: #246877 transparent #246877 transparent;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

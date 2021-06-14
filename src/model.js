@@ -20,6 +20,7 @@ function addMovie(movie) {
   }
 }
 
+
 function setRating(rating, id) {
   try {
     pool.query('UPDATE moviesv2 SET rating = $1 WHERE id = $2', [rating, id]);

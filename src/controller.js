@@ -10,7 +10,7 @@ function isValidDate(date) {
 }
 
 function addMovie(req, res) {
-  let date = req.body.date;
+  let date = req.body.releaseDate;
   if (! isValidDate(date)) {
     date = null;
   }
@@ -18,7 +18,7 @@ function addMovie(req, res) {
     'name': req.body.name.trim(),
     'director': req.body.director.trim(),
     'date': date,
-    'rating': req.body.rating,
+    'rating': null,
     'image': req.body.image
   }
   model.addMovie(movie)

@@ -2,7 +2,6 @@ function init() {
 
   const inputSearch = document.querySelector('.js-search-input')
   const helperSearchMovie = document.querySelector('.js-helper-search-movie')
-  const buttonsAddMovie = document.querySelectorAll('.js-button-add-movie')
   const iconsDelete = document.querySelectorAll('.js-icon-delete')
   const iconsArrowsRate = document.querySelectorAll('.js-arrow-calificar')
   const buttonsCancelRate = document.querySelectorAll('.js-button-cancelar')
@@ -154,49 +153,6 @@ function init() {
       if (event.key === 'Enter') search();
     });
 
-    buttonsAddMovie.forEach(button => button.addEventListener('click', event => {
-      button.disabled = true // to prevent multiple clicks
-      const movie = getMovie(event);
-      sendMovie(movie);
-      showMessageMovieAdded(event);
-    }));
-
-  }
-
-  function sendMovie(movie) {
-    fetch('/my_movies', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(movie)
-    });
-  }
-
-  function getMovie(event) {
-    return {
-      'name': event.path[1].querySelector('.js-titulo').innerHTML.trim(),
-      'director': event.path[1].querySelector('.js-director').innerHTML.trim(),
-      'date': event.path[1].querySelector('.js-fecha').innerHTML.trim(),
-      'rating': null,
-      'image': event.path[1].parentNode.querySelector('.js-card-image').src
-    };
-  }
-
-  function showMessageMovieAdded(event) {
-    const info = event.path[1].querySelector('.js-info-card');
-    const button = event.target;
-    const containerInfo = event.path[2].querySelector('.js-info-card-container');
-    const msgMovieAdded = event.path[2].querySelector('.js-msg-movie-added');
-
-    info.classList.add('js-opacity-0', 'js-opacity-transition');
-    button.classList.add('js-opacity-0', 'js-opacity-transition');
-    containerInfo.classList.add('change_background_color');
-    containerInfo.addEventListener('animationend', () => {
-      button.classList.add('js-display-none');
-      info.classList.add('js-display-none');
-      msgMovieAdded.classList.add('js-opacity-transition');
-      msgMovieAdded.classList.remove('js-opacity-0');
-    });
   }
 
   function isInputEmpty() {
@@ -226,25 +182,19 @@ function init() {
     return movies;
   }
 
+  async function getMovie(id) {
+    const response = await fetch(`/movies_api/id/${id}`);
+    const movie = await response.json()
+    return movie;
+  }
+
   async function showMovies(movies) {
-    // const directors = await getDirectors(movies)
-    console.log(movies)
     const response = await fetch('templates/cards.ejs')
     const cards_template = await response.text()
     const cards = ejs.render(cards_template, {
       movies: movies
-      // directors: directors
     })
     document.querySelector('.js-cards-add-movies').innerHTML = cards
-  }
-
-  async function getDirectors(movies) {
-    fetch('movies_api/directors', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {'Content-Type': 'application/json' },
-      body: JSON.stringify({movies: movies})
-    });
   }
 
   function reloadScript() {
@@ -338,6 +288,76 @@ function init() {
     }
     return count + 1
   }
+
+// ADD MOVIE CARD JS
+const buttonsAddMovie = document.querySelectorAll('.js-button-add-movie');
+const buttonsInfo = document.querySelectorAll('.js-button-info');
+const buttonsExitInfo = document.querySelectorAll('.js-button-exit-info');
+
+buttonsInfo.forEach((button) => button.addEventListener('click', showInfo));
+buttonsExitInfo.forEach((button) => button.addEventListener('click', hideInfo));
+buttonsAddMovie.forEach(button => button.addEventListener('click', async (event) => {
+  const button = event.currentTarget
+  setLoading(button);
+  const id = button.parentNode.parentNode.querySelector('#js-movie-id').innerHTML
+  const movie = await getMovie(id)
+  await addMovie(movie);
+  showMessageAdd(button);
+}));
+
+async function showInfo(event) {
+  const id = event.currentTarget.parentNode.parentNode.querySelector('#js-movie-id').innerHTML;
+  showLoaderInfo(event)
+  const info = event.currentTarget.parentNode.parentNode.querySelector('.js-info-movie')
+  const movie = await getMovie(id)
+  info.querySelector('.js-info-container').classList.remove('js-display-none')
+  info.querySelector('.js-movie-title').innerHTML = movie.name
+  info.querySelector('.js-movie-director').innerHTML = movie.director
+  info.querySelector('.js-movie-date').innerHTML = movie.releaseDate
+  info.querySelector('.js-loader-info').classList.add('js-display-none')
+}
+
+function showLoaderInfo(event) {
+  const infoContainer = event.path[2].querySelector('.js-info-movie');
+  infoContainer.classList.remove('js-hide-info')
+  infoContainer.classList.add('js-show-info')
+}
+
+function hideInfo(event) {
+  const info = event.path[3].querySelector('.js-info-movie');
+  info.classList.remove('js-show-info');
+  info.classList.add('js-hide-info');
+}
+
+function setLoading(button) {
+  let textButton = button.querySelector('.js-button-add-movie-text');
+  textButton.innerHTML = 'Agregando';
+  button.parentNode.querySelector('.js-icon-plus').remove();
+  button.parentNode.querySelector('.js-loader').classList.remove('js-display-none');
+  button.classList.add('js-no-hover');
+  button.disabled = true;
+}
+
+function showMessageAdd(event) {
+  const message = event.parentNode.querySelector('.js-msg-add');
+  event.classList.add('js-display-none');
+  message.classList.remove('js-display-none');
+}
+
+async function addMovie(movie) {
+  const response = await fetch('/my_movies', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(movie)
+  });
+  // if movie was added
+  //   showMessageAdd
+  // else
+  //   showMessageerror
+}
+
+
 
 }
 

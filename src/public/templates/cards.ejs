@@ -1,44 +1,38 @@
 <% for (let i=0; i < movies.length; i++) { %>
-
-
-  <div class="card card_add_movies">
-    <% if (movies[i].poster_path) { %>
-      <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card_image js-card-image" alt="movie image">
+  <div class="card-add-movie">
+    <p id="js-movie-id" class="js-display-none"><%= movies[i].id %></p>
+    <div class="card-add-movie__front">
+      <img src="img/info_icon.svg" class="card-add-movie__info-icon js-button-info" alt="info icon">
+      <% if (movies[i].poster_path) { %>
+        <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card-add-movie__img js-card-image" alt="movie image">
       <% } else { %>
         <img src="img/no_image.png" class="card_image" alt="los increibles">
-        <% } %>
-          <div class="container_info_card js-info-card-container">
-            <div class="info_card js-info-card">
-              <div class="titulo_and_value">
-                <p class="titulo">Título original</p>
-                <p class="titulo_value js-titulo">
-                  <%= movies[i].original_title %>
-                </p>
-              </div>
-              <div class="director_and_value">
-                <p class="director">Director</p>
-                <p class="director_value js-director">
-                </p>
-              </div>
-              <div class="fecha_and_value">
-                <p class="fecha">Fecha de lanzamiento</p>
-                <% if (movies[i].release_date) { %>
-                  <p class="fecha_value js-fecha">
-                    <%= movies[i].release_date %>
-                  </p>
-                <% } else { %>            
-                  <p class="fecha_value js-fecha">
-                    UNKNOWN
-                  </p>
-                <% } %>            
-              </div>
-            </div>
-            <button type="submit" class="button_add_movie js-button-add-movie">Agregar película</button>
-            <div class="movie_success_message js-msg-movie-added js-opacity-0">
-              <p>Agregada a Mis peliculas</p>
-              <img src="img/check_icon.svg" alt="check_icon">
-            </div>
-          </div>
-  </div>
+      <% } %>
+      <button class="button-add-movie js-button-add-movie">
+        <p class="button-add-movie__text js-button-add-movie-text">Agregar</p>
+        <img src="img/icon_plus.svg" class="button-add-movie__icon js-icon-plus" alt="icon_plus">
+        <div class="loader js-display-none js-loader"></div>
+      </button>
+      <div class="msg-add js-msg-add js-display-none">
+        <p class="msg-add__text">Agregada a Mis películas</p>
+        <img src="img/check_icon_add.svg" class="msg-add__icon" alt="check icon">
+      </div>
+    </div>
+    <div class="card-add-movie__info js-info-movie">
+      <div class="js-info-container js-display-none">
+        <img src="img/x_icon.svg" class="card-add-movie__x-icon js-button-exit-info" alt="x icon">
+        <p class="card-add-movie__titulo">Título original:</p>
+        <p class="card-add-movie__titulo-value js-movie-title"></p>
+        <p class="card-add-movie__fecha">Fecha de lanzamiento:</p>
+        <p class="card-add-movie__fecha-value js-movie-date"></p>
+        <p class="card-add-movie__director">Director:</p>
+        <p class="card-add-movie__director-value js-movie-director"></p>
+      </div>
+      <div class="loader-info js-loader-info">
 
-  <% } %>
+      </div>
+
+      </div>
+    </div>
+  </div>
+<% } %>
