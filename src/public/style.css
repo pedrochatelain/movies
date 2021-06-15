@@ -383,7 +383,7 @@ input:focus::placeholder {
 .card {
   display: grid;
   grid-template-columns: min-content 1fr;
-  width: 60vw;
+  width: 55vw;
   height: 22vw;
   box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
   border-radius: 1vw;
@@ -394,7 +394,7 @@ input:focus::placeholder {
 
 .card_image {
   width: 18vw;
-  height: 22vw;
+  height: inherit;
   border-radius: .5vw 0 0 .5vw;
   z-index: 1;
 }
@@ -412,7 +412,7 @@ input:focus::placeholder {
   margin-left: 10%;
   margin-right: 25%;
   height: fit-content;
-  margin-top: 6vh;
+  margin-top: 2vw;
   grid-row: 1 / -1;
   grid-column: 1 / -1;
 }
@@ -421,7 +421,7 @@ input:focus::placeholder {
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   align-self: flex-end;
-  margin-bottom: 2.5vw;
+  margin-bottom: 2vw;
 }
 
 .titulo, .director, .fecha {
@@ -445,15 +445,11 @@ input:focus::placeholder {
 }
 
 .titulo_and_value, .director_and_value, .fecha_and_value {
-  margin-bottom: 5%;
+  margin-bottom: 6%;
 }
 
 .calificacion_and_value {
   margin: 0;
-}
-
-.button_add_movie {
-  grid-column: 1 / -1;
 }
 
 .icon_delete_card, .arrow_left, .icon_edit {
@@ -707,6 +703,7 @@ input:focus::placeholder {
 
 .button_add_movie {
   width: 16vw;
+  grid-column: 1 / -1;
 }
 
 .stars {
