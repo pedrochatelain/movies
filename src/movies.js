@@ -43,13 +43,17 @@ async function getMovies(req, res) {
 
 async function getMovie(req, res) {
   const id = req.params.id;
-  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`;
+  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=es`;
   const response = await fetch(url);
   const movieInfo = await response.json();
   formatDate(movieInfo);
   const director = await getDirector(id);
+  let name = movieInfo.original_title;
+  if (movieInfo.original_language === 'es') {
+    name = movieInfo.original_title
+  }
   const movie = {
-    'name': movieInfo.title,
+    'name': name,
     'director': director,
     'releaseDate': movieInfo.release_date,
     'image': movieInfo.poster_path
