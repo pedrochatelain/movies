@@ -24,7 +24,11 @@
       <div class="mis_peliculas_cards">
         <% for (let i=0; i < movies.length; i++) { %>
           <div class="card js-card">
-            <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].image}` %>" class="card_image" alt="los increibles">
+            <% if (movies[i].image) { %>
+              <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].image}` %>" class="card_image" alt="movie image">
+            <% } else { %>
+              <img src="img/no_image.png" class="card_image" alt="no movie img">
+            <% } %>
             <div class="container_info_card js-info-container">
               <div class="info_card js-info-card">
                 <div class="js-movie-id js-display-none"><%= movies[i].id %></div>
