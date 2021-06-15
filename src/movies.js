@@ -34,8 +34,8 @@ async function getMovies(req, res) {
   const nameMovie = req.params.name;
   const query = stringToQuery(nameMovie);
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&query=${query}`;
-  const movies_response = await fetch(url);
-  const movies_object = await movies_response.json();
+  const response = await fetch(url);
+  const movies_object = await response.json();
   const movies = movies_object.results;
   orderByPopularity(movies);
   res.send(movies);

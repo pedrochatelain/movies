@@ -177,14 +177,15 @@ function init() {
     });
 
     buttonSearch.addEventListener('click', () => {
-      if (!isInputEmpty()) {
+      // if (!isInputEmpty()) {
+        console.log('rr')
         search();
         helperSearchMovie.classList.add(
           'js-opacity-transition',
           'js-opacity-0',
           'js-display-none'
         );
-      }
+      // }
     });
 
     inputSearch.addEventListener('keypress', (event) => {
@@ -225,14 +226,14 @@ function init() {
       loader.classList.add('js-display-none');
     } else {
       await showMovies(movies);
-      reloadScript();
+      initCards()
       loader.classList.add('js-display-none');
     }
   }
 
   async function getMovies(nameMovie) {
-    const movies_response = await fetch(`/movies_api/${nameMovie}`);
-    const movies = await movies_response.json();
+    const response = await fetch(`/movies_api/${nameMovie}`);
+    const movies = await response.json();
     return movies;
   }
 
@@ -249,13 +250,6 @@ function init() {
       movies: movies,
     });
     document.querySelector('.js-cards-add-movies').innerHTML = cards;
-  }
-
-  function reloadScript() {
-    document.querySelector('script').remove();
-    const myScript = document.createElement('script');
-    myScript.setAttribute('src', 'js/main.js');
-    document.body.appendChild(myScript);
   }
 
   function showContainer(container) {
@@ -349,84 +343,87 @@ function init() {
   }
 
   // ADD MOVIE CARD JS
-  const buttonsAddMovie = document.querySelectorAll('.js-button-add-movie');
-  const buttonsInfo = document.querySelectorAll('.js-button-info');
-  const buttonsExitInfo = document.querySelectorAll('.js-button-exit-info');
-
-  buttonsInfo.forEach((button) => button.addEventListener('click', showInfo));
-  buttonsExitInfo.forEach((button) =>
-    button.addEventListener('click', hideInfo)
-  );
-  buttonsAddMovie.forEach((button) =>
-    button.addEventListener('click', async (event) => {
-      const button = event.currentTarget;
-      setLoading(button);
+  function initCards() {
+    const buttonsAddMovie = document.querySelectorAll('.js-button-add-movie');
+    const buttonsInfo = document.querySelectorAll('.js-button-info');
+    const buttonsExitInfo = document.querySelectorAll('.js-button-exit-info');
+  
+    buttonsInfo.forEach((button) => button.addEventListener('click', showInfo));
+    buttonsExitInfo.forEach((button) =>
+      button.addEventListener('click', hideInfo)
+    );
+    buttonsAddMovie.forEach((button) =>
+      button.addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        setLoading(button);
+        const id =
+          button.parentNode.parentNode.querySelector('#js-movie-id').innerHTML;
+        const movie = await getMovie(id);
+        await addMovie(movie);
+        showMessageAdd(button);
+      })
+    );
+  
+    async function showInfo(event) {
       const id =
-        button.parentNode.parentNode.querySelector('#js-movie-id').innerHTML;
+        event.currentTarget.parentNode.parentNode.querySelector(
+          '#js-movie-id'
+        ).innerHTML;
+      showLoaderInfo(event);
+      const info =
+        event.currentTarget.parentNode.parentNode.querySelector('.js-info-movie');
       const movie = await getMovie(id);
-      await addMovie(movie);
-      showMessageAdd(button);
-    })
-  );
-
-  async function showInfo(event) {
-    const id =
-      event.currentTarget.parentNode.parentNode.querySelector(
-        '#js-movie-id'
-      ).innerHTML;
-    showLoaderInfo(event);
-    const info =
-      event.currentTarget.parentNode.parentNode.querySelector('.js-info-movie');
-    const movie = await getMovie(id);
-    info
-      .querySelector('.js-info-container')
-      .classList.remove('js-display-none');
-    info.querySelector('.js-movie-title').innerHTML = movie.name;
-    info.querySelector('.js-movie-director').innerHTML = movie.director;
-    info.querySelector('.js-movie-date').innerHTML = movie.releaseDate;
-    info.querySelector('.js-loader-info').classList.add('js-display-none');
-  }
-
-  function showLoaderInfo(event) {
-    const infoContainer = event.path[2].querySelector('.js-info-movie');
-    infoContainer.classList.remove('js-hide-info');
-    infoContainer.classList.add('js-show-info');
-  }
-
-  function hideInfo(event) {
-    const info = event.path[3].querySelector('.js-info-movie');
-    info.classList.remove('js-show-info');
-    info.classList.add('js-hide-info');
-  }
-
-  function setLoading(button) {
-    let textButton = button.querySelector('.js-button-add-movie-text');
-    textButton.innerHTML = 'Agregando';
-    button.parentNode.querySelector('.js-icon-plus').remove();
-    button.parentNode
-      .querySelector('.js-loader')
-      .classList.remove('js-display-none');
-    button.classList.add('js-no-hover');
-    button.disabled = true;
-  }
-
-  function showMessageAdd(event) {
-    const message = event.parentNode.querySelector('.js-msg-add');
-    event.classList.add('js-display-none');
-    message.classList.remove('js-display-none');
-  }
-
-  async function addMovie(movie) {
-    const response = await fetch('/my_movies', {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(movie),
-    });
-    // if movie was added
-    //   showMessageAdd
-    // else
-    //   showMessageerror
+      info
+        .querySelector('.js-info-container')
+        .classList.remove('js-display-none');
+      info.querySelector('.js-movie-title').innerHTML = movie.name;
+      info.querySelector('.js-movie-director').innerHTML = movie.director;
+      info.querySelector('.js-movie-date').innerHTML = movie.releaseDate;
+      info.querySelector('.js-loader-info').classList.add('js-display-none');
+    }
+  
+    function showLoaderInfo(event) {
+      const infoContainer = event.path[2].querySelector('.js-info-movie');
+      infoContainer.classList.remove('js-hide-info');
+      infoContainer.classList.add('js-show-info');
+    }
+  
+    function hideInfo(event) {
+      const info = event.path[3].querySelector('.js-info-movie');
+      info.classList.remove('js-show-info');
+      info.classList.add('js-hide-info');
+    }
+  
+    function setLoading(button) {
+      let textButton = button.querySelector('.js-button-add-movie-text');
+      textButton.innerHTML = 'Agregando';
+      button.parentNode.querySelector('.js-icon-plus').remove();
+      button.parentNode
+        .querySelector('.js-loader')
+        .classList.remove('js-display-none');
+      button.classList.add('js-no-hover');
+      button.disabled = true;
+    }
+  
+    function showMessageAdd(event) {
+      const message = event.parentNode.querySelector('.js-msg-add');
+      event.classList.add('js-display-none');
+      message.classList.remove('js-display-none');
+    }
+  
+    async function addMovie(movie) {
+      const response = await fetch('/my_movies', {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(movie),
+      });
+      // if movie was added
+      //   showMessageAdd
+      // else
+      //   showMessageerror
+    }
+  
   }
 }
 
