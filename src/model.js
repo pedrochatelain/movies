@@ -8,22 +8,23 @@ const pool = new Pool({
   port: process.env.PORT_DATABASE,
 })
 
-function addMovie(movie) {
+async function addMovie(movie) {
   try {
-    pool.query(
-     `INSERT INTO moviesv2(name, director, date, rating, image)
-      VALUES($1, $2, $3, $4, $5)`,
-      [movie.name, movie.director, movie.date, movie.rating, movie.image]
-    );
+    await pool.query(
+     `INSERT INTO moviesv2(id, name, director, date, rating, image)
+      VALUES($1, $2, $3, $4, $5, $6)`,
+      [movie.id, movie.name, movie.director, movie.date, movie.rating, movie.image]
+    )
   } catch (error) {
-    console.log(error)
+    // console.log(error)
+    throw error
   }
 }
 
 
-function setRating(rating, id) {
+async function setRating(rating, id) {
   try {
-    pool.query('UPDATE moviesv2 SET rating = $1 WHERE id = $2', [rating, id]);
+    await pool.query('UPDATE moviesv2 SET rating = $1 WHERE id = $2', [rating, id]);
   } catch (error) {
     console.log(error)
   }
@@ -44,9 +45,9 @@ async function getMovies() {
   return query.rows
 }
 
-function deleteMovie(id) {
+async function deleteMovie(id) {
   try {
-    pool.query('DELETE FROM moviesv2 WHERE id = $1', [id])
+    await pool.query('DELETE FROM moviesv2 WHERE id = $1', [id])
   } catch(error) {
     console.log(error)
   }

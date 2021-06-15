@@ -53,6 +53,7 @@ async function getMovie(req, res) {
     name = movieInfo.original_title
   }
   const movie = {
+    'id': movieInfo.id,
     'name': name,
     'director': director,
     'releaseDate': movieInfo.release_date,
