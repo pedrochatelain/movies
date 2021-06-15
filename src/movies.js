@@ -46,7 +46,6 @@ async function getMovie(req, res) {
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`;
   const response = await fetch(url);
   const movieInfo = await response.json();
-  console.log(movieInfo)
   formatDate(movieInfo);
   const director = await getDirector(id);
   const movie = {

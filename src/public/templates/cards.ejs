@@ -6,7 +6,7 @@
       <% if (movies[i].poster_path) { %>
         <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card-add-movie__img js-card-image" alt="movie image">
       <% } else { %>
-        <img src="img/no_image.png" class="card_image" alt="los increibles">
+        <img src="img/no_image.png" class="card-add-movie__img" alt="los increibles">
       <% } %>
       <button class="button-add-movie js-button-add-movie">
         <p class="button-add-movie__text js-button-add-movie-text">Agregar</p>

@@ -177,15 +177,14 @@ function init() {
     });
 
     buttonSearch.addEventListener('click', () => {
-      // if (!isInputEmpty()) {
-        console.log('rr')
+      if (!isInputEmpty()) {
         search();
         helperSearchMovie.classList.add(
           'js-opacity-transition',
           'js-opacity-0',
           'js-display-none'
         );
-      // }
+      }
     });
 
     inputSearch.addEventListener('keypress', (event) => {
