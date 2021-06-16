@@ -1104,7 +1104,7 @@ input:focus::placeholder {
   body {
     font-family: Ubuntu;
     display: grid;
-    height: 100vh;
+    height: 90vh;
   }
 
   .home {
