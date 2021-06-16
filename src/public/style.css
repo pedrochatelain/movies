@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
 body {
   margin: 0;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 button {
@@ -13,13 +13,15 @@ button {
   grid-template-columns: 1fr 1fr;
 }
 
-.home, .home_info, .text_info_home {
+.home,
+.home_info,
+.text_info_home {
   display: grid;
 }
 
 .home_info {
   background-color: #246877;
-  box-shadow: .3vw 0 1vw rgba(36, 104, 119, .4);
+  box-shadow: 0.3vw 0 1vw rgba(36, 104, 119, 0.4);
   grid-template-columns: 1fr;
   align-content: center;
 }
@@ -36,7 +38,7 @@ button {
 
 .home_info p {
   font-size: 1.5vw;
-  color: #F8F8F8;
+  color: #f8f8f8;
   margin: 0;
   margin-bottom: 1.5em;
 }
@@ -48,7 +50,9 @@ button {
   grid-template-rows: repeat(2, max-content);
 }
 
-.button_mis_peliculas, .button_agregar_pelicula, .home_info p {
+.button_mis_peliculas,
+.button_agregar_pelicula,
+.home_info p {
   font-family: Ubuntu;
   font-weight: 500;
   display: flex;
@@ -78,7 +82,7 @@ button {
 }
 
 .button_mis_peliculas {
-  background: #F8F8F8;
+  background: #f8f8f8;
   color: #246877;
   margin-bottom: 3em;
 }
@@ -95,7 +99,7 @@ button {
   outline: none;
   border: none;
   background: #246877;
-  border-radius: .6vw;
+  border-radius: 0.6vw;
   z-index: 1;
   margin-bottom: 1vw;
 }
@@ -110,10 +114,10 @@ button {
   font-weight: 300;
   align-self: center;
   text-align: center;
-  color: #F8F8F8;
+  color: #f8f8f8;
   width: fit-content;
   margin-left: 1.8vw;
-  margin-bottom: .2vw;
+  margin-bottom: 0.2vw;
 }
 
 .lupa_button_search {
@@ -127,16 +131,17 @@ button {
 
 .button_agregar_pelicula {
   background: #246877;
-  color: #F8F8F8;
+  color: #f8f8f8;
 }
 
-.button_mis_peliculas, .button_agregar_pelicula {
+.button_mis_peliculas,
+.button_agregar_pelicula {
   border: none;
   text-decoration: none;
   width: 22vw;
   height: 6.5vw;
-  box-shadow: .3vw .3vw .5vw rgba(167, 167, 167, 0.25);
-  border-radius: .8vw;
+  box-shadow: 0.3vw 0.3vw 0.5vw rgba(167, 167, 167, 0.25);
+  border-radius: 0.8vw;
   padding: 0;
   justify-content: center;
   font-size: 1.9vw;
@@ -149,11 +154,13 @@ button {
   grid-template-rows: 1fr;
   width: 100%;
   height: 15vh;
-  background: #F8F8F8;
-  box-shadow: 0 .1vw .3vw rgba(167, 167, 167, 0.25);
+  background: #f8f8f8;
+  box-shadow: 0 0.1vw 0.3vw rgba(167, 167, 167, 0.25);
 }
 
-.add_movie_link, .mis_peliculas_link, .movies_nav img {
+.add_movie_link,
+.mis_peliculas_link,
+.movies_nav img {
   grid-row: 1 / -1;
   align-self: center;
 }
@@ -175,22 +182,25 @@ button {
   justify-content: center;
 }
 
-.dot_add_movie, .dot_my_movies {
+.dot_add_movie,
+.dot_my_movies {
   justify-self: center;
   margin-top: 4.5vw;
   grid-row: 2 / -1;
   grid-column: 1 / -1;
-  width: .7vw;
-  height: .7vw;
+  width: 0.7vw;
+  height: 0.7vw;
 }
 
-.add_movie_link p, .mis_peliculas_link p {
+.add_movie_link p,
+.mis_peliculas_link p {
   margin: 0;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
 }
 
-.add_movie_link, .mis_peliculas_link {
+.add_movie_link,
+.mis_peliculas_link {
   grid-column: 2 / -1;
   justify-self: right;
   font-family: Ubuntu;
@@ -220,17 +230,19 @@ button {
 
 .search_input {
   align-self: center;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border: 0;
   outline: none;
   caret-color: #246877;
   color: #246877;
   padding-bottom: 1vw;
-  border-bottom: .2vw solid #246877;
+  border-bottom: 0.2vw solid #246877;
   width: 100%;
 }
 
-::placeholder, .search_input, .helper p {
+::placeholder,
+.search_input,
+.helper p {
   font-family: Ubuntu;
   font-style: normal;
   font-weight: 500;
@@ -251,7 +263,8 @@ button {
   grid-template-rows: 1.2fr 1fr;
 }
 
-.arrow_search, .helper p {
+.arrow_search,
+.helper p {
   justify-self: center;
 }
 
@@ -263,14 +276,15 @@ button {
 }
 
 ::placeholder {
-  color: #E5E5E5;
+  color: #e5e5e5;
 }
 
 input:focus::placeholder {
   color: transparent;
 }
 
-.lupa, .search_input {
+.lupa,
+.search_input {
   grid-row: 1 / -1;
   grid-column: 1 / -1;
 }
@@ -297,7 +311,7 @@ input:focus::placeholder {
 
 .js-opacity-transition {
   transition-property: opacity;
-  transition-duration: .4s;
+  transition-duration: 0.4s;
 }
 
 .my_stars img {
@@ -308,7 +322,8 @@ input:focus::placeholder {
   z-index: -1;
 }
 
-.movie_success_message, .msg_deleted {
+.movie_success_message,
+.msg_deleted {
   display: grid;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
@@ -327,7 +342,8 @@ input:focus::placeholder {
   margin-top: 10%;
 }
 
-.movie_success_message p, .msg_deleted p {
+.movie_success_message p,
+.msg_deleted p {
   margin: 0;
   font-family: Ubuntu;
   font-style: normal;
@@ -336,7 +352,7 @@ input:focus::placeholder {
   text-align: center;
   letter-spacing: 0.05em;
   width: 20vw;
-  color: #F8F8F8;
+  color: #f8f8f8;
   justify-self: center;
   height: fit-content;
 }
@@ -385,7 +401,7 @@ input:focus::placeholder {
   grid-template-columns: min-content 1fr;
   width: 55vw;
   height: 22vw;
-  box-shadow: .1vw .1vw .5vw .1vw rgba(167, 167, 167, 0.25);
+  box-shadow: 0.1vw 0.1vw 0.5vw 0.1vw rgba(167, 167, 167, 0.25);
   border-radius: 1vw;
   overflow: hidden;
   justify-self: center;
@@ -395,7 +411,7 @@ input:focus::placeholder {
 .card_image {
   width: 18vw;
   height: inherit;
-  border-radius: .5vw 0 0 .5vw;
+  border-radius: 0.5vw 0 0 0.5vw;
   z-index: 1;
 }
 
@@ -403,7 +419,7 @@ input:focus::placeholder {
   display: grid;
   grid-column: 2 / -1;
   grid-row: 1 / -1;
-  border-radius: 0 .5vh .5vw 0;
+  border-radius: 0 0.5vh 0.5vw 0;
   grid-template-rows: 1fr 2fr;
 }
 
@@ -417,26 +433,34 @@ input:focus::placeholder {
   grid-column: 1 / -1;
 }
 
-.button_calificar, .button_add_movie {
+.button_calificar,
+.button_add_movie {
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   align-self: flex-end;
   margin-bottom: 2vw;
 }
 
-.titulo, .director, .fecha {
+.titulo,
+.director,
+.fecha {
   font-weight: 300;
   margin: 0;
   font-size: 1.1vw;
 }
 
-.titulo_value, .director_value, .fecha_value {
+.titulo_value,
+.director_value,
+.fecha_value {
   font-weight: 500;
   margin: 0;
   font-size: 1.5vw;
 }
 
-.titulo_and_value, .director_and_value, .fecha_and_value, .calificacion_and_value {
+.titulo_and_value,
+.director_and_value,
+.fecha_and_value,
+.calificacion_and_value {
   align-self: center;
   font-family: Ubuntu;
   font-style: normal;
@@ -444,7 +468,9 @@ input:focus::placeholder {
   color: #246877;
 }
 
-.titulo_and_value, .director_and_value, .fecha_and_value {
+.titulo_and_value,
+.director_and_value,
+.fecha_and_value {
   margin-bottom: 6%;
 }
 
@@ -452,14 +478,16 @@ input:focus::placeholder {
   margin: 0;
 }
 
-.icon_delete_card, .arrow_left, .icon_edit {
+.icon_delete_card,
+.arrow_left,
+.icon_edit {
   cursor: pointer;
   width: 1.3vw;
 }
 
 .js-thin-container {
   animation-name: thin_container;
-  animation-duration: .6s;
+  animation-duration: 0.6s;
   animation-fill-mode: forwards;
 }
 
@@ -494,7 +522,9 @@ input:focus::placeholder {
   opacity: 0.8;
 }
 
-.image_empty_cinema, .button_buscar_peliculas, .message_no_cards {
+.image_empty_cinema,
+.button_buscar_peliculas,
+.message_no_cards {
   grid-row: 1 / -1;
 }
 
@@ -506,14 +536,14 @@ input:focus::placeholder {
   height: 5vw;
   width: 18vw;
   background: #246877;
-  border-radius: .7vw;
+  border-radius: 0.7vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: 500;
   font-size: 1.65vw;
   text-align: center;
   letter-spacing: 0.05em;
-  color: #F8F8F8;
+  color: #f8f8f8;
   outline: none;
   text-decoration: none;
   border: none;
@@ -539,7 +569,8 @@ input:focus::placeholder {
   color: #246877;
 }
 
-.button_buscar_peliculas, .message_no_cards {
+.button_buscar_peliculas,
+.message_no_cards {
   grid-column: 2 / -1;
 }
 
@@ -554,7 +585,8 @@ input:focus::placeholder {
   }
 }
 
-.icon_delete_card, .arrow_left {
+.icon_delete_card,
+.arrow_left {
   margin-top: 3vh;
   margin-right: 1.5vw;
 }
@@ -570,7 +602,7 @@ input:focus::placeholder {
 
 .js-translate-left {
   animation-name: translate_left;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -600,12 +632,13 @@ input:focus::placeholder {
   grid-template-rows: repeat(5, min-content);
 }
 
-.container_borrar, .container_puntuar {
+.container_borrar,
+.container_puntuar {
   display: grid;
   grid-row: 1 / -1;
   grid-column: 2 / -1;
   transform: translateX(-100%);
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .info_borrar {
@@ -616,36 +649,36 @@ input:focus::placeholder {
 
 .change_background_color {
   animation-name: change_background;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  animation-delay: .3s;
+  animation-delay: 0.3s;
 }
 
 @keyframes change_background {
   from {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
   }
   to {
-    background-color: #7FC379;
+    background-color: #7fc379;
   }
 }
 
 @keyframes background_red {
   from {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
   }
   to {
-    background-color: #F02323;
+    background-color: #f02323;
   }
 }
 
 .js-background-red {
-  animation: show_container .5s forwards, background_red .5s .3s forwards;
+  animation: show_container 0.5s forwards, background_red 0.5s 0.3s forwards;
 }
 
 .js-show-container {
   animation-name: show_container;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -658,9 +691,13 @@ input:focus::placeholder {
   }
 }
 
-.button_cancelar, .button_enviar, .button_add_movie, .button_calificar, .button_borrar {
-  box-shadow: .1vw .1vw .1vw .1vw rgba(167, 167, 167, 0.25);
-  border-radius: .5vw;
+.button_cancelar,
+.button_enviar,
+.button_add_movie,
+.button_calificar,
+.button_borrar {
+  box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw rgba(167, 167, 167, 0.25);
+  border-radius: 0.5vw;
   font-family: Ubuntu;
   font-style: normal;
   font-weight: 500;
@@ -672,28 +709,34 @@ input:focus::placeholder {
   height: 3.3vw;
 }
 
-.button_cancelar, .button_enviar, .button_calificar, .button_borrar {
+.button_cancelar,
+.button_enviar,
+.button_calificar,
+.button_borrar {
   width: 8vw;
 }
 
-.button_add_movie, .button_calificar {
+.button_add_movie,
+.button_calificar {
   margin-left: 10%;
 }
 
 .button_cancelar {
-  background: #F8F8F8;
+  background: #f8f8f8;
   color: #246877;
   margin-right: 4vw;
 }
 
 .button_borrar {
-  background: #F02323;
-  color: #F8F8F8;
+  background: #f02323;
+  color: #f8f8f8;
 }
 
-.button_enviar, .button_calificar, .button_add_movie {
+.button_enviar,
+.button_calificar,
+.button_add_movie {
   background: #246877;
-  color: #F8F8F8;
+  color: #f8f8f8;
 }
 
 .info_card_con_puntaje {
@@ -721,7 +764,9 @@ input:focus::placeholder {
   cursor: pointer;
 }
 
-.container_puntuar h1, .container_borrar h1, .container_puntuar p {
+.container_puntuar h1,
+.container_borrar h1,
+.container_puntuar p {
   font-family: Ubuntu;
   font-style: normal;
   text-align: center;
@@ -736,7 +781,8 @@ input:focus::placeholder {
   width: 80%;
 }
 
-.container_puntuar h1, .container_borrar h1 {
+.container_puntuar h1,
+.container_borrar h1 {
   font-weight: 500;
   font-size: 1.9vw;
 }
@@ -766,14 +812,14 @@ input:focus::placeholder {
 }
 
 .lds-dual-ring:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 2vw;
   height: 2vw;
   margin-left: 2vw;
-  margin-top: .2vw;
+  margin-top: 0.2vw;
   border-radius: 50%;
-  border: .4vw solid #246877;
+  border: 0.4vw solid #246877;
   border-color: #246877 transparent #246877 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
@@ -967,7 +1013,7 @@ input:focus::placeholder {
   font-family: Ubuntu;
   color: #246877;
   margin: 0;
-  margin-bottom: .3vw;
+  margin-bottom: 0.3vw;
 }
 
 .msg-add__icon {
@@ -977,13 +1023,13 @@ input:focus::placeholder {
 
 .js-show-info {
   animation-name: show-info;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
 .js-hide-info {
   animation-name: hide-info;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
@@ -1011,8 +1057,9 @@ input:focus::placeholder {
 
 /* loader */
 
-.loader:after, .loader-info:after {
-  content: " ";
+.loader:after,
+.loader-info:after {
+  content: ' ';
   display: block;
   border-radius: 50%;
   animation: loader 1.2s linear infinite;
@@ -1022,7 +1069,7 @@ input:focus::placeholder {
   margin-left: 1vw;
   width: 1vw;
   height: 1vw;
-  border: .15vw solid #f8f8f8;
+  border: 0.15vw solid #f8f8f8;
   border-color: #f8f8f8 transparent #f8f8f8 transparent;
 }
 
@@ -1034,7 +1081,7 @@ input:focus::placeholder {
 .loader-info:after {
   width: 6vw;
   height: 6vw;
-  border: .5vw solid #246877;
+  border: 0.5vw solid #246877;
   border-color: #246877 transparent #246877 transparent;
 }
 
@@ -1045,4 +1092,79 @@ input:focus::placeholder {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.home-smartphone {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  /* Home */
+
+  body {
+    font-family: Ubuntu;
+    display: grid;
+    height: 100vh;
+  }
+
+  .home {
+    display: none;
+  }
+
+  .home-smartphone {
+    display: grid;
+    align-self: center;
+  }
+
+  .icon-website-smartphone {
+    justify-self: center;
+    width: 60vw;
+  }
+
+  .info-home-smartphone p {
+    font-size: 5vw;
+    font-weight: 500;
+    color: #246877;
+    text-align: center;
+  }
+
+  .info-home-smartphone {
+    margin-top: 10vw;
+    width: fit-content;
+    justify-self: center;
+  }
+
+  .dot-home-smartphone {
+    width: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .search-button-home-smartphone {
+    margin-top: 20vw;
+    margin-bottom: 10vw;
+    background-color: #246877;
+    color: #f8f8f8;
+    border: none;
+  }
+  
+  .my-movies-button-home-smartphone {
+    background-color: #f8f8f8;
+    color: #246877;
+    border: .3vw solid #246877;
+  }
+
+  .my-movies-button-home-smartphone, .search-button-home-smartphone {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-radius: 3vw;
+    justify-self: center;
+    width: 60vw;
+    height: 17vw;
+    outline: none;
+    text-decoration: none;
+    font-size: 5vw;
+    font-weight: 500;
+  }
+
 }
