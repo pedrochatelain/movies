@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="add_movie_container">
+  <div class="add-movie-container">
 
     <%- include('partials/nav.ejs') %>
 
@@ -34,11 +34,41 @@
         <img src="img/arrow_search.svg" class="arrow_search" alt="arrow search">
         <p>Clickea el buscador para empezar a escribir</p>
       </div>
-      <div class="js-cards-add-movies cards_add_movies">
+      <div class="js-cards-add-movies cards-add-movies">
 
       </div>
 
   </div>
+
+  <div class="add-movies-page-mobile js-display-none">
+    <div class="helper-mobile js-helper-mobile">
+      <p class="text-helper-mobile">Toca el buscador para empezar a escribir</p>
+      <img src="img/arrow-helper-mobile.svg" class="arrow-helper-mobile" alt="arrow helper mobile">
+    </div>
+    <input type="text" class="buscador-mobile js-search-input-mobile">
+    <button class="button-search-mobile js-btn-search-mobile js-display-none">
+      <p class="text-btn-search-mobile">Buscar</p>
+    </button>
+    <nav class="nav-mobile">
+      <a href="/" class="home-icon-container">
+        <img src="img/home_icon_mobile.svg" class="icon-home" alt="home icon">
+        <p class="home-icon-text">Home</p>
+      </a>
+      <a href="/my_movies" class="my-movies-icon-container">
+        <img src="img/my_movies_icon.svg" class="icon-my-movies" alt="my movies icon">
+        <p class="my-movies-icon-text">Mis películas</p>
+      </a>
+      <a href="/add_movies" class="search-icon-container">
+        <img src="img/search_icon.svg" class="icon-search" alt="search icon">
+        <p class="search-icon-text">Buscar</p>
+      </a>
+    </nav>
+    <div class="loader js-loader-mobile js-display-none">
+      <p>Buscando</p>
+      <div class="loader-icon lds-dual-ring"></div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
   <script src="js/ejs.min.js"></script>
 </body>

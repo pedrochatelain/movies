@@ -18,9 +18,11 @@ function init() {
   const dotAddMovies = document.querySelector('.js-dot-add-movie');
   const lupa = document.querySelector('.js-lupa');
   const buttonSearch = document.querySelector('.js-button-search');
+  const buttonSearchMobile = document.querySelector('.js-btn-search-mobile')
   const loader = document.querySelector('.js-loader');
   const messageNoResults = document.querySelector('.js-no-results-msg');
   const buttonsRate = document.querySelectorAll('.js-button-rate');
+  const inputSearchMobile = document.querySelector('.js-search-input-mobile')
 
   if (window.location.pathname === '/my_movies') {
     checkCards();
@@ -164,6 +166,45 @@ function init() {
   if (window.location.pathname === '/add_movies') {
     dotAddMovies.classList.remove('js-display-none');
 
+    inputSearchMobile.addEventListener('focus', hideHelperMobile)    
+
+    inputSearchMobile.addEventListener('keyup', () => {
+      if (isInputEmpty(inputSearchMobile)) {
+        buttonSearchMobile.classList.add('js-display-none');
+      } else {
+        buttonSearchMobile.classList.remove('js-display-none');
+      }
+    })
+
+    function hideHelperMobile() {
+      const helper = document.querySelector('.js-helper-mobile');
+      helper.classList.add('js-opacity-transition', 'js-opacity-0');
+    }
+
+    buttonSearchMobile.addEventListener('click', async (event) => {
+      inputSearchMobile.classList.add('js-display-none');
+      buttonSearchMobile.classList.add('js-display-none');
+      showLoadingMobile()
+      removeHelper()
+      const nameMovie = event.currentTarget.parentNode.querySelector('.js-search-input-mobile').value;
+      const movies = await getMovies(nameMovie)
+      await showMovies(movies)
+      initCards();
+      hideLoadingMobile()
+    })
+
+    function removeHelper() {
+      document.querySelector('.js-helper-mobile').classList.add('js-display-none')
+    }
+
+    function showLoadingMobile() {
+      document.querySelector('.js-loader-mobile').classList.remove('js-display-none');
+    }
+
+    function hideLoadingMobile() {
+      document.querySelector('.js-loader-mobile').classList.add('js-display-none');
+    }
+
     inputSearch.addEventListener('focus', () => {
       lupa.classList.add('js-display-none');
       helperSearchMovie.classList.add('js-opacity-transition', 'js-opacity-0');
@@ -177,7 +218,7 @@ function init() {
     });
 
     buttonSearch.addEventListener('click', () => {
-      if (!isInputEmpty()) {
+      if (!isInputEmpty(inputSearch)) {
         search();
         helperSearchMovie.classList.add(
           'js-opacity-transition',
@@ -188,7 +229,7 @@ function init() {
     });
 
     inputSearch.addEventListener('keypress', (event) => {
-      if (event.key === 'Enter' && !isInputEmpty()) {
+      if (event.key === 'Enter' && !isInputEmpty(inputSearch)) {
         search();
       }
     });
@@ -211,8 +252,8 @@ function init() {
     );
   }
 
-  function isInputEmpty() {
-    return !inputSearch.value.trim().length;
+  function isInputEmpty(input) {
+    return !input.value.trim().length;
   }
 
   async function search() {

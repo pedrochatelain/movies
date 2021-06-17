@@ -177,7 +177,7 @@ button {
   margin-right: 4vw;
 }
 
-.cards_add_movies {
+.cards-add-movies {
   display: grid;
   justify-content: center;
 }
@@ -215,7 +215,7 @@ button {
   text-decoration: none;
 }
 
-.add_movie_container {
+.add-movie-container {
   display: grid;
 }
 
@@ -1094,7 +1094,7 @@ input:focus::placeholder {
   }
 }
 
-.home-smartphone {
+.home-mobile {
   display: none;
 }
 
@@ -1105,55 +1105,57 @@ input:focus::placeholder {
     font-family: Ubuntu;
     display: grid;
     height: 90vh;
+    width: 100vw;
   }
 
   .home {
     display: none;
   }
 
-  .home-smartphone {
+  .home-mobile {
     display: grid;
     align-self: center;
   }
 
-  .icon-website-smartphone {
+  .icon-website-mobile {
     justify-self: center;
     width: 60vw;
   }
 
-  .info-home-smartphone p {
+  .info-home-mobile p {
     font-size: 5vw;
     font-weight: 500;
     color: #246877;
     text-align: center;
   }
 
-  .info-home-smartphone {
+  .info-home-mobile {
     margin-top: 10vw;
     width: fit-content;
     justify-self: center;
   }
 
-  .dot-home-smartphone {
+  .dot-home-mobile {
     width: 1vw;
     margin-bottom: 1vw;
   }
 
-  .search-button-home-smartphone {
+  .search-button-home-mobile {
     margin-top: 20vw;
     margin-bottom: 10vw;
     background-color: #246877;
     color: #f8f8f8;
     border: none;
   }
-  
-  .my-movies-button-home-smartphone {
+
+  .my-movies-button-home-mobile {
     background-color: #f8f8f8;
     color: #246877;
-    border: .3vw solid #246877;
+    border: 0.3vw solid #246877;
   }
 
-  .my-movies-button-home-smartphone, .search-button-home-smartphone {
+  .my-movies-button-home-mobile,
+  .search-button-home-mobile {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -1165,6 +1167,199 @@ input:focus::placeholder {
     text-decoration: none;
     font-size: 5vw;
     font-weight: 500;
+  }
+
+  /* Add movie page */
+  .buscador,
+  .helper,
+  .movies_nav {
+    display: none;
+  }
+
+  .add-movie-container {
+    overflow: scroll;
+    height: fit-content;
+  }
+
+  .card-add-movie__x-icon {
+    width: 6vw;
+    margin-top: 4vw;
+    margin-right: 4vw;
+  }
+
+  .cards-add-movies {
+    display: flex;
+  }
+
+  .card-add-movie {
+    height: 120vw;
+    width: 75vw;
+    margin-left: 4vw;
+    margin-top: 4vw;
+  }
+
+  .button-add-movie {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    height: 10vw;
+    width: 50%;
+    align-self: flex-start;
+    margin-top: 4vw;
+  }
+
+  .button-add-movie__text {
+    font-size: 5vw;
+    margin-right: 2vw;
+    margin-bottom: 1vw;
+  }
+
+  .button-add-movie__icon {
+    width: 4vw;
+  }
+
+  .card-add-movie__img {
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    filter: none;
+  }
+
+  .card-add-movie__info {
+    width: inherit;
+    height: inherit;
+  }
+
+  .add-movies-page-mobile {
+    display: grid !important;
+    grid-template-rows: min-content min-content min-content 1fr;
+  }
+
+  .nav-mobile {
+    display: flex;
+    position: sticky;
+    grid-row-end: -1;
+    height: 30vw;
+    width: 100vw;
+    background-color: #246877;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-icon-container,
+  .my-movies-icon-container,
+  .search-icon-container {
+    display: grid;
+    width: 28vw;
+    height: 18vw;
+    text-decoration: none;
+  }
+
+  .home-icon-text,
+  .my-movies-icon-text,
+  .search-icon-text {
+    font-size: 4vw;
+    color: #e5e5e5;
+    margin: 0;
+    margin-top: 2vw;
+    justify-self: center;
+  }
+
+  .icon-home,
+  .icon-my-movies,
+  .icon-search {
+    justify-self: center;
+    width: 8vw;
+  }
+
+  .my-movies-icon-container {
+    margin-right: 4vw;
+    margin-left: 4vw;
+  }
+
+  .card-add-movie__front {
+    height: inherit;
+    width: inherit;
+  }
+
+  .buscador-mobile {
+    height: 9vw;
+    border: 0.8vw solid #246877;
+    outline: none;
+    font-size: 6vw;
+    color: #246877;
+    width: 70vw;
+    justify-self: center;
+    background-color: transparent;
+  }
+
+  .helper-mobile {
+    margin-top: 15vw;
+    display: grid;
+    height: fit-content;
+  }
+
+  .text-helper-mobile {
+    color: #246877;
+    text-align: center;
+    justify-self: center;
+    font-size: 7vw;
+    width: 80vw;
+    margin: 0;
+  }
+
+  .arrow-helper-mobile {
+    width: 7vw;
+    justify-self: center;
+    margin-top: 4vw;
+    margin-bottom: 10vw;
+  }
+
+  .button-search-mobile {
+    margin-top: 10vw;
+    justify-self: center;
+    width: 40vw;
+    height: 15vw;
+    font-size: 5vw;
+    border: none;
+    background-color: #246877;
+    border-radius: 3vw;
+  }
+
+  .text-btn-search-mobile {
+    margin: 0;
+    color: #e5e5e5;
+  }
+
+  .loader p {
+    font-size: 8vw;
+    margin-top: 3vw;
+    margin-right: 2vw;
+  }
+
+  .lds-dual-ring:after {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .card-add-movie__fecha,
+  .card-add-movie__director,
+  .card-add-movie__titulo,
+  .card-add-movie__titulo-value,
+  .card-add-movie__fecha-value,
+  .card-add-movie__director-value {
+    font-size: 6vw;
+    margin-left: 6vw;
+  }
+
+  .card-add-movie__titulo {
+    margin-top: 30%;
+  }
+
+  .card-add-movie__info-icon {
+    width: 10vw;
+    margin-top: 4vw;
+    margin-right: 4vw;
   }
 
 }
