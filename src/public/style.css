@@ -1237,7 +1237,6 @@ input:focus::placeholder {
 
   .nav-mobile {
     display: flex;
-    position: sticky;
     grid-row-end: -1;
     height: 30vw;
     width: 100vw;
