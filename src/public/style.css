@@ -1207,9 +1207,9 @@ input:focus::placeholder {
   }
 
   .card-add-movie {
-    height: 68vh;
+    height: 65vh;
     width: 72vw;
-    margin-left: 5vw;
+    margin-left: 7vw;
     align-self: center;
     justify-self: center;
   }
