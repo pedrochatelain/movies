@@ -3,6 +3,7 @@ body {
   margin: 0;
   background-color: #f8f8f8;
   height: 100%;
+  display: grid;
 }
 
 html {
@@ -1184,6 +1185,10 @@ input:focus::placeholder {
     height: fit-content;
   }
 
+  .add-movie-container::-webkit-scrollbar {
+    display: none;
+  }
+
   .card-add-movie__x-icon {
     width: 6vw;
     margin-top: 4vw;
@@ -1233,15 +1238,13 @@ input:focus::placeholder {
   }
 
   .add-movies-page-mobile {
-    /* display: grid !important; */
     display: block !important;
-    height: inherit;
-    grid-template-rows: repeat(5, max-content);
+    height: fit-content;
     position: relative;
   }
 
   .nav-mobile {
-    display: flex;
+    display: flex !important;
     position: absolute;
     bottom: 0;
     height: 20vh;
@@ -1288,7 +1291,7 @@ input:focus::placeholder {
   }
 
   .buscador-mobile {
-    display: block;
+    display: block !important;
     height: 9vw;
     border: 0.8vw solid #246877;
     outline: none;
@@ -1300,8 +1303,9 @@ input:focus::placeholder {
   }
 
   .helper-mobile {
-    display: grid;
+    display: grid !important;
     height: fit-content;
+    /* margin-top: 10vw; */
   }
 
   .text-helper-mobile {
@@ -1311,6 +1315,8 @@ input:focus::placeholder {
     font-size: 7vw;
     width: 80vw;
     margin: 0;
+    margin-top: 10vw;
+
   }
 
   .arrow-helper-mobile {
@@ -1331,6 +1337,10 @@ input:focus::placeholder {
     border: none;
     background-color: #246877;
     border-radius: 3vw;
+  }
+
+  .cards-add-movies {
+    /* display: none !important; */
   }
 
   .text-btn-search-mobile {

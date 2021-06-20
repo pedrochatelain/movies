@@ -24,6 +24,7 @@ function init() {
   const buttonsRate = document.querySelectorAll('.js-button-rate');
   const inputSearchMobile = document.querySelector('.js-search-input-mobile')
 
+  // Hide navigation bar when window resizes (mostly because of mobile keyboard)
   window.addEventListener('resize', () => {
     document.querySelector('.js-nav-mobile').classList.toggle('js-display-none');
   })
@@ -186,7 +187,6 @@ function init() {
     }
 
     buttonSearchMobile.addEventListener('click', async (event) => {
-      inputSearchMobile.classList.add('js-display-none');
       buttonSearchMobile.classList.add('js-display-none');
       showLoadingMobile()
       removeHelper()
@@ -195,6 +195,7 @@ function init() {
       await showMovies(movies)
       initCards();
       hideLoadingMobile()
+      inputSearchMobile.remove();
     })
 
     function removeHelper() {
