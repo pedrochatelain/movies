@@ -1234,15 +1234,15 @@ input:focus::placeholder {
 
   .add-movies-page-mobile {
     /* display: grid !important; */
-    display: block !important;
+    display: grid !important;
     height: 100vh;
-    grid-template-rows: repeat(5, max-content);
+    /* grid-template-rows: repeat(5, max-content); */
   }
 
   .nav-mobile {
-    display: block;
+    display: flex;
     /* position: absolute; */
-    margin-top: 50vw;
+    align-self: flex-end;
     bottom: 0;
     height: 30vw;
     width: 100vw;
