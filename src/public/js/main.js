@@ -24,6 +24,10 @@ function init() {
   const buttonsRate = document.querySelectorAll('.js-button-rate');
   const inputSearchMobile = document.querySelector('.js-search-input-mobile')
 
+  window.addEventListener('resize', () => {
+    document.querySelector('.js-nav-mobile').classList.toggle('js-display-none');
+  })
+
   if (window.location.pathname === '/my_movies') {
     checkCards();
 
