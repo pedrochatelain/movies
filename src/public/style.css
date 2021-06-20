@@ -1241,7 +1241,7 @@ input:focus::placeholder {
   }
 
   .nav-mobile {
-    display: flex;
+    display: block;
     position: absolute;
     bottom: 0;
     height: 30vw;
