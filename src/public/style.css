@@ -5,6 +5,10 @@ body {
   height: 100vh;
 }
 
+html {
+  height: 100vh;
+}
+
 button {
   cursor: pointer;
 }
@@ -1237,7 +1241,7 @@ input:focus::placeholder {
   }
 
   .nav-mobile {
-    display: block;
+    display: flex;
     position: absolute;
     bottom: 0;
     height: 20vh;
