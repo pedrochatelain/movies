@@ -2,6 +2,11 @@
 body {
   margin: 0;
   background-color: #f8f8f8;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 button {
@@ -1103,10 +1108,8 @@ input:focus::placeholder {
 
   html, body {
     font-family: Ubuntu;
-    display: grid;
     height: 100%;
     width: 100vw;
-    position: relative;
   }
 
   .home {
@@ -1231,19 +1234,20 @@ input:focus::placeholder {
   }
 
   .add-movies-page-mobile {
-    display: grid !important;
-    grid-template-rows: min-content min-content min-content 1fr;
+    /* display: grid !important; */
+    display: block !important;
+    height: 100vh;
+    grid-template-rows: repeat(5, max-content);
   }
 
   .nav-mobile {
     display: flex;
     position: absolute;
     bottom: 0;
-    grid-row-end: -1;
     height: 30vw;
     width: 100vw;
     background-color: #246877;
-    align-self: flex-end;
+    /* align-self: flex-end; */
     align-items: center;
     justify-content: center;
   }
@@ -1285,14 +1289,15 @@ input:focus::placeholder {
   }
 
   .buscador-mobile {
+    display: block;
     height: 9vw;
     border: 0.8vw solid #246877;
     outline: none;
     font-size: 6vw;
     color: #246877;
     width: 70vw;
-    justify-self: center;
     background-color: transparent;
+    margin: auto;
   }
 
   .helper-mobile {
@@ -1318,6 +1323,8 @@ input:focus::placeholder {
   }
 
   .button-search-mobile {
+    display: block;
+    margin: auto;
     margin-top: 10vw;
     justify-self: center;
     width: 40vw;
