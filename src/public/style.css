@@ -1242,7 +1242,7 @@ input:focus::placeholder {
 
   .nav-mobile {
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height: 30vw;
     width: 100vw;
