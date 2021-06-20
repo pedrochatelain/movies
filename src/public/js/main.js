@@ -26,6 +26,7 @@ function init() {
 
   // Hide navigation bar when window resizes (mostly because of mobile keyboard)
   window.addEventListener('resize', () => {
+    console.log(document.querySelector('.js-nav-mobile'))
     document.querySelector('.js-nav-mobile').classList.toggle('js-display-none');
   })
 
@@ -189,18 +190,14 @@ function init() {
     buttonSearchMobile.addEventListener('click', async (event) => {
       buttonSearchMobile.classList.add('js-display-none');
       showLoadingMobile()
-      removeHelper()
       const nameMovie = event.currentTarget.parentNode.querySelector('.js-search-input-mobile').value;
+      inputSearchMobile.remove();
       const movies = await getMovies(nameMovie)
       await showMovies(movies)
       initCards();
       hideLoadingMobile()
-      inputSearchMobile.remove();
+      document.querySelector('.js-helper-mobile').remove()
     })
-
-    function removeHelper() {
-      document.querySelector('.js-helper-mobile').classList.add('js-display-none')
-    }
 
     function showLoadingMobile() {
       document.querySelector('.js-loader-mobile').classList.remove('js-display-none');
@@ -217,9 +214,7 @@ function init() {
       helperSearchMovie.addEventListener('transitionstart', () => {
         buttonSearch.classList.remove('js-opacity-0');
       });
-      helperSearchMovie.addEventListener('transitionend', () => {
-        helperSearchMovie.classList.add('js-display-none');
-      });
+
     });
 
     buttonSearch.addEventListener('click', () => {

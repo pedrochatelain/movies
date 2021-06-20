@@ -25,6 +25,10 @@ button {
   display: grid;
 }
 
+.nav-mobile {
+  display: none;
+}
+
 .home_info {
   background-color: #246877;
   box-shadow: 0.3vw 0 1vw rgba(36, 104, 119, 0.4);
@@ -1182,7 +1186,8 @@ input:focus::placeholder {
 
   .add-movie-container {
     overflow: scroll;
-    height: fit-content;
+    height: calc(100% - 20vh);
+    grid-template-rows: 1fr;
   }
 
   .add-movie-container::-webkit-scrollbar {
@@ -1196,14 +1201,17 @@ input:focus::placeholder {
   }
 
   .cards-add-movies {
-    display: flex;
+    display: grid;
+    justify-self: center;
+    grid-auto-flow: column;
   }
 
   .card-add-movie {
-    height: 120vw;
-    width: 75vw;
-    margin-left: 6vw;
-    margin-top: 6vw;
+    height: 68vh;
+    width: 72vw;
+    margin-left: 5vw;
+    align-self: center;
+    justify-self: center;
   }
 
   .button-add-movie {
@@ -1244,7 +1252,7 @@ input:focus::placeholder {
   }
 
   .nav-mobile {
-    display: flex !important;
+    display: flex;
     position: absolute;
     bottom: 0;
     height: 20vh;
@@ -1293,19 +1301,23 @@ input:focus::placeholder {
   .buscador-mobile {
     display: block !important;
     height: 9vw;
+    grid-row-start: 1;
+    grid-column-start: 1;
     border: 0.8vw solid #246877;
     outline: none;
     font-size: 6vw;
     color: #246877;
     width: 70vw;
     background-color: transparent;
-    margin: auto;
+    align-self: center;
+    justify-self: center;
   }
 
   .helper-mobile {
     display: grid !important;
     height: fit-content;
-    /* margin-top: 10vw; */
+    grid-row-start: 1;
+    grid-column-start: 1;
   }
 
   .text-helper-mobile {
@@ -1328,8 +1340,10 @@ input:focus::placeholder {
 
   .button-search-mobile {
     display: block;
-    margin: auto;
-    margin-top: 10vw;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    align-self: center;
+    margin-top: 40vw;
     justify-self: center;
     width: 40vw;
     height: 15vw;
@@ -1337,10 +1351,6 @@ input:focus::placeholder {
     border: none;
     background-color: #246877;
     border-radius: 3vw;
-  }
-
-  .cards-add-movies {
-    /* display: none !important; */
   }
 
   .text-btn-search-mobile {
@@ -1377,6 +1387,13 @@ input:focus::placeholder {
     width: 10vw;
     margin-top: 4vw;
     margin-right: 4vw;
+  }
+
+  .loader {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    align-self: center;
+    justify-self: center;
   }
 
 }
