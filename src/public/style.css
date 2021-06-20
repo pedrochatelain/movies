@@ -1108,7 +1108,6 @@ input:focus::placeholder {
 
   html, body {
     font-family: Ubuntu;
-    height: 100%;
     width: 100vw;
   }
 
@@ -1242,12 +1241,11 @@ input:focus::placeholder {
 
   .nav-mobile {
     display: block;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     height: 30vw;
     width: 100vw;
     background-color: #246877;
-    /* align-self: flex-end; */
     align-items: center;
     justify-content: center;
   }
