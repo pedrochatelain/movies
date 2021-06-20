@@ -1235,7 +1235,7 @@ input:focus::placeholder {
   .add-movies-page-mobile {
     /* display: grid !important; */
     display: block !important;
-    height: 100vh;
+    /* height: 100vh; */
     grid-template-rows: repeat(5, max-content);
   }
 
