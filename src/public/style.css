@@ -1186,7 +1186,7 @@ input:focus::placeholder {
 
   .add-movie-container {
     overflow: scroll;
-    height: calc(100% - 20vh);
+    height: calc(100% - 15vh);
     grid-template-rows: 1fr;
   }
 
@@ -1267,7 +1267,7 @@ input:focus::placeholder {
   .search-icon-container {
     display: grid;
     width: 28vw;
-    height: 18vw;
+    height: fit-content;
     text-decoration: none;
   }
 
@@ -1277,7 +1277,7 @@ input:focus::placeholder {
     font-size: 3.5vw;
     color: #e5e5e5;
     margin: 0;
-    margin-top: 1vw;
+    margin-top: 10%;
     justify-self: center;
   }
 
