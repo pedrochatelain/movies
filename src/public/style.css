@@ -1241,8 +1241,7 @@ input:focus::placeholder {
 
   .nav-mobile {
     display: flex;
-    position: fixed;
-    bottom: 0;
+    margin-top: calc(100% - 30vw);
     height: 30vw;
     width: 100vw;
     background-color: #246877;
