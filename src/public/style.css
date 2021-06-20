@@ -1255,7 +1255,7 @@ input:focus::placeholder {
     display: flex;
     position: absolute;
     bottom: 0;
-    height: 20vh;
+    height: 15vh;
     width: 100vw;
     background-color: #246877;
     align-items: center;
@@ -1274,10 +1274,10 @@ input:focus::placeholder {
   .home-icon-text,
   .my-movies-icon-text,
   .search-icon-text {
-    font-size: 4vw;
+    font-size: 3.5vw;
     color: #e5e5e5;
     margin: 0;
-    margin-top: 2vw;
+    margin-top: 1vw;
     justify-self: center;
   }
 
@@ -1285,7 +1285,7 @@ input:focus::placeholder {
   .icon-my-movies,
   .icon-search {
     justify-self: center;
-    width: 8vw;
+    width: 7vw;
   }
 
   .my-movies-icon-container {
