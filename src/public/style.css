@@ -1235,14 +1235,16 @@ input:focus::placeholder {
   .add-movies-page-mobile {
     /* display: grid !important; */
     display: block !important;
-    /* height: 100vh; */
+    height: inherit;
     grid-template-rows: repeat(5, max-content);
+    position: relative;
   }
 
   .nav-mobile {
     display: flex;
-    margin-top: calc(100% - 30vw);
-    height: 30vw;
+    position: absolute;
+    bottom: 0;
+    height: 20vh;
     width: 100vw;
     background-color: #246877;
     align-items: center;
@@ -1298,7 +1300,6 @@ input:focus::placeholder {
   }
 
   .helper-mobile {
-    margin-top: 15vw;
     display: grid;
     height: fit-content;
   }
