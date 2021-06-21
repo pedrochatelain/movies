@@ -1127,20 +1127,20 @@ input:focus::placeholder {
 
   .icon-website-mobile {
     justify-self: center;
-    width: 60vw;
+    width: 70vw;
   }
 
   .info-home-mobile p {
-    font-size: 5vw;
+    font-size: 4.5vw;
     font-weight: 500;
     color: #246877;
     text-align: center;
   }
 
   .info-home-mobile {
-    margin-top: 10vw;
     width: fit-content;
     justify-self: center;
+    margin-top: 5vw;
   }
 
   .dot-home-mobile {
@@ -1149,17 +1149,15 @@ input:focus::placeholder {
   }
 
   .search-button-home-mobile {
-    margin-top: 20vw;
-    margin-bottom: 10vw;
+    margin-top: 15vw;
+    margin-bottom: 8vw;
     background-color: #246877;
     color: #f8f8f8;
-    border: none;
   }
 
   .my-movies-button-home-mobile {
     background-color: #f8f8f8;
     color: #246877;
-    border: 0.3vw solid #246877;
   }
 
   .my-movies-button-home-mobile,
@@ -1175,6 +1173,7 @@ input:focus::placeholder {
     text-decoration: none;
     font-size: 5vw;
     font-weight: 500;
+    border: 0.3vw solid #246877;
   }
 
   /* Add movie page */
