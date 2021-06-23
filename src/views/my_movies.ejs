@@ -24,12 +24,19 @@
       <div class="mis_peliculas_cards">
         <% for (let i=0; i < movies.length; i++) { %>
           <div class="card js-card">
+            
             <% if (movies[i].image) { %>
               <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].image}` %>" class="card_image" alt="movie image">
             <% } else { %>
               <img src="img/no_image.png" class="card_image" alt="no movie img">
             <% } %>
+            <button class="button-options js-button-card-options">
+              <img src="img/three-dots.svg" class="icon-three-dots" alt="three dots options">
+            </button>
             <div class="container_info_card js-info-container">
+              <button class="button-close-info js-button-close-info">
+                <img src="img/icon-close-info.svg" class="x-icon" alt="info close icon">
+              </button>
               <div class="info_card js-info-card">
                 <div class="js-movie-id js-display-none"><%= movies[i].id %></div>
                 <div class="titulo_and_value">
@@ -95,6 +102,7 @@
               <% } else { %>
                 <button type="button" class="js-button-rate button_calificar">Calificar</button>
               <% } %>
+              <button class="button-borrar js-button-borrar-mobile">Borrar</button>
             </div>
             <div class="container_puntuar js-rating-container">
               <img src="img/arrow_left.svg" class="arrow_left js-arrow-calificar" alt="arrow left">
@@ -117,7 +125,7 @@
                 <img src="img/arrow_left.svg" class="arrow_left js-arrow-delete" alt="arrow left">
                 <h1>¿Deseas borrar la película de tu lista?</h1>
                 <div class="action_buttons">
-                  <button type="button" class="button_cancelar js-button-cancel-delete">Cancelar</button>
+                  <button type="button" class="button_cancelar js-button-cancel-delete js-button-cancel-delete-mobile">Cancelar</button>
                   <button type="submit" class="button_borrar js-button-borrar">Borrar</button>
                 </div>
               </div>
@@ -127,6 +135,20 @@
             </div>
           </div>
         <% } %>
+        <nav class="nav-mobile js-nav-mobile">
+          <a href="/" class="home-icon-container">
+            <img src="img/home_icon_mobile.svg" class="icon-home" alt="home icon">
+            <p class="home-icon-text">Home</p>
+          </a>
+          <a href="/my_movies" class="my-movies-icon-container">
+            <img src="img/my_movies_icon.svg" class="icon-my-movies" alt="my movies icon">
+            <p class="my-movies-icon-text">Mis películas</p>
+          </a>
+          <a href="/add_movies" class="search-icon-container">
+            <img src="img/search_icon.svg" class="icon-search" alt="search icon">
+            <p class="search-icon-text">Buscar</p>
+          </a>
+        </nav>
       </div>
       <script src="js/main.js"></script>
     </div>

@@ -23,6 +23,10 @@ function init() {
   const messageNoResults = document.querySelector('.js-no-results-msg');
   const buttonsRate = document.querySelectorAll('.js-button-rate');
   const inputSearchMobile = document.querySelector('.js-search-input-mobile')
+  const buttonsCardOptions = document.querySelectorAll('.js-button-card-options')
+  const buttonsCloseInfo = document.querySelectorAll('.js-button-close-info')
+  const buttonsDeleteMobile = document.querySelectorAll('.js-button-borrar-mobile')
+  const buttonsCancelDeleteMobile = document.querySelectorAll('.js-button-cancel-delete-mobile')
 
   // Hide navigation bar when window resizes (mostly because of mobile keyboard)
   window.addEventListener('resize', () => {
@@ -32,6 +36,58 @@ function init() {
 
   if (window.location.pathname === '/my_movies') {
     checkCards();
+
+    buttonsCancelDeleteMobile.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const containerBorrar = event.currentTarget.parentNode.parentNode.parentNode
+        hideContainerMobile(containerBorrar)
+      })
+    })
+
+    function hideContainerMobile(container) {
+      container.classList.add('js-translate-right-mobile')
+    }
+
+    buttonsDeleteMobile.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const card = event.currentTarget.parentNode.parentNode
+        showContainerBorrarMobile(card)
+      })
+    })
+
+    function showContainerBorrarMobile(card) {
+      const containerBorrar = card.querySelector('.js-container-delete');
+      containerBorrar.classList.remove('js-translate-right-mobile')
+      containerBorrar.classList.add('js-translate-left-mobile');
+    }
+
+    buttonsCloseInfo.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const info = event.currentTarget.parentNode
+        hideInfoMobile(info)
+      })
+    })
+
+    buttonsCardOptions.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const card = event.currentTarget.parentNode
+        showInfo(card)
+      })
+    })
+
+    function hideInfoMobile(info) {
+      info.classList.add('js-translate-right-mobile')
+      info.addEventListener('animationend', function hide() {
+        info.classList.remove('js-translate-left-mobile')
+        info.classList.remove('js-translate-right-mobile')
+        info.removeEventListener('animationend', hide)
+      })
+    }
+
+    function showInfo(card) {
+      const info = card.querySelector('.js-info-container')
+      info.classList.add('js-translate-left-mobile')
+    }
 
     dotMyMovies.classList.remove('js-display-none');
 
