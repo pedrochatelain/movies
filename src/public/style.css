@@ -1345,10 +1345,10 @@ input:focus::placeholder {
     font-size: 5vw;
     color: #246877;
     width: 70vw;
-    background-color: transparent;
-    align-self: center;
+    /* align-self: center; */
+    height: fit-content;
     justify-self: center;
-    margin-bottom: 40vw;
+    margin-top: 50vw;
     background-color: #E0E0E0;
     padding: 3vw;
     border-radius: 2vw;
