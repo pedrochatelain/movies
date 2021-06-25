@@ -510,14 +510,14 @@ function init() {
     }
 
     async function addMovie(movie) {
-      const response = await fetch('/my_movies', {
+      const query = await fetch('/my_movies', {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(movie),
       });
-      const sheison = await response.json()
-      console.log(sheison)
+      const response = await query.json()
+      console.log(response)
     }
   }
 }

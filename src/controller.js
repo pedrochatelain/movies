@@ -11,10 +11,7 @@ function isValidDate(date) {
 
 async function addMovie(req, res) {
   try {
-    let date = req.body.releaseDate;
-    if (!isValidDate(date)) {
-      date = null;
-    }
+    let date = formatDate(req.body.releaseDate);
     const movie = {
       id: req.body.id,
       name: req.body.name.trim(),
@@ -28,6 +25,17 @@ async function addMovie(req, res) {
   } catch (e) {
     console.log(e)
   }
+}
+
+function formatDate(date) {
+  if (!isValidDate(date)) {
+    return null
+  }
+  const dateAsInteger = date.split('-').join('');
+  const day = dateAsInteger.substring(0, 2);
+  const month = dateAsInteger.substring(2, 4);
+  const year = dateAsInteger.substring(4, 8);
+  return `${year}-${month}-${day}`
 }
 
 function deleteMovie(req, res) {
