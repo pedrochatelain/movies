@@ -30,7 +30,6 @@ function init() {
 
   // Hide navigation bar when window resizes (mostly because of mobile keyboard)
   window.addEventListener('resize', () => {
-    console.log(document.querySelector('.js-nav-mobile'))
     document.querySelector('.js-nav-mobile').classList.toggle('js-display-none');
   })
 
@@ -455,7 +454,7 @@ function init() {
         const id =
           button.parentNode.parentNode.querySelector('#js-movie-id').innerHTML;
         const movie = await getMovie(id);
-        addMovie(movie);
+        await addMovie(movie);
         addedSuccesfully(button);
       })
     );
@@ -510,13 +509,15 @@ function init() {
       message.classList.remove('js-display-none');
     }
 
-    function addMovie(movie) {
-      fetch('/my_movies', {
+    async function addMovie(movie) {
+      const response = await fetch('/my_movies', {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(movie),
       });
+      const sheison = await response.json()
+      console.log(sheison)
     }
   }
 }

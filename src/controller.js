@@ -23,7 +23,8 @@ async function addMovie(req, res) {
       rating: null,
       image: req.body.image,
     };
-    await model.addMovie(movie);
+    const response = await model.addMovie(movie);
+    res.send(response)
   } catch (e) {
     console.log(e)
   }

@@ -6,21 +6,19 @@ const pool = new Pool({
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
   port: process.env.PORT_DATABASE,
-  ssl: {
-    rejectUnauthorized: false
-  }
+
 })
 
 async function addMovie(movie) {
   try {
-    await pool.query(
+    const query = await pool.query(
      `INSERT INTO moviesv2(id, name, director, date, rating, image)
       VALUES($1, $2, $3, $4, $5, $6)`,
       [movie.id, movie.name, movie.director, movie.date, movie.rating, movie.image]
     )
+    return query
   } catch (error) {
-    // console.log(error)
-    throw error
+    return error
   }
 }
 
