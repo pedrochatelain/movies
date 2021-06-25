@@ -239,7 +239,7 @@ function init() {
 
     function hideHelperMobile() {
       const helper = document.querySelector('.js-helper-mobile');
-      helper.classList.add('js-opacity-transition', 'js-opacity-0');
+      helper.classList.add('js-display-none');
     }
 
     buttonSearchMobile.addEventListener('click', async (event) => {
