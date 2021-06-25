@@ -1338,18 +1338,36 @@ input:focus::placeholder {
 
   .buscador-mobile {
     display: block !important;
-    height: 9vw;
     grid-row-start: 1;
     grid-column-start: 1;
-    border: 0.8vw solid #246877;
+    border: none;
     outline: none;
-    font-size: 6vw;
+    font-size: 5vw;
     color: #246877;
     width: 70vw;
     background-color: transparent;
     align-self: center;
     justify-self: center;
     margin-bottom: 40vw;
+    background-color: #E0E0E0;
+    padding: 3vw;
+    border-radius: 2vw;
+    background-image: url('img/lupa.svg');
+    background-repeat: no-repeat;
+    background-position-x: 5%;
+    background-position-y: center;
+    background-size: 4vw;
+  }
+
+  .buscador-mobile::placeholder {
+    color: #246877;
+    font-size: 5vw;
+    font-weight: lighter;
+    padding-left: 10%;
+  }
+
+  .buscador-mobile:focus {
+    background-image: none;
   }
 
   .helper-mobile {
