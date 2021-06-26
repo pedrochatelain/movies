@@ -2,24 +2,21 @@
   <div class="js-card-add-movie card-add-movie">
     <p id="js-movie-id" class="js-display-none"><%= movies[i].id %></p>
     <div class="card-add-movie__front">
-      <img src="img/info_icon.svg" class="card-add-movie__info-icon js-button-info" alt="info icon">
+      <button class="button-info js-button-info">
+        <img src="img/three-dots.svg" class="card-add-movie__info-icon" alt="info icon">
+      </button>
       <% if (movies[i].poster_path) { %>
         <img src="<%=`https://image.tmdb.org/t/p/w500/${movies[i].poster_path}` %>" class="card-add-movie__img js-card-image" alt="movie image">
       <% } else { %>
         <img src="img/no_image.png" class="card-add-movie__img" alt="los increibles">
       <% } %>
-      <button class="button-add-movie js-button-add-movie">
-        <p class="button-add-movie__text js-button-add-movie-text">Agregar</p>
-        <img src="img/icon_plus.svg" class="button-add-movie__icon js-icon-plus" alt="icon_plus">
-        <div class="loader js-display-none js-loader"></div>
-      </button>
       <div class="msg-add js-msg-add js-display-none">
         <p class="msg-add__text">Agregada a Mis películas</p>
         <img src="img/check_icon_add.svg" class="msg-add__icon" alt="check icon">
       </div>
     </div>
     <div class="card-add-movie__info js-info-movie">
-      <div class="js-info-container js-display-none">
+      <div class="js-info-container info-container js-display-none">
         <img src="img/x_icon.svg" class="card-add-movie__x-icon js-button-exit-info" alt="x icon">
         <p class="card-add-movie__titulo">Título:</p>
         <p class="card-add-movie__titulo-value js-movie-title"></p>
@@ -28,6 +25,11 @@
         <p class="card-add-movie__director">Director:</p>
         <p class="card-add-movie__director-value js-movie-director"></p>
       </div>
+      <button class="button-add-movie js-button-add-movie js-display-none">
+        <p class="button-add-movie__text js-button-add-movie-text">Agregar</p>
+        <img src="img/icon_plus.svg" class="button-add-movie__icon js-icon-plus" alt="icon_plus">
+        <div class="loader js-display-none js-loader"></div>
+      </button>
       <div class="loader-info js-loader-info">
 
       </div>

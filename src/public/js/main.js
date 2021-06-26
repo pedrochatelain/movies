@@ -452,7 +452,9 @@ function init() {
     const buttonsInfo = document.querySelectorAll('.js-button-info');
     const buttonsExitInfo = document.querySelectorAll('.js-button-exit-info');
 
-    buttonsInfo.forEach((button) => button.addEventListener('click', showInfo));
+    buttonsInfo.forEach((button) => button.addEventListener('click', (event) => {
+      showInfo(event);
+    }));
     buttonsExitInfo.forEach((button) =>
       button.addEventListener('click', hideInfo)
     );
@@ -486,10 +488,13 @@ function init() {
       info.querySelector('.js-movie-director').innerHTML = movie.director;
       info.querySelector('.js-movie-date').innerHTML = movie.releaseDate;
       info.querySelector('.js-loader-info').classList.add('js-display-none');
+      const buttonAddMovie = info.parentNode.querySelector('.js-button-add-movie')
+      console.log(buttonAddMovie)
+      buttonAddMovie.classList.remove('js-display-none')
     }
 
     function showLoaderInfo(event) {
-      const infoContainer = event.path[2].querySelector('.js-info-movie');
+      const infoContainer = event.currentTarget.parentNode.parentNode.querySelector('.js-info-movie');
       infoContainer.classList.remove('js-hide-info');
       infoContainer.classList.add('js-show-info');
     }
