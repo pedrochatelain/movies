@@ -49,7 +49,7 @@ async function getMovie(req, res) {
   formatDate(movieInfo);
   const director = await getDirector(id);
   let name = movieInfo.title;
-  if (movieInfo.original_language === 'es') {
+  if (movieInfo.original_language === 'es' || movieInfo.original_language === 'en') {
     name = movieInfo.original_title
   }
   const movie = {
