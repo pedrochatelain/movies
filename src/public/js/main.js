@@ -227,7 +227,16 @@ function init() {
   if (window.location.pathname === '/add_movies') {
     dotAddMovies.classList.remove('js-display-none');
 
-    inputSearchMobile.addEventListener('focus', hideHelperMobile)    
+    inputSearchMobile.addEventListener('focus', () =>{
+      inputSearchMobile.classList.add('js-background-image-none')
+      hideHelperMobile();
+    })    
+
+    inputSearchMobile.addEventListener('focusout', () => {
+      if (isInputEmpty(inputSearchMobile)) {
+        inputSearchMobile.classList.remove('js-background-image-none')
+      }
+    })
 
     inputSearchMobile.addEventListener('keyup', () => {
       if (isInputEmpty(inputSearchMobile)) {
