@@ -1651,4 +1651,38 @@ input:focus::placeholder {
     width: 8vw;
   }
 
+  .no_movies {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr
+  }
+
+  .image_empty_cinema, .no_movies_msg_and_button {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+  }
+
+  .no_movies_msg_and_button {
+    margin-top: 30vh;
+  }
+
+  .image_empty_cinema {
+    width: 65vw;
+    height: 65vw;
+    margin-bottom: 30vh;
+  }
+
+  .message_no_cards {
+    font-size: 7vw;
+    width: 70vw;
+  }
+
+  .button_buscar_peliculas {
+    font-weight: lighter;
+    justify-self: center;
+    font-size: 4.5vw;
+    width: 45vw;
+    height: 7vh;
+    margin-top: 15vh;
+  }
+
 }
