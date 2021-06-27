@@ -1636,4 +1636,19 @@ input:focus::placeholder {
     justify-self: center;
   }
 
+  .msg-add {
+    height: fit-content;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    align-self: flex-end;
+  }
+
+  .msg-add__text {
+    font-size: 5vw;
+  }
+
+  .msg-add__icon {
+    width: 8vw;
+  }
+
 }

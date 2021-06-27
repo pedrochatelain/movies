@@ -467,8 +467,20 @@ function init() {
         const movie = await getMovie(id);
         await addMovie(movie);
         addedSuccesfully(button);
+        button.remove();
       })
     );
+
+    // displays message movie was succesfully added to my movies
+    function addedSuccesfully(event) {
+      const message = getMessageSuccesful(event);
+      event.classList.add('js-display-none');
+      message.classList.remove('js-display-none');
+    }
+
+    function getMessageSuccesful(event) {
+      return event.parentNode.parentNode.querySelector('.js-msg-add');
+    }
 
     async function showInfo(event) {
       const id =
@@ -489,8 +501,9 @@ function init() {
       info.querySelector('.js-movie-date').innerHTML = movie.releaseDate;
       info.querySelector('.js-loader-info').classList.add('js-display-none');
       const buttonAddMovie = info.parentNode.querySelector('.js-button-add-movie')
-      console.log(buttonAddMovie)
-      buttonAddMovie.classList.remove('js-display-none')
+      if (buttonAddMovie) {
+        buttonAddMovie.classList.remove('js-display-none')
+      }
     }
 
     function showLoaderInfo(event) {
@@ -516,13 +529,6 @@ function init() {
       button.disabled = true;
     }
 
-    // displays message movie was succesfully added to my movies
-    function addedSuccesfully(event) {
-      const message = event.parentNode.querySelector('.js-msg-add');
-      event.classList.add('js-display-none');
-      message.classList.remove('js-display-none');
-    }
-
     async function addMovie(movie) {
       const query = await fetch('/my_movies', {
         method: 'POST',
@@ -531,7 +537,7 @@ function init() {
         body: JSON.stringify(movie),
       });
       const response = await query.json()
-      console.log(response)
+      // console.log(response)
     }
   }
 }
