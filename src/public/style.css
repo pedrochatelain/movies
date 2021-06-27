@@ -1662,18 +1662,19 @@ input:focus::placeholder {
   }
 
   .no_movies_msg_and_button {
-    margin-top: 30vh;
+    margin-top: 20vh;
   }
 
   .image_empty_cinema {
-    width: 65vw;
-    height: 65vw;
+    width: 55vw;
+    height: 55vw;
     margin-bottom: 30vh;
   }
 
   .message_no_cards {
-    font-size: 7vw;
-    width: 70vw;
+    font-size: 6vw;
+    width: 60vw;
+    text-align: center;
   }
 
   .button_buscar_peliculas {
@@ -1682,7 +1683,7 @@ input:focus::placeholder {
     font-size: 4.5vw;
     width: 45vw;
     height: 7vh;
-    margin-top: 15vh;
+    margin-top: 10vh;
   }
 
 }
