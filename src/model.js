@@ -13,7 +13,6 @@ const pool = new Pool({
 
 async function addMovie(movie) {
   try {
-    console.log(movie.date)
     const query = await pool.query(
      `INSERT INTO moviesv2(id, name, director, date, rating, image)
       VALUES($1, $2, $3, $4, $5, $6)`,

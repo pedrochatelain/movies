@@ -1260,7 +1260,6 @@ input:focus::placeholder {
   .button-add-movie__text {
     font-size: 5vw;
     margin-right: 2vw;
-    margin-bottom: 1vw;
   }
 
   .button-add-movie__icon {
@@ -1441,6 +1440,11 @@ input:focus::placeholder {
     grid-column-start: 1;
     align-self: center;
     justify-self: center;
+  }
+
+  .loader:after {
+    width: 3vw;
+    height: 3vw;
   }
 
   /* Mis peliculas */
