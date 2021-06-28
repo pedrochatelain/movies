@@ -257,10 +257,14 @@ function init() {
       const nameMovie = event.currentTarget.parentNode.querySelector('.js-search-input-mobile').value;
       inputSearchMobile.remove();
       const movies = await getMovies(nameMovie)
-      await showMovies(movies)
-      initCards();
-      hideLoadingMobile()
+      if (movies.length != 0) {
+        await showMovies(movies)
+        initCards();
+      } else {
+        messageNoResults.classList.remove('js-display-none')
+      }
       document.querySelector('.js-helper-mobile').remove()
+      hideLoadingMobile()
     })
 
     function showLoadingMobile() {

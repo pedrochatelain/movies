@@ -1686,4 +1686,30 @@ input:focus::placeholder {
     margin-top: 10vh;
   }
 
+  .no_results {
+    grid-template-rows: repeat(2, min-content);
+    grid-template-columns: 1fr;
+    width: 70vw;
+    justify-items: center;
+    height: fit-content;
+    align-self: center;
+    margin-bottom: 40vh;
+  }
+
+  .no_movie_icon, .no_results p {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  .no_movie_icon {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .no_results p {
+    margin-top: 35vh;
+    font-size: 7vw;
+    width: 70vw;
+  }
+
 }
