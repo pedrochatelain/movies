@@ -33,12 +33,6 @@ async function setRating(rating, id) {
   }
 }
 
-function deleteAllMovies() {
-  pool.query('DELETE FROM moviesv2');
-}
-
-// deleteAllMovies();
-
 async function getMovies() {
   const query = await pool.query(
    `SELECT id, name, director, TO_CHAR(date, 'DD-MM-YYYY') AS date, rating, image
