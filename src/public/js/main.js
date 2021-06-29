@@ -541,7 +541,6 @@ function init() {
         body: JSON.stringify(movie),
       });
       const response = await query.json()
-      // console.log(response)
     }
   }
 }
