@@ -423,7 +423,6 @@ input:focus::placeholder {
   border-radius: 1vw;
   overflow: hidden;
   justify-self: center;
-  margin-bottom: 4vw;
 }
 
 .card_image {
@@ -514,14 +513,13 @@ input:focus::placeholder {
   align-items: center;
   height: calc(100% - 15vh);
   overflow: scroll;
-
+  grid-auto-flow: column;
 }
 
 .mis_peliculas_cards {
   display: grid;
   justify-items: center;
   margin-top: 8vw;
-  height: inherit;
 }
 
 .no_movies {
@@ -1454,7 +1452,8 @@ input:focus::placeholder {
   .mis_peliculas_cards {
     grid-auto-flow: column;
     margin-top: 0;
-    justify-self: center;
+    /* justify-self: center; */
+    height: calc(100% - 15vh);
   }
 
   .card {
