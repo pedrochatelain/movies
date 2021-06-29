@@ -332,10 +332,6 @@ input:focus::placeholder {
   transition-duration: 0.4s;
 }
 
-.my_stars img {
-  width: 3vw;
-}
-
 .msg_deleted {
   z-index: -1;
 }
@@ -516,12 +512,16 @@ input:focus::placeholder {
 .mis_peliculas_container {
   display: grid;
   align-items: center;
+  height: calc(100% - 15vh);
+  overflow: scroll;
+
 }
 
 .mis_peliculas_cards {
   display: grid;
   justify-items: center;
   margin-top: 8vw;
+  height: inherit;
 }
 
 .no_movies {
@@ -910,6 +910,7 @@ input:focus::placeholder {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   overflow: hidden;
+  border-radius: 3vw;
 }
 
 .card-add-movie__front,
@@ -1236,9 +1237,9 @@ input:focus::placeholder {
   }
 
   .card-add-movie {
-    height: 65vh;
-    width: 72vw;
-    margin-left: 7vw;
+    height: 70vh;
+    width: 75vw;
+    margin-left: 5vw;
     align-self: center;
     justify-self: center;
   }
@@ -1302,6 +1303,7 @@ input:focus::placeholder {
     width: 28vw;
     height: fit-content;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .home-icon-text,
@@ -1451,18 +1453,17 @@ input:focus::placeholder {
 
   .mis_peliculas_cards {
     grid-auto-flow: column;
-    overflow: scroll;
-    align-content: center;
-    margin-bottom: 10vh;
+    margin-top: 0;
+    justify-self: center;
   }
 
   .card {
-    border-radius: 1vw;
-    height: 60vh;
-    width: 70vw;
+    border-radius: 3vw;
+    height: 70vh;
+    width: 75vw;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    margin-left: 4vw;
+    margin-left: 5vw;
   }
 
   .card_image, .container_info_card, .container_puntuar, .container_borrar, .button-options {
@@ -1516,7 +1517,7 @@ input:focus::placeholder {
 
   .info_card {
     display: block;
-    width: 70%;
+    width: 80%;
     height: fit-content;
     margin: 0;
     margin-left: 6vw;
@@ -1530,20 +1531,23 @@ input:focus::placeholder {
   }
 
   .titulo, .director, .fecha, .titulo_value, .director_value, .fecha_value {
-    font-size: 4.5vw;
+    font-size: 5vw;
   }
 
   .button-borrar, .button_calificar, .button_cancelar, .button_borrar, .button_enviar {
     font-family: Ubuntu;
     display: grid !important;
-    height: 6vh;
-    width: 26vw;
+    height: 7vh;
+    width: 30vw;
     align-items: center;
     border: none;
     filter: drop-shadow(0px .8vw .4vw #B4B4B4);
     border-radius: 3vw;
     align-self: flex-end;
-    font-size: 3.6vw;
+    font-size: 4.5vw;
+    font-weight: 300;
+    -webkit-tap-highlight-color: transparent;
+
   }
   
   .button_cancelar, .button_borrar, .button_enviar {
@@ -1570,7 +1574,7 @@ input:focus::placeholder {
 
   .button-borrar {
     color: #f02323;
-    margin-left: 6vw;
+    margin-left: 5vw;
     background-color: #f8f8f8;
   }
 
@@ -1578,7 +1582,7 @@ input:focus::placeholder {
     display: block !important;
     opacity: 100 !important;
     justify-self: right;
-    margin-right: 6vw;
+    margin-right: 5vw;
   }
 
   .action_icons {
@@ -1586,7 +1590,7 @@ input:focus::placeholder {
   }
 
   .my_stars img {
-    width: 5vw;
+    width: 6vw;
   }
 
   .button-close-info {
@@ -1606,12 +1610,12 @@ input:focus::placeholder {
   }
 
   .x-icon {
-    width: 4vw;
+    width: 5vw;
   }
 
   .container_borrar h1 {
     align-self: flex-end;
-    font-size: 5.5vw;
+    font-size: 7vw;
   }
 
   .container_puntuar {
@@ -1622,16 +1626,16 @@ input:focus::placeholder {
 
   .container_puntuar p {
     margin-bottom: 6vh;
-    font-size: 4vw;
+    font-size: 5vw;
   }
 
   .stars img {
-    width: 10vw;
+    width: 12vw;
   }
 
   .container_puntuar h1 {
-    font-size: 5vw;
-    width: 70%;
+    font-size: 7vw;
+    width: 80%;
     align-self: center;
     justify-self: center;
   }
